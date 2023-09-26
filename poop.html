@@ -55,7 +55,7 @@
         font-size: 20px;
         border: 5px solid #fff;
         border-radius: 20px;
-        color: #fff;
+        color: #333333;
         text-decoration: none;
         margin-top: 20px;
         padding: 10px;
@@ -64,6 +64,7 @@
 
         .schedulebutt:hover {
         background-color: rgba(255, 255, 255, 0.5);
+        color: #555555;
         }
 
         .dawgbutt {
@@ -72,7 +73,7 @@
         font-size: 20px;
         border: 5px solid #fff;
         border-radius: 20px;
-        color: #fff;
+        color: #333333;
         text-decoration: none;
         margin-top: 20px;
         padding: 10px;
@@ -81,6 +82,7 @@
 
         .dawgbutt:hover {
         background-color: rgba(255, 255, 255, 0.5);
+        color: #555555;
         }
 
         .mapbutt {
@@ -89,7 +91,7 @@
         font-size: 20px;
         border: 5px solid #fff;
         border-radius: 20px;
-        color: #fff;
+        color: #333333;
         text-decoration: none;
         margin-top: 20px;
         padding: 10px;
@@ -98,6 +100,7 @@
 
         .mapbutt:hover {
         background-color: rgba(255, 255, 255, 0.5);
+        color: #555555;
         }
 
         .scorebutt {
@@ -106,7 +109,7 @@
         font-size: 20px;
         border: 5px solid #fff;
         border-radius: 20px;
-        color: #fff;
+        color: #333333;
         text-decoration: none;
         margin-top: 20px;
         padding: 10px;
@@ -115,30 +118,37 @@
 
         .scorebutt:hover {
         background-color: rgba(255, 255, 255, 0.5);
+        color: #555555;
         }
 
     </style>
 </head>
 
-<body style="background-color: lightblue;">
-    <img src="BigDawGS-logos.jpeg" class="logo">
-    <h1>ProDawgTivity</h1>
-    <p>Created by: BigDawGS</p>
+    <body style = "background-color: lightblue;">
 
-    <div class="dawg-buttons">
-        <a href="#" class="schedulebutt" onclick="redirectToPage()">Schedule</a>
-        <a href="#" class="dawgbutt">Dawgs</a>
-        <a href="#" class="mapbutt">Dawg Map</a>
-        <a href="#" class="scorebutt">Dawg Score</a>
-    </div>
+        <img src = "BigDawGS-logos.jpeg" class = logo>
 
-    <p>
-        This program will get you goated at life.
-    </p>
+        <h1>ProDawgTivity</h1>
+
+        <p>Created by: BigDawGS</p> 
+
+        <!-- /* divider for the button class hierarchy */ -->
+        <div class="dawg-buttons">
+        <!-- /* buttons n shit */ -->
+            <a href="#" class="schedulebutt" onclick="redirectToPage('twopoop.html')">Schedule</a>
+            <a href="#" class="dawgbutt" onclick="redirectToPage('threepoop.html')">Dawgs</a>
+            <a href="#" class="mapbutt" onclick="redirectToPage('fourpoop.html')">Dawg Map</a>
+            <a href="#" class="scorebutt" onclick="redirectToPage('fivepoop.html')">Dawg Score</a>
+        </div>
+
+    
+        <p>
+            This program will get you goated at life.
+        </p>
 
     <script>
-        function redirectToPage() {
-            window.location.href = 'twopoop.html';
+        function redirectToPage(page) {
+            window.location.href = page;
         }
     </script>
 </body>
