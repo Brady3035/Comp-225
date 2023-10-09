@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: skyblue;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #000;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.header h1 {
+    font-size: 24px;
+}
+
+.week-selector button {
+    margin: 0 10px;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.week-selector button:hover {
+    background-color: #45a049;
+}
+
+.calendar-table {
+    background-color: #cfe9ff;
+    width: 100%;
+    border-radius: 8px;
+    border: 2px solid #000;
+}
+
+.calendar-table th,
+.calendar-table td {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #000;
+}
+
+.calendar-table th {
+    background-color: #cfe9ff;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.task-list li {
+    margin-bottom: 5px;
+}
+
+.add-task-form {
+    margin-top: 20px;
+}
+
+.add-task-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.add-task-form input,
+.add-task-form button {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 3px solid #110505;
+}
+
+.add-task-form button {
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+.add-task-form button:hover {
+    background-color: #45a049;
+}

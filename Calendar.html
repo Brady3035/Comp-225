@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Planner</title>
+    <link rel="stylesheet" href="calendarStyles.css">  <!--Link to our CSS file, calendarStyles.css-->
+</head>
+<body>
+    <div class="calendar">
+        <div class="header">
+            <h1>Weekly Planner</h1>
+            <div class="week-selector">
+                <button id="prev-week">Previous Week</button>
+                <span id="current-week">Week of January 1, 2023</span>
+                <button id="next-week">Next Week</button>
+            </div>
+        </div>
+        <table class="calendar-table">
+            <thead>
+                <tr>
+                    <th>Sunday</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                </tr>
+            </thead>
+            <tbody id="calendar-body">
+                <!-- Calendar content will be generated here -->
+            </tbody>
+        </table>
+        <div class="add-task-form">
+            <h2>Add Task</h2>
+            <label for="task-name">Task Name:</label>
+            <input type="text" id="task-name" placeholder="Enter a task name">
+            <label for="due-date">Due Date (optional):</label>
+            <input type="date" id="due-date">
+            <label for="add-to-date">Add To Date:</label>
+            <input type="date" id="add-to-date">
+            <button id="add-task">Add Task</button>
+        </div>
+    </div>
+
+    <script src="calendar.js"></script>
+</body>
+</html>
