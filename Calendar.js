@@ -5,41 +5,94 @@
         const tasksByDate = {};
 
         // Function to update the calendar
-        function updateCalendar() {
-            const calendarBody = document.getElementById('calendar-body');
-            const currentWeek = document.getElementById('current-week');
-            currentWeek.textContent = `Week of ${currentDate.toDateString()}`;
+    function updateCalendar() {
+        const calendarBody = document.getElementById('calendar-body');
+        const currentWeek = document.getElementById('current-week');
+        currentWeek.textContent = `Week of ${currentDate.toDateString()}`;
 
-            // Clear previous calendar content
-            calendarBody.innerHTML = '';
+        // Clear previous calendar content
+        calendarBody.innerHTML = '';
 
-            // Loop through the days of the current week
-            for (let i = 0; i < 7; i++) {
-                const day = new Date(currentDate);
-                day.setDate(currentDate.getDate() + i - currentDate.getDay());
+        // Loop through the days of the current week
+        for (let i = 0; i < 7; i++) {
+            const day = new Date(currentDate);
+            day.setDate(currentDate.getDate() + i - currentDate.getDay());
 
-                const cell = document.createElement('td');
-                cell.textContent = day.getDate();
+            const cell = document.createElement('td');
+            cell.textContent = day.getDate();
 
-                cell.style.border = '1px solid #000';
+            cell.style.border = '1px solid #000';
 
-                // Create an unordered list for tasks
-                const taskList = document.createElement('ul');
-                taskList.classList.add('task-list');
+            // Create an unordered list for tasks
+            const taskList = document.createElement('ul');
+            taskList.classList.add('task-list');
 
-                // Get tasks for the current date and populate the task list
-                const dateString = day.toISOString().split('T')[0];
-                const tasksForDate = tasksByDate[dateString] || [];
-                tasksForDate.forEach((task) => {
-                    const taskItem = document.createElement('li');
-                    taskItem.innerHTML = '<br>' + task.name + (task.dueDate ? '<br>(Due: ' + task.dueDate + ')' : '');
-                    taskList.appendChild(taskItem);
+            // Get tasks for the current date and populate the task list
+            const dateString = day.toISOString().split('T')[0];
+            const tasksForDate = tasksByDate[dateString] || [];
+            tasksForDate.forEach((task) => {
+                const taskItem = document.createElement('li');
+                taskItem.innerHTML = '<br>' + task.name + (task.dueDate ? '<br>(Due: ' + task.dueDate + ')' : '');
+                taskList.appendChild(taskItem);
+                taskItem.addEventListener('click', () => {
+                    displayTaskInfo(task);
                 });
+            });
 
-                cell.appendChild(taskList);
-                calendarBody.appendChild(cell);
-            }
+            cell.appendChild(taskList);
+            calendarBody.appendChild(cell);
         }
+    }
+
+    let activePopup = null; // Variable to track the active task popup
+
+    function displayTaskInfo(task) {
+        // Check if there's an active task popup
+        if (activePopup) {
+            // If there's an active popup, remove it before opening a new one
+            activePopup.remove();
+        }
+    
+        // Create a div for the popup
+        const popup = document.createElement('div');
+        popup.classList.add('task-popup');
+    
+        // Create a close button for the popup
+        const closeButton = document.createElement('span');
+        closeButton.classList.add('close-button');
+        closeButton.textContent = '✖';
+    
+        // Add a click event listener to the close button to close the popup
+        closeButton.addEventListener('click', () => {
+            popup.remove();
+            activePopup = null; // Reset the active popup
+        });
+    
+        // Create a container for task information
+        const taskInfoContainer = document.createElement('div');
+        taskInfoContainer.classList.add('task-info-container');
+    
+        // Display task information in the popup
+        const taskNameElement = document.createElement('p');
+        taskNameElement.textContent = `Task: ${task.name}`;
+    
+        const dueDateElement = document.createElement('p');
+        dueDateElement.textContent = task.dueDate ? `Due Date: ${task.dueDate}` : 'No Due Date';
+    
+        // Append elements to the popup
+        taskInfoContainer.appendChild(taskNameElement);
+        taskInfoContainer.appendChild(dueDateElement);
+        popup.appendChild(closeButton);
+        popup.appendChild(taskInfoContainer);
+    
+        // Add the popup to the body
+        document.body.appendChild(popup);
+    
+        // Set the current popup as the active popup
+        activePopup = popup;
+    }
+    
+    
 
         // Event listener for navigating through weeks
         document.getElementById('prev-week').addEventListener('click', () => {
