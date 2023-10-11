@@ -4,15 +4,14 @@ Members: Devinn Chi (Junior, CS Major), Sarah Sylvester (Junior, CS Major), Brad
 Class: Comp 225
 Professor: Lauren Milne
 
----------------------------------------------------------------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------------------------------------------------------
+--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--
+--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--
 
 About our project (mission and goals):
 
 We will be building a task-management website that rewards users for each completed task using a point-based system. We are targeting the issues of procrastination and accountability primarily among students. Users will enter task data and, upon completion, receive points based on an algorithm that tracks task difficulty, the time of the task, etc., and will then be able to apply those points to the user’s dawg or unlock various areas (DawgMart, dawg park, dawg house shopping, dawg car dealer, etc) or bail out dawg from pound.
 
-
----------------------------------------------------------------------------------------------------------------------------------------------------
+--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--
 
 Steps to run our project (current 10/11/2023):
 
@@ -22,7 +21,8 @@ Steps to run our project (current 10/11/2023):
 4. Below the "dawg environment" you will see a partially functional calendar table/scheduling area where you can create tasks and assign start and due dates for each one. Upon entering the task name, start date, and due date, you can click on the green "add task" button to add your task to the calendar table
 5. You can change weeks and view different weeks by clicking on the green buttons above the calendar table
 
----------------------------------------------------------------------------------------------------------------------------------------------------
+--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--
+
 
 About our files:
 
@@ -34,5 +34,5 @@ calendarStyles.css - This file contains the styling elements to make our main ht
 
 Dawgs.html, MainPage.html, Map.html, Schedule.html, Score.html - Files we used to explore HTML, css, and JS 
 
----------------------------------------------------------------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------------------------------------------------------
+--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--
+--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--
