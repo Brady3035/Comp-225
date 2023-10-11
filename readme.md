@@ -32,5 +32,7 @@ Calendar.js - This file contains the backend structure for our main html page an
 
 calendarStyles.css - This file contains the styling elements to make our main html file appear with a higher level of grace
 
+Dawgs.html, MainPage.html, Map.html, Schedule.html, Score.html - Files we used to explore HTML, css, and JS 
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------
