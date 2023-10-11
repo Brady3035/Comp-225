@@ -23,7 +23,6 @@ Steps to run our project (current 10/11/2023):
 
 --<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--
 
-
 About our files:
 
 Calendar.html - This file contains the main structure of our html file that will be our main page for our task management application.
