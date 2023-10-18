@@ -113,9 +113,10 @@ body {
     align-items: center;
 }
 
-.environment-rectangle {
+.environment {
     width: 100%; 
-    height: 200px;
+    height: 100%;
+    border-radius: 6px;
     border: 10px solid #000; 
     margin-top: 20px; 
 }
