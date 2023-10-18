@@ -13,6 +13,16 @@ body {
     border: 2px solid #000;
 }
 
+.header prodawgtivity {
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center auto;
+    border-radius: 8px;
+    margin: 0px auto;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -113,15 +123,15 @@ body {
 .logo {
     width: 100px;
     height: auto;
-    margin: 20px auto;
+    margin: 5px;
     border: 5px solid darkblue;
     padding: 0px;
     border-radius: 10px;
     display: block;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);  
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
 }
 
 .logo-header {
+    background-color: gray;
     display: flex;
-    align-items: center;
 }
