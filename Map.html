@@ -14,9 +14,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #5ee7df, #b490ca); /*gradient background*/
-            background-color: #f0f0f0; /* light gray */
-            transition: background 0.5s ease; /* smooth background transition */ 
+            background-color: #f0f0f0
             padding: 20px
         }
 
@@ -27,10 +25,12 @@
         }
 
         p {
-            font-size: 18px;
+            font-size: 14px;
             color: #555555; /* slightly lighter gray */
             text-align: center;
             font-family: 'Georgia', sans-serif;
+
+
         }
 
         .logo {
@@ -43,19 +43,155 @@
             display: block;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);  
         }
+        
+        .shop {
+            width: 200px;
+            height: 270px;
+            margin: 20px auto;
+            padding: 0px;
+            background-position: right;
+            background-size: cover;
+
+            position: absolute;
+            top: 290px;
+            left:50px;
+        }
+        .shopButton {
+            font-size: 20px;
+            border: 5px solid #fff;
+            border-radius: 20px;
+            color: #333333;
+            text-decoration: none;
+            margin-top: 20px;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+
+            position: absolute;
+            top: 600px;
+            left: 100px;
+        }
+        .shopButton:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+        color: #555555;
+        }
+
+        .house {
+            width: 400px;
+            height: 300px;
+            padding: 0px;
+            background-position-x: 5000px;
+            background-position-y: 5000px;
+            background-size: cover;
+
+            position: absolute;
+            top: 320px;
+            left: 170px;
+        }
+        .houseButton {
+            font-size: 20px;
+            border: 5px solid #fff;
+            border-radius: 20px;
+            color: #333333;
+            text-decoration: none;
+            margin-top: 20px;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+
+            position: absolute;
+            top: 600px;
+            left: 330px;
+        }
+        .houseButton:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+        color: #555555;
+        }
+
+        .realEstate{
+            width: 400px;
+            height: 300px;
+            padding: 0px;
+            background-size: cover;
+
+            position: absolute;
+            top: 300px;
+            left: 470px;
+        }
+        .realEstateButton {
+            font-size: 20px;
+            border: 5px solid #fff;
+            border-radius: 20px;
+            color: #333333;
+            text-decoration: none;
+            margin-top: 20px;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+
+            position: absolute;
+            top: 600px;
+            left: 600px;
+        }
+        .realEstateButton:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+        color: #555555;
+        }
+
+        .carDealer{
+            width: 500px;
+            height: 400px;
+            padding: 0px;
+            background-size: cover;
+
+            position: absolute;
+            top: 275px;
+            left: 850px;
+        }
+        .carDealerButton {
+            font-size: 20px;
+            border: 5px solid #fff;
+            border-radius: 20px;
+            color: #333333;
+            text-decoration: none;
+            margin-top: 20px;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+
+            position: absolute;
+            top: 600px;
+            left: 1050px;
+        }
+        .carDealerButton:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+        color: #555555;
+        }
 
     </style>
 </head>
 
-    <body style = "background-color: lightblue;">
+    <body style = "background-image: url(Pictures/Map.png);">
 
-    <img src = "BigDawGS-logos.jpeg" class = logo>
+    <img src = "Pictures/BigDawGS-logos.jpeg" class = logo>
 
-    <h1>Map.</h1>
+    <h1>Welcome to the map!</h1>
 
     </body>
 
-    <p>Created by: BigDawGS</p> 
+    <p>Choose where you'd like to go next!</p> 
+    <img src = "Pictures/DawgShop.png" class = shop>
+    <img src = "Pictures/DawgHouse.png" class = house>
+    <img src = "Pictures/RealEstate.png" class = realEstate>
+    <img src = "Pictures/CarDealer.png" class = carDealer>
 
+    <div class="dawg-buttons">
+            <a href="#" class="shopButton" onclick="redirectToPage('Calendar.html')">Shop</a>
+            <a href="#" class="houseButton" onclick="redirectToPage('Calendar.html')">House</a>
+            <a href="#" class="realEstateButton" onclick="redirectToPage('Calendar.html')">Real Estate</a>
+            <a href="#" class="carDealerButton" onclick="redirectToPage('Calendar.html')">Car Dealership</a>
+
+        </div>
+    <script>
+        function redirectToPage(page) {
+            window.location.href = page;
+        }
+    </script>
 </html>
 
