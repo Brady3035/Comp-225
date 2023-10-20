@@ -105,6 +105,20 @@ body {
     background-color: #45a049;
 }
 
+.mapButton {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.mapButton:hover {
+    background-color: #45a049;
+}
+
 .dawg-environment {
     padding: 20px;
     background-color: skyblue;

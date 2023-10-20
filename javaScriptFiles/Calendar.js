@@ -7,6 +7,11 @@ const tasksByDate = {};
 // Create a separate array to store tasks with no due date
 const tasksWithoutDate = [];
 
+// Redirect to another page
+function redirectToPage(page) {
+    window.location.href = page;
+}
+
 // Function to update the calendar
 function updateCalendar() {
     const calendarBody = document.getElementById('calendar-body');
