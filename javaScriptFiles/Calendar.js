@@ -12,6 +12,12 @@ function redirectToPage(page) {
     window.location.href = page;
 }
 
+
+// Function to remove task from calendar
+function removeTask() {
+
+}
+
 // Function to update the calendar
 function updateCalendar() {
     const calendarBody = document.getElementById('calendar-body');
@@ -39,6 +45,7 @@ function updateCalendar() {
         const dateString = day.toISOString().split('T')[0];
         const tasksForDate = tasksByDate[dateString] || [];
         tasksForDate.forEach((task) => {
+            
             const taskItem = document.createElement('li');
             taskItem.innerHTML = '<br>' + task.name + (task.dueDate ? '<br>(Due: ' + task.dueDate + ')' : '');
             taskList.appendChild(taskItem);
@@ -81,6 +88,16 @@ function displayTaskInfo(task) {
     closeButton.classList.add('close-button');
     closeButton.textContent = '✖';
 
+    // Create a complete task button for the popup
+    const completeButton = document.createElement('span');
+    completeButton.classList.add('complete-button');
+    completeButton.textContent = "Complete";
+
+    // event listener for removing a task
+    completeButton.addEventListener('click', () => {
+        
+    });
+
     // Add a click event listener to the close button to close the popup
     closeButton.addEventListener('click', () => {
         popup.remove();
@@ -101,6 +118,7 @@ function displayTaskInfo(task) {
     // Append elements to the popup
     taskInfoContainer.appendChild(taskNameElement);
     taskInfoContainer.appendChild(dueDateElement);
+    popup.appendChild(completeButton);
     popup.appendChild(closeButton);
     popup.appendChild(taskInfoContainer);
 
