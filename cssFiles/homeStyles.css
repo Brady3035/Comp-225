@@ -2,9 +2,10 @@ body {
     font-family: 'Times New Roman', sans-serif;
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #f0f0f0
+
+    background-image: url("Pictures/HomeBackground.png");
+    background-size: cover;
+    background-repeat: no-repeat;
     }
 
 
@@ -13,8 +14,8 @@ body {
         text-align: center;
         font-family: 'Georgia', sans-serif;
         position: absolute;
-        top: 110px;
-        left: 555px;
+        top: 150px;
+        left: 490px;
     }
 
     p {
@@ -31,12 +32,14 @@ body {
     .logo {
         width: 100px;
         height: auto;
-        margin: 20px auto;
         border: 5px solid darkblue;
         padding: 0px;
         border-radius: 10px;
         display: block;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);  
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+        position: absolute;
+        top: 50px;
+        left: 580px; 
     }
 
     .scheduleButton {
@@ -51,7 +54,7 @@ body {
 
         position: absolute;
         top: 200px;
-        left: 550px;
+        left: 300px;
     }
     .scheduleButton:hover {
         font-style: italic;
@@ -73,7 +76,7 @@ body {
         top: 200px;
         left: 800px;
     }
-    .scheduleButton:hover {
+    .mapButton:hover {
         font-style: italic;
         background-color: rgba(255, 255, 255, 0.5);
         color: #555555;
