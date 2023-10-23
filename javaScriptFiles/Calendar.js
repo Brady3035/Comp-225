@@ -192,13 +192,16 @@ document.getElementById('add-task').addEventListener('click', () => {
             tasksWithoutDate.push(task);
         }
 
-        // Update the calendar
-        updateCalendar();
+
 
         // Clear task input fields
         document.getElementById('task-name').value = '';
         document.getElementById('due-date').value = '';
         document.getElementById('add-to-date').value = '';
+        
+        // Update the calendar
+        updateCalendar();
+
     }
 });
 
