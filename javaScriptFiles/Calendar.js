@@ -7,13 +7,29 @@ const tasksByDate = {};
 // Create a separate array to store tasks with no due date
 const tasksWithoutDate = [];
 
+// Create a points variable
+let points = 0;
+
 // Redirect to another page
 function redirectToPage(page) {
     window.location.href = page;
 }
 
+// Function to add points 
+function updatePoints(newPoints, task) {
+    points += newPoints;
+    const pointsLabel = document.getElementById('points-label');
+    pointsLabel.textContent = `Points: ${points}`; // update points label
 
-// Function to remove task from calendar
+    for (const date in tasksByDate) {
+        tasksByDate[date] = tasksByDate[date].filter((t) => t.name !== task);  // search through tasks 
+    }
+
+    // Update the calendar
+    updateCalendar();
+}
+
+// TODO: Function to remove task from calendar
 function removeTask() {
 
 }
@@ -95,7 +111,12 @@ function displayTaskInfo(task) {
 
     // event listener for removing a task
     completeButton.addEventListener('click', () => {
-        
+        if (activePopup === popup) {
+            popup.remove(); // Close the popup
+            activePopup = null; // Reset the active popup
+        }
+        updatePoints(5, task.name); // add 5 points to the points label
+        // console.log("complete button is clicked");
     });
 
     // Add a click event listener to the close button to close the popup
@@ -171,13 +192,16 @@ document.getElementById('add-task').addEventListener('click', () => {
             tasksWithoutDate.push(task);
         }
 
-        // Update the calendar
-        updateCalendar();
+
 
         // Clear task input fields
         document.getElementById('task-name').value = '';
         document.getElementById('due-date').value = '';
         document.getElementById('add-to-date').value = '';
+        
+        // Update the calendar
+        updateCalendar();
+
     }
 });
 

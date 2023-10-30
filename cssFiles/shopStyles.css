@@ -1,0 +1,89 @@
+body {
+    font-family: 'Times New Roman', sans-serif;
+    margin: 0;
+    padding: 0;
+
+    background-image: url("Pictures/ShopBackground.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+
+
+    h1 {
+        color: #333333; /* dark grey text */
+        text-align: center;
+        font-family: 'Georgia', sans-serif;
+        position: absolute;
+        left: 130px;
+    }
+
+    p {
+        font-size: 14px;
+        color: #555555; /* slightly lighter gray */
+        text-align: center;
+        font-family: 'Georgia', sans-serif;
+        position: absolute;
+        top: 300px;
+        left: 750px;
+
+    }
+
+    .logo {
+        width: 100px;
+        height: auto;
+        border: 5px solid darkblue;
+        padding: 0px;
+        border-radius: 10px;
+        display: block;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+        position: absolute;
+    } 
+
+    .backgroundShop {
+        width: 100px;
+        height: auto;
+        padding: 0px;
+        border-radius: 10px;
+        display: block;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);     
+    }
+
+    .scheduleButton {
+        cursor: pointer;
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 20px;
+        text-decoration: none;
+        margin-top: 20px;
+        padding: 10px;
+        transition: background-color 0.3s ease;
+
+        position: absolute;
+        top: 30px;
+        left: 1050px;
+    }
+    .scheduleButton:hover {
+        font-style: italic;
+        background-color: rgba(255, 255, 255, 0.5);
+        color: #555555;
+    }
+
+    .mapButton {
+        cursor: pointer;
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 20px;
+        text-decoration: none;
+        margin-top: 20px;
+        padding: 10px;
+        transition: background-color 0.3s ease;
+
+        position: absolute;
+        top: 30px;
+        left: 1250px;
+    }
+    .mapButton:hover {
+        font-style: italic;
+        background-color: rgba(255, 255, 255, 0.5);
+        color: #555555;
+    }
