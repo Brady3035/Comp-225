@@ -56,17 +56,24 @@ function updateCalendar() {
 
         cell.style.border = '1px solid #000';
 
-        // Create an unordered list for tasks
-        const taskList = document.createElement('ul');
-        taskList.classList.add('task-list');
+        // Create a div for tasks
+        const taskList = document.createElement('div');
+        taskList.classList.add('task-list'); // Add a CSS class for styling
 
         // Get tasks for the current date and populate the task list
         const dateString = day.toISOString().split('T')[0];
         const tasksForDate = tasksByDate[dateString] || [];
         tasksForDate.forEach((task) => {
-            
-            const taskItem = document.createElement('li');
-            taskItem.innerHTML = '<br>' + task.name + (task.dueDate ? '<br>(Due: ' + task.dueDate + ')' : '');
+            const taskItem = document.createElement('div'); // Change from <li> to <div>
+            taskItem.classList.add('task-box'); // Add a CSS class for styling
+            taskItem.textContent = task.name;
+
+            if (task.dueDate) {
+                const dueDateText = document.createElement('span');
+                dueDateText.textContent = `(Due: ${task.dueDate})`;
+                taskItem.appendChild(dueDateText);
+            }
+
             taskList.appendChild(taskItem);
             taskItem.addEventListener('click', () => {
                 displayTaskInfo(task);
