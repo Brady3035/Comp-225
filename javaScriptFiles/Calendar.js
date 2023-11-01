@@ -98,13 +98,8 @@ function updateCalendar() {
 
 let activePopup = null; // Variable to track the active task popup
 
+// Modify the displayTaskInfo function to show a popup
 function displayTaskInfo(task) {
-    // Check if there's an active task popup
-    if (activePopup) {
-        // If there's an active popup, remove it before opening a new one
-        activePopup.remove();
-    }
-
     // Create a div for the popup
     const popup = document.createElement('div');
     popup.classList.add('task-popup');
@@ -119,20 +114,15 @@ function displayTaskInfo(task) {
     completeButton.classList.add('complete-button');
     completeButton.textContent = "Complete";
 
-    // event listener for removing a task
+    // Event listener for removing a task
     completeButton.addEventListener('click', () => {
-        if (activePopup === popup) {
-            popup.remove(); // Close the popup
-            activePopup = null; // Reset the active popup
-        }
-        updatePoints(5, task.id); // add 5 points to the points label
-        // console.log("complete button is clicked");
+        popup.remove(); // Close the popup
+        updatePoints(5, task.id); // Add 5 points to the points label
     });
 
     // Add a click event listener to the close button to close the popup
     closeButton.addEventListener('click', () => {
         popup.remove();
-        activePopup = null; // Reset the active popup
     });
 
     // Create a container for task information
@@ -155,9 +145,6 @@ function displayTaskInfo(task) {
 
     // Add the popup to the body
     document.body.appendChild(popup);
-
-    // Set the current popup as the active popup
-    activePopup = popup;
 }
 
 // Event listener for navigating through weeks

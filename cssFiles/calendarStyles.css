@@ -207,3 +207,14 @@ td {
     border: 1px solid #000;
     width: 100px; /* Adjust this value to your desired cell width */
 }
+.task-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
