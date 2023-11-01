@@ -29,7 +29,7 @@ body {
     }
 
     .logo {
-        width: 100px;
+        width: 50px;
         border: 5px solid darkblue;
         padding: 0px;
         border-radius: 10px;
@@ -76,4 +76,16 @@ body {
         font-style: italic;
         background-color: rgba(255, 255, 255, 0.5);
         color: #555555;
+    }
+
+    .selectionPicture {
+        width: 1300px;
+        padding: 0px;
+        border-radius: 10px;
+        display: block;
+
+        position: absolute;
+        top: 100px;
+        left: 30px;
+   
     }
