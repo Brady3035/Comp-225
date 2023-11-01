@@ -7,6 +7,9 @@ const tasksByDate = {};
 // Create a separate array to store tasks with no due date
 const tasksWithoutDate = [];
 
+// Initialize a unique task ID counter
+let taskIdCounter = 0;
+
 // Create a points variable
 let points = 0;
 
@@ -16,13 +19,13 @@ function redirectToPage(page) {
 }
 
 // Function to add points 
-function updatePoints(newPoints, task) {
+function updatePoints(newPoints, taskId) {
     points += newPoints;
     const pointsLabel = document.getElementById('points-label');
     pointsLabel.textContent = `Points: ${points}`; // update points label
 
     for (const date in tasksByDate) {
-        tasksByDate[date] = tasksByDate[date].filter((t) => t.name !== task);  // search through tasks 
+        tasksByDate[date] = tasksByDate[date].filter((t) => t.id !== taskId);  // search through tasks 
     }
 
     // Update the calendar
@@ -115,7 +118,7 @@ function displayTaskInfo(task) {
             popup.remove(); // Close the popup
             activePopup = null; // Reset the active popup
         }
-        updatePoints(5, task.name); // add 5 points to the points label
+        updatePoints(5, task.id); // add 5 points to the points label
         // console.log("complete button is clicked");
     });
 
@@ -166,11 +169,12 @@ document.getElementById('add-task').addEventListener('click', () => {
     const taskName = document.getElementById('task-name').value;
     const dueDate = document.getElementById('due-date').value;
     const addToDate = document.getElementById('add-to-date').value;
-    console.log(addToDate);
+
     if (taskName.trim() !== '') {
         if (addToDate !== "") {
             // If a due date is specified, add it to tasksByDate
             const task = {
+                id: taskIdCounter++, // Assign a unique ID to the task
                 name: taskName,
                 dueDate: dueDate || null,
             };
@@ -187,21 +191,19 @@ document.getElementById('add-task').addEventListener('click', () => {
         } else {
             // If no due date is specified, add it to tasksWithoutDate
             const task = {
+                id: taskIdCounter++, // Assign a unique ID to the task
                 name: taskName,
             };
             tasksWithoutDate.push(task);
         }
 
-
-
         // Clear task input fields
         document.getElementById('task-name').value = '';
         document.getElementById('due-date').value = '';
         document.getElementById('add-to-date').value = '';
-        
+
         // Update the calendar
         updateCalendar();
-
     }
 });
 
