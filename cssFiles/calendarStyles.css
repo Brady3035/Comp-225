@@ -13,6 +13,33 @@ body {
     border: 2px solid #000;
 }
 
+.header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: gray;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    z-index: 100;
+}
+
+.logo-header {
+    display: flex;
+    align-items: center;
+}
+
+.content {
+    margin-top: 150px;
+}
+
+.points-label {
+    margin-right: 20px; /* Add some spacing between the logo and the Points label */
+}
+
 .header prodawgtivity {
     font-family: Arial, sans-serif;
     font-size: 30px;
@@ -205,6 +232,18 @@ body {
     display: inline-block;
     max-width: 100%;
 }
+
+.points-label-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: skyblue;
+    border: 1px solid black; 
+    z-index: 100;
+}
+
 td {
     border: 1px solid #000;
     width: 100px; /* Adjust this value to your desired cell width */
