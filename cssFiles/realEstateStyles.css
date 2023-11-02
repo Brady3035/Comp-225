@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
 
-    background-image: url("Pictures/realEstateBackground.png");
+    background-image: url("Pictures/RealEstateBackground.png");
     background-size: cover;
     background-repeat: no-repeat;
     }
@@ -78,14 +78,13 @@ body {
         color: #555555;
     }
 
-    .selectionPicture {
-        width: 1300px;
+    .picture {
+        width: 70px;
         padding: 0px;
-        border-radius: 10px;
         display: block;
 
         position: absolute;
-        top: 100px;
-        left: 30px;
+        top: 230px;
+        left: 320px;
    
     }
