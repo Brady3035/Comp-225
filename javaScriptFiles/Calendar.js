@@ -13,6 +13,9 @@ let taskIdCounter = 0;
 // Create a points variable
 let points = 0;
 
+// Create Max points for tasks
+let max_points = 100;
+
 // Redirect to another page
 function redirectToPage(page) {
     window.location.href = page;
@@ -32,10 +35,21 @@ function updatePoints(newPoints, taskId) {
     updateCalendar();
 }
 
-// TODO: Function to remove task from calendar
-function removeTask() {
+// TODO: Function to calculate how many points the user gets.
+function calculatePoints(){
 
 }
+
+// TODO: Function to clock in.
+function clockIn(){
+
+}
+
+// TODO: Function to clock out.
+function clockOut(){
+
+}
+
 
 // Function to update the calendar
 function updateCalendar() {
