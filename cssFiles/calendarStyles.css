@@ -200,8 +200,8 @@ body {
 
 .sprite-container {
     position: absolute;
-    top: 21.5vh;
-    left: 51vw;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
 }
 
