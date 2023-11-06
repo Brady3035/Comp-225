@@ -222,28 +222,28 @@ document.getElementById('add-task').addEventListener('click', () => {
 updateCalendar();
 
 
-// Sprite position handling below:
-const spriteContainer = document.querySelector('.sprite-container');
-const dawgEnvironment = document.querySelector('.dawg-environment');
+// // Sprite position handling below:
+// const spriteContainer = document.getElementById('.sprite-container');
+// const dawgEnvironment = document.getElementById('.dawg-environment');
 
-// Function that will update sprite pos
-function updateSpritePosition() {
+// // Function that will update sprite pos
+// function updateSpritePosition() {
 
-    // dimensions of dawg environment
-    const dawgEnvironmentWidth = dawgEnvironment.offsetWidth;
-    const dawgEnvironmentHeight = dawgEnvironment.offsetHeight;
+//     // dimensions of dawg environment
+//     const dawgEnvironmentWidth = dawgEnvironment.offsetWidth;
+//     const dawgEnvironmentHeight = dawgEnvironment.offsetHeight;
 
-    // calculate the desired position as a percentage based on dimensions
-    const desiredTop = (dawgEnvironmentHeight / 2);
-    const desiredLeft = (dawgEnvironmentWidth / 2);
+//     // calculate the desired position as a percentage based on dimensions
+//     const desiredTop = (dawgEnvironmentHeight / 2) - (spriteContainer.offsetHeight / 2);
+//     const desiredLeft = (dawgEnvironmentWidth / 2) - (spriteContainer.offsetWidth / 2);
 
-    // set the position of the sprite container 
-    spriteContainer.style.top = `${desiredTop}px`;
-    spriteContainer.style.left = `${desiredLeft}px`;
-}
+//     // set the position of the sprite container 
+//     spriteContainer.style.top = `${desiredTop}px`;
+//     spriteContainer.style.left = `${desiredLeft}px`;
+// }
 
-// call event listener whenever window is resized
-window.addEventListener('resize', updateSpritePosition);
+// // call event listener whenever window is resized
+// window.addEventListener('resize', updateSpritePosition);
 
-// initial resize
-updateSpritePosition();
+// // initial resize
+// updateSpritePosition();
