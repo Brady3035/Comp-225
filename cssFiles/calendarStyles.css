@@ -192,10 +192,24 @@ body {
 
 .dawg-environment {
     padding: 20px;
-    background-color: skyblue;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+}
+
+.sprite-container {
+    position: absolute;
+    top: 21.5vh;
+    left: 51vw;
+    transform: translate(-50%, -50%);
+}
+
+.sprite {
+    width: 12vw;
+    height: auto;
+    position: absolute;
+    z-index: 1;
 }
 
 .environment {
