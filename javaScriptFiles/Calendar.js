@@ -13,6 +13,9 @@ let taskIdCounter = 0;
 // Create a points variable
 let points = 0;
 
+// Create a task importance variable
+let importance = 0;
+
 // Create Max points for tasks
 let max_points = 100;
 
