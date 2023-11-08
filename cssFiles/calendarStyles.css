@@ -67,12 +67,12 @@ body {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #4CAF50;
+    background-color: #2b462c;
     color: white;
 }
 
 .week-selector button:hover {
-    background-color: #45a049;
+    background-color: #2b462c;
 }
 
 .calendar-table {
@@ -123,17 +123,17 @@ body {
 
 .add-task-form button {
     cursor: pointer;
-    background-color: #4CAF50;
+    background-color: #2b462c;
     color: white;
     border: none;
 }
 
 .add-task-form button:hover {
-    background-color: #45a049;
+    background-color: #2b462c;
 }
 
 .mapButton {
-    background-color: #4CAF50;
+    background-color: #2b462c;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -145,11 +145,11 @@ body {
 }
 
 .mapButton:hover {
-    background-color: #45a049;
+    background-color: #2b462c;
 }
 
 .close-button {
-    background-color: #4CAF50;
+    background-color: #2b462c;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -159,11 +159,11 @@ body {
 }
 
 .close-button:hover {
-    background-color: #45a049;
+    background-color: #2b462c;
 }
 
 .complete-button {
-    background-color: #4CAF50;
+    background-color: #2b462c;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -173,11 +173,11 @@ body {
 }
 
 .complete-button:hover {
-    background-color: #45a049;
+    background-color: #2b462c;
 }
 
 .task-item-button {
-    background-color: #4CAF50;
+    background-color: #2b462c;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -187,7 +187,7 @@ body {
 }
 
 .task-item-button:hover {
-    background-color: #45a049;
+    background-color: #2b462c;
 }
 
 .dawg-environment {
