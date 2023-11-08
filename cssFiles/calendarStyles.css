@@ -277,4 +277,9 @@ td {
     text-align: center;
 }
 
+.task-box {
+    background-color: lightskyblue;
+    border-radius: 10px;
+}
+
 
