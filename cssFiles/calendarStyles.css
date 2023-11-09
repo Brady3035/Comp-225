@@ -37,17 +37,7 @@ body {
 }
 
 .points-label {
-    margin-right: 20px; /* Add some spacing between the logo and the Points label */
-}
-
-.header prodawgtivity {
-    font-family: Arial, sans-serif;
-    font-size: 30px;
-    display: flex;
-    justify-content: space-between;
-    text-align: center auto;
-    border-radius: 8px;
-    margin: 0px auto;
+    margin-right: 20px;
 }
 
 .header {
@@ -273,7 +263,7 @@ td {
     border: 1px solid #ccc;
     padding: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 400px; /* Adjust the width as needed */
+    width: 400px;
     text-align: center;
 }
 
@@ -281,5 +271,3 @@ td {
     background-color: lightskyblue;
     border-radius: 10px;
 }
-
-
