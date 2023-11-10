@@ -212,38 +212,30 @@ document.getElementById('add-task').addEventListener('click', () => {
         document.getElementById('task-name').value = '';
         document.getElementById('due-date').value = '';
         document.getElementById('add-to-date').value = '';
+        document.getElementById('task-importance').value = '';
 
         // Update the calendar
         updateCalendar();
     }
 });
 
+// Get the task-importance input
+var taskImportanceInput = document.getElementById('task-importance');
+
+// event listener to make sure input is within limits
+taskImportanceInput.addEventListener('input', function () {
+
+    var importanceValue = taskImportanceInput.value; // get curr val 
+
+    // check value for range 
+    if (isNaN(importanceValue) || importanceValue < 1) {
+        // not a number or less than one, set to 1
+        taskImportanceInput.value = 1;
+    } else if (importanceValue > 10) {
+        // greater than 10, set to 10
+        taskImportanceInput.value = 10;
+    }
+});
+
 // Initial calendar update
 updateCalendar();
-
-
-// // Sprite position handling below:
-// const spriteContainer = document.getElementById('.sprite-container');
-// const dawgEnvironment = document.getElementById('.dawg-environment');
-
-// // Function that will update sprite pos
-// function updateSpritePosition() {
-
-//     // dimensions of dawg environment
-//     const dawgEnvironmentWidth = dawgEnvironment.offsetWidth;
-//     const dawgEnvironmentHeight = dawgEnvironment.offsetHeight;
-
-//     // calculate the desired position as a percentage based on dimensions
-//     const desiredTop = (dawgEnvironmentHeight / 2) - (spriteContainer.offsetHeight / 2);
-//     const desiredLeft = (dawgEnvironmentWidth / 2) - (spriteContainer.offsetWidth / 2);
-
-//     // set the position of the sprite container 
-//     spriteContainer.style.top = `${desiredTop}px`;
-//     spriteContainer.style.left = `${desiredLeft}px`;
-// }
-
-// // call event listener whenever window is resized
-// window.addEventListener('resize', updateSpritePosition);
-
-// // initial resize
-// updateSpritePosition();
