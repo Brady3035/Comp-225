@@ -5,71 +5,71 @@
  * 
  */
 
-// Create constants to be used later
+// Create constants
 const list = document.querySelector('ul');
 
-// Create an instance of a db object for us to store the open database in
+// Create an instance of a db object to store the open database in
 let db;
 
-// Open our database; it is created if it doesn't already exist
-const openRequest = window.indexedDB.open("tasks_db", 1);
+// Open our database; created if it doesn't exist
+const openRequest = window.indexedDB.open("tasks_db");
 
-// error handler signifies that the database didn't open successfully
+// error handler - database didn't open successfully
 openRequest.addEventListener("error", () => console.error("Database failed to open"), );
 
-// success handler signifies that the database opened successfully
+// success handler - database opened successfully
 openRequest.addEventListener("success", () => {
   console.log("Database opened successfully");
 
-  // Store the opened database object in the db variable. This is used a lot below
+  // Store the opened database object in the db variable
   db = openRequest.result;
   console.log(openRequest.result);
 
-  // Run the displayData() function to display the notes already in the IDB
+  // Run the displayData() - display the notes already in the IDB
   displayData();
 });
 
-// Set up the database tables if this has not already been done
-openRequest.onupgradeneeded = (e) => {
+// Set up the database tables
+openRequest.addEventListener("upgradeneeded", (e) => {
     db = e.target.result;     // Grab a reference to the opened database
     console.log("Database grabbed");
 
-    // Create an objectStore in database to store notes and an auto-incrementing key
+    // Create an objectStore in database to store notes and auto-incrementing key
     const objectStore = db.createObjectStore("tasks_db", {
       keyPath: "id",
       autoIncrement: true,
     });
   
-    // Define what data items the objectStore will contain
+    // Define what data items objectStore will contain
     objectStore.createIndex("tasksByDate", "tasksByDate", { unique: false });
   
     console.log("Database setup complete");
-  };
+  });
   
-// Create a submit event handler so that when the calendar is updated the addData() function is run
-document.addEventListener('add-task', addData);
+// Create event handler so that when a task is added the addData() function is run
+document.getElementById("add-task").addEventListener("click", addData);
 
 // Define the addData() function
 function addData(e) {
     e.preventDefault();
   
-    // grab the values entered into the form fields and store them in an object ready for being inserted into the DB
+    // grab the values in the task list and store them in an object to be inserted into the DB
     const newTaskList = { tasksByDate: tasksByDate.value };
   
-    // open a read/write db transaction, ready for adding the data
+    // open a read/write db transaction to add the data
     const transaction = db.transaction(["tasks_db"], "readwrite");
   
-    // call an object store that's already been added to the database
+    // call object store that's already been added to the database
     const objectStore = transaction.objectStore("tasks_db");
   
-    // Make a request to add our newItem object to the object store
+    // Make request to add newTaskList object to object store
     const addRequest = objectStore.add(newTaskList);
   
-    // Report on the success of the transaction completing, when everything is done
+    // Report on the success of the transaction completing
     transaction.addEventListener("complete", () => {
       console.log("Transaction completed: database modification finished.");
   
-      // update the display of data to show the newly added item, by running displayData() again.
+      // update the display, showing new item
       displayData();
     });
   
@@ -80,13 +80,12 @@ function addData(e) {
   // Define the displayData() function
 function displayData() {
 
-    // Open our object store and then get a cursor - which iterates through all the different data items in the store
+    // Open our object store and get a cursor - iterates through different data items in store
     const objectStore = db.transaction("tasks_db").objectStore("tasks_db");
     objectStore.openCursor().addEventListener("success", (e) => {
-      // Get a reference to the cursor
-      const cursor = e.target.result;
+      const cursor = e.target.result;      // Get a reference to the cursor
   
-      // If there is still another data item to iterate through, keep running this code
+      // If there is another item to iterate through, keep running
       if (cursor) {
   
         // Store the ID of the data item inside an attribute on the listItem, so we know
