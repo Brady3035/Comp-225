@@ -12,7 +12,7 @@ const list = document.querySelector('ul');
 let db;
 
 // Open our database; created if it doesn't exist
-const openRequest = window.indexedDB.open("tasks_db");
+const openRequest = window.indexedDB.open("tasks_db", 1);
 
 // error handler - database didn't open successfully
 openRequest.addEventListener("error", () => console.error("Database failed to open"), );
@@ -87,7 +87,8 @@ function displayData() {
   
       // If there is another item to iterate through, keep running
       if (cursor) {
-  
+        
+        const listItem = document.createElement("li");
         // Store the ID of the data item inside an attribute on the listItem, so we know
         // which item it corresponds to. This will be useful later when we want to delete items
         listItem.setAttribute("data-note-id", cursor.value.id);
