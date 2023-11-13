@@ -217,6 +217,7 @@ function addTask() {
     const taskName = document.getElementById('task-name').value;
     const dueDate = document.getElementById('due-date').value;
     const addToDate = document.getElementById('add-to-date').value;
+    // const importance = document.getElementById('importance').value;
 
     if (taskName.trim() !== '') {
         if (addToDate !== "") {
@@ -245,6 +246,7 @@ function addTask() {
         document.getElementById('task-name').value = '';
         document.getElementById('due-date').value = '';
         document.getElementById('add-to-date').value = '';
+        document.getElementById('task-importance').value = '';
 
         updateCalendar();
     }
