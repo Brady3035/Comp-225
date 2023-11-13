@@ -1,111 +1,136 @@
-// Initialize current date to January 1, 2023
+// Constants
+const MAX_POINTS = 100;
+
+// State variables
 let currentDate = new Date();
-
-// Create an object to store tasks by date
-const tasksByDate = {};
-
-// Create a separate array to store tasks with no due date
-const tasksWithoutDate = [];
-
-// Initialize a unique task ID counter
+let tasksByDate = {};
+let tasksWithoutDate = [];
 let taskIdCounter = 0;
-
-// Create a points variable
 let points = 0;
 
-// Create a task importance variable
-let importance = 0;
-
-// Create Max points for tasks
-let max_points = 100;
+// Functions
 
 // Redirect to another page
 function redirectToPage(page) {
     window.location.href = page;
 }
 
-// Function to add points 
+// Update points and refresh UI
 function updatePoints(newPoints, taskId) {
     points += newPoints;
-    const pointsLabel = document.getElementById('points-label');
-    pointsLabel.textContent = `Points: ${points}`; // update points label
-
-    for (const date in tasksByDate) {
-        tasksByDate[date] = tasksByDate[date].filter((t) => t.id !== taskId);  // search through tasks 
-    }
-
-    // Update the calendar
+    updatePointsLabel();
+    updateTasksByDate(taskId);
     updateCalendar();
 }
 
-// TODO: Function to calculate how many points the user gets.
-function calculatePoints(){
-
+// Update the displayed points label
+function updatePointsLabel() {
+    const pointsLabel = document.getElementById('points-label');
+    pointsLabel.textContent = `Points: ${points}`;
 }
 
-// TODO: Function to clock in.
-function clockIn(){
-
+// Filter out completed task and update tasksByDate
+function updateTasksByDate(taskId) {
+    for (const date in tasksByDate) {
+        tasksByDate[date] = tasksByDate[date].filter((t) => t.id !== taskId);
+    }
 }
 
-// TODO: Function to clock out.
-function clockOut(){
-
+// Placeholder for future implementation
+function calculatePoints() {
+    // TODO: Implement the logic to calculate points
 }
 
+// Placeholder for future implementation
+function clockIn() {
+    // TODO: Implement clock-in functionality
+}
 
-// Function to update the calendar
+// Placeholder for future implementation
+function clockOut() {
+    // TODO: Implement clock-out functionality
+}
+
+// Update the calendar UI
 function updateCalendar() {
     const calendarBody = document.getElementById('calendar-body');
     const currentWeek = document.getElementById('current-week');
     currentWeek.textContent = `Week of ${currentDate.toDateString()}`;
 
-    // Clear previous calendar content
-    calendarBody.innerHTML = '';
+    clearCalendarContent(calendarBody);
 
-    // Loop through the days of the current week
     for (let i = 0; i < 7; i++) {
         const day = new Date(currentDate);
         day.setDate(currentDate.getDate() + i - currentDate.getDay());
-
-        const cell = document.createElement('td');
-        cell.textContent = day.getDate();
-
-        cell.style.border = '1px solid #000';
-
-        // Create a div for tasks
-        const taskList = document.createElement('div');
-        taskList.classList.add('task-list'); // Add a CSS class for styling
-
-        // Get tasks for the current date and populate the task list
-        const dateString = day.toISOString().split('T')[0];
-        const tasksForDate = tasksByDate[dateString] || [];
-        tasksForDate.forEach((task) => {
-            const taskItem = document.createElement('div'); // Change from <li> to <div>
-            taskItem.classList.add('task-box'); // Add a CSS class for styling
-            taskItem.textContent = task.name;
-
-            if (task.dueDate) {
-                const dueDateText = document.createElement('span');
-                dueDateText.textContent = `(Due: ${task.dueDate})`;
-                taskItem.appendChild(dueDateText);
-            }
-
-            taskList.appendChild(taskItem);
-            taskItem.addEventListener('click', () => {
-                displayTaskInfo(task);
-            });
-        });
-
-        cell.appendChild(taskList);
+        const cell = createCalendarCell(day);
         calendarBody.appendChild(cell);
     }
 
-    // Clear previous tasks without a date
+    clearTasksWithoutDate();
+    populateTasksWithoutDate();
+}
+
+// Remove previous calendar content
+function clearCalendarContent(calendarBody) {
+    calendarBody.innerHTML = '';
+}
+
+// Create a table cell for a given day
+function createCalendarCell(day) {
+    const cell = document.createElement('td');
+    cell.textContent = day.getDate();
+    cell.style.border = '1px solid #000';
+
+    const taskList = createTaskList(day);
+    cell.appendChild(taskList);
+
+    return cell;
+}
+
+// Create a task list for a given day
+function createTaskList(day) {
+    const taskList = document.createElement('div');
+    taskList.classList.add('task-list');
+
+    const dateString = day.toISOString().split('T')[0];
+    const tasksForDate = tasksByDate[dateString] || [];
+    
+    tasksForDate.forEach((task) => {
+        const taskItem = createTaskItem(task);
+        taskList.appendChild(taskItem);
+    });
+
+    return taskList;
+}
+
+// Create a task item for a given task
+function createTaskItem(task) {
+    const taskItem = document.createElement('div');
+    taskItem.classList.add('task-box');
+    taskItem.textContent = task.name;
+
+    if (task.dueDate) {
+        const dueDateText = document.createElement('span');
+        dueDateText.textContent = `(Due: ${task.dueDate})`;
+        taskItem.appendChild(dueDateText);
+    }
+
+    taskItem.addEventListener('click', () => {
+        displayTaskInfo(task);
+    });
+
+    return taskItem;
+}
+
+// Remove previous tasks without a date
+function clearTasksWithoutDate() {
     const tasksList = document.getElementById('tasksList');
     tasksList.innerHTML = '';
+}
 
-    // Populate the list of tasks without a date
+// Populate the list of tasks without a date
+function populateTasksWithoutDate() {
+    const tasksList = document.getElementById('tasksList');
     tasksWithoutDate.forEach((task) => {
         const taskItem = document.createElement('li');
         taskItem.innerHTML = task.name;
@@ -113,129 +138,93 @@ function updateCalendar() {
     });
 }
 
-let activePopup = null; // Variable to track the active task popup
-
-// Modify the displayTaskInfo function to show a popup
+// Display task information in a popup
 function displayTaskInfo(task) {
-    // Create a div for the popup
+    const popup = createTaskPopup(task);
+    document.body.appendChild(popup);
+}
+
+// Create a popup for a given task
+function createTaskPopup(task) {
     const popup = document.createElement('div');
     popup.classList.add('task-popup');
 
-    // Create a close button for the popup
-    const closeButton = document.createElement('span');
-    closeButton.classList.add('close-button');
-    closeButton.textContent = '✖';
-
-    // Create a complete task button for the popup
-    const completeButton = document.createElement('span');
-    completeButton.classList.add('complete-button');
-    completeButton.textContent = "Complete";
-
-    // Event listener for removing a task
-    completeButton.addEventListener('click', () => {
-        popup.remove(); // Close the popup
-        updatePoints(5, task.id); // Add 5 points to the points label
-    });
-
-    // Add a click event listener to the close button to close the popup
-    closeButton.addEventListener('click', () => {
+    const closeButton = createPopupButton('✖', () => popup.remove());
+    const completeButton = createPopupButton('Complete', () => {
         popup.remove();
+        updatePoints(5, task.id);
     });
 
-    // Create a container for task information
-    const taskInfoContainer = document.createElement('div');
-    taskInfoContainer.classList.add('task-info-container');
+    const taskInfoContainer = createTaskInfoContainer(task);
 
-    // Display task information in the popup
-    const taskNameElement = document.createElement('p');
-    taskNameElement.textContent = `Task: ${task.name}`;
-
-    const dueDateElement = document.createElement('p');
-    dueDateElement.textContent = task.dueDate ? `Due Date: ${task.dueDate}` : 'No Due Date';
-
-    // Append elements to the popup
-    taskInfoContainer.appendChild(taskNameElement);
-    taskInfoContainer.appendChild(dueDateElement);
     popup.appendChild(completeButton);
     popup.appendChild(closeButton);
     popup.appendChild(taskInfoContainer);
 
-    // Add the popup to the body
-    document.body.appendChild(popup);
+    return popup;
 }
 
-// Event listener for navigating through weeks
+// Create a button for a popup
+function createPopupButton(text, clickHandler) {
+    const button = document.createElement('span');
+    button.textContent = text;
+    button.addEventListener('click', clickHandler);
+    return button;
+}
+
+// Create a container for task information in a popup
+function createTaskInfoContainer(task) {
+    const taskInfoContainer = document.createElement('div');
+    taskInfoContainer.classList.add('task-info-container');
+
+    const taskNameElement = createTaskInfoElement(`Task: ${task.name}`);
+    const dueDateElement = createTaskInfoElement(task.dueDate ? `Due Date: ${task.dueDate}` : 'No Due Date');
+
+    taskInfoContainer.appendChild(taskNameElement);
+    taskInfoContainer.appendChild(dueDateElement);
+
+    return taskInfoContainer;
+}
+
+// Create an element for task information in a popup
+function createTaskInfoElement(text) {
+    const element = document.createElement('p');
+    element.textContent = text;
+    return element;
+}
+
+// Event listeners
+
+// Update calendar for the previous week
 document.getElementById('prev-week').addEventListener('click', () => {
     currentDate.setDate(currentDate.getDate() - 7);
     updateCalendar();
 });
 
+// Update calendar for the next week
 document.getElementById('next-week').addEventListener('click', () => {
     currentDate.setDate(currentDate.getDate() + 7);
     updateCalendar();
 });
 
-// Event listener for adding tasks
+// Add a task
 document.getElementById('add-task').addEventListener('click', () => {
-    const taskName = document.getElementById('task-name').value;
-    const dueDate = document.getElementById('due-date').value;
-    const addToDate = document.getElementById('add-to-date').value;
-
-    if (taskName.trim() !== '') {
-        if (addToDate !== "") {
-            // If a due date is specified, add it to tasksByDate
-            const task = {
-                id: taskIdCounter++, // Assign a unique ID to the task
-                name: taskName,
-                dueDate: dueDate || null,
-            };
-
-            // Store the task under the selected date
-            const selectedDate = new Date(addToDate);
-            selectedDate.setDate(selectedDate.getDate()); // Add one day
-            const dateString = selectedDate.toISOString().split('T')[0];
-
-            if (!tasksByDate[dateString]) {
-                tasksByDate[dateString] = [];
-            }
-            tasksByDate[dateString].push(task);
-        } else {
-            // If no due date is specified, add it to tasksWithoutDate
-            const task = {
-                id: taskIdCounter++, // Assign a unique ID to the task
-                name: taskName,
-            };
-            tasksWithoutDate.push(task);
-        }
-
-        // Clear task input fields
-        document.getElementById('task-name').value = '';
-        document.getElementById('due-date').value = '';
-        document.getElementById('add-to-date').value = '';
-        document.getElementById('task-importance').value = '';
-
-        // Update the calendar
-        updateCalendar();
-    }
+    addTask();
 });
 
-// Get the task-importance input
-var taskImportanceInput = document.getElementById('task-importance');
-
-// event listener to make sure input is within limits
-taskImportanceInput.addEventListener('input', function () {
-
-    var importanceValue = taskImportanceInput.value; // get curr val 
-
-    // check value for range 
+function validateImportanceInput() {
+    var taskImportanceInput = document.getElementById('task-importance');
+    var importanceValue = taskImportanceInput.value;
     if (isNaN(importanceValue) || importanceValue < 1) {
-        // not a number or less than one, set to 1
         taskImportanceInput.value = 1;
     } else if (importanceValue > 10) {
-        // greater than 10, set to 10
         taskImportanceInput.value = 10;
     }
-});
+}
 
-// Initial calendar update
+// Validate importance input
+var taskImportanceInput = document.getElementById('task-importance');
+taskImportanceInput.addEventListener('input', validateImportanceInput);
+
+// Initial setup
 updateCalendar();
