@@ -212,6 +212,43 @@ document.getElementById('add-task').addEventListener('click', () => {
     addTask();
 });
 
+function addTask() {
+    const taskName = document.getElementById('task-name').value;
+    const dueDate = document.getElementById('due-date').value;
+    const addToDate = document.getElementById('add-to-date').value;
+
+    if (taskName.trim() !== '') {
+        if (addToDate !== "") {
+            const task = {
+                id: taskIdCounter++,
+                name: taskName,
+                dueDate: dueDate || null,
+            };
+
+            const selectedDate = new Date(addToDate);
+            selectedDate.setDate(selectedDate.getDate() + 1); // Add one day
+            const dateString = selectedDate.toISOString().split('T')[0];
+
+            if (!tasksByDate[dateString]) {
+                tasksByDate[dateString] = [];
+            }
+            tasksByDate[dateString].push(task);
+        } else {
+            const task = {
+                id: taskIdCounter++,
+                name: taskName,
+            };
+            tasksWithoutDate.push(task);
+        }
+
+        document.getElementById('task-name').value = '';
+        document.getElementById('due-date').value = '';
+        document.getElementById('add-to-date').value = '';
+
+        updateCalendar();
+    }
+}
+
 function validateImportanceInput() {
     var taskImportanceInput = document.getElementById('task-importance');
     var importanceValue = taskImportanceInput.value;
