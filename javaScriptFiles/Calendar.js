@@ -66,7 +66,7 @@ function updateCalendar() {
         calendarBody.appendChild(cell);
     }
 
-    clearTasksWithoutDate();
+    //clearTasksWithoutDate();
     populateTasksWithoutDate();
 }
 
@@ -212,6 +212,7 @@ document.getElementById('add-task').addEventListener('click', () => {
     addTask();
 });
 
+// Add task function
 function addTask() {
     const taskName = document.getElementById('task-name').value;
     const dueDate = document.getElementById('due-date').value;
