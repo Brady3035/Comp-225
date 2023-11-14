@@ -37,8 +37,18 @@ function updateTasksByDate(taskId) {
 }
 
 // Placeholder for future implementation
-function calculatePoints() {
-    // TODO: Implement the logic to calculate points
+function calculatePoints(timeSpentInMinutes, importance, currentDate, dueDate) {
+    const totalPoints = MAX_POINTS;
+    // Calculate the difference between the due date and the current date in milliseconds
+    const timeRemaining = Math.max(dueDate - currentDate, 0);
+    // Convert time remaining to minutes
+    const timeRemainingInMinutes = timeRemaining / (1000 * 60);
+    // Calculate the percentage of time remaining relative to the total allowed time
+    const percentageRemaining = timeRemainingInMinutes / (dueDate - currentDate) / 60;
+    // Calculate points based on time spent, importance, and time remaining
+    const pointsEarned = Math.round((timeSpentInMinutes / totalPoints) * importance * percentageRemaining * totalPoints);
+
+    return pointsEarned;
 }
 
 // Placeholder for future implementation
@@ -152,7 +162,7 @@ function createTaskPopup(task) {
     const closeButton = createPopupButton('✖', () => popup.remove());
     const completeButton = createPopupButton('Complete', () => {
         popup.remove();
-        updatePoints(5, task.id);
+        updatePoints(calculatePoints(30,task.importance,task.date,task.dueDate), task.id);
     });
 
     const taskInfoContainer = createTaskInfoContainer(task);
@@ -217,7 +227,7 @@ function addTask() {
     const taskName = document.getElementById('task-name').value;
     const dueDate = document.getElementById('due-date').value;
     const addToDate = document.getElementById('add-to-date').value;
-    // const importance = document.getElementById('importance').value;
+    const importance = document.getElementById('importance').value;
 
     if (taskName.trim() !== '') {
         if (addToDate !== "") {
