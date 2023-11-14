@@ -36,7 +36,7 @@ function updateTasksByDate(taskId) {
     }
 }
 
-// Placeholder for future implementation
+
 function calculatePoints(timeSpentInMinutes, importance, currentDate, dueDate) {
     const totalPoints = MAX_POINTS;
     // Calculate the difference between the due date and the current date in milliseconds
@@ -51,7 +51,7 @@ function calculatePoints(timeSpentInMinutes, importance, currentDate, dueDate) {
     return pointsEarned;
 }
 
-// Placeholder for future implementation
+
 function startUpdatingTimeSpent(task) {
     task.timeSpentInterval = setInterval(() => {
         task.timeSpent = calculateTimeSpent(task.clockInTime);
@@ -77,10 +77,7 @@ function formatTime(milliseconds) {
 }
 
 
-// Placeholder for future implementation
-function clockOut() {
-    // TODO: Implement clock-out functionality
-}
+
 
 // Update the calendar UI
 function updateCalendar() {
