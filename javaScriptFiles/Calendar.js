@@ -52,9 +52,30 @@ function calculatePoints(timeSpentInMinutes, importance, currentDate, dueDate) {
 }
 
 // Placeholder for future implementation
-function clockIn() {
-    // TODO: Implement clock-in functionality
+function startUpdatingTimeSpent(task) {
+    task.timeSpentInterval = setInterval(() => {
+        task.timeSpent = calculateTimeSpent(task.clockInTime);
+        updateTaskPopupTimeSpent(task);
+    }, 1000);
 }
+
+function stopUpdatingTimeSpent(task) {
+    clearInterval(task.timeSpentInterval);
+}
+
+function calculateTimeSpent(clockInTime) {
+    const currentTime = new Date();
+    const timeSpent = currentTime - clockInTime;
+    return timeSpent;
+}
+
+function formatTime(milliseconds) {
+    const seconds = Math.floor(milliseconds / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}m ${remainingSeconds}s`;
+}
+
 
 // Placeholder for future implementation
 function clockOut() {
@@ -160,19 +181,34 @@ function createTaskPopup(task) {
     popup.classList.add('task-popup');
 
     const closeButton = createPopupButton('✖', () => popup.remove());
+    
+    const clockInButton = createPopupButton('Clock In', () => {
+        task.clockInTime = new Date();
+        startUpdatingTimeSpent(task);
+    });
+
+    const clockOutButton = createPopupButton('Clock Out', () => {
+        stopUpdatingTimeSpent(task);
+    });
+
     const completeButton = createPopupButton('Complete', () => {
         popup.remove();
         updatePoints(calculatePoints(30,task.importance,task.date,task.dueDate), task.id);
     });
 
     const taskInfoContainer = createTaskInfoContainer(task);
+    const timeSpentDisplay = createTaskInfoElement(`Time Spent: ${formatTime(task.timeSpent)}`);
 
+    popup.appendChild(clockInButton);
+    popup.appendChild(clockOutButton);
     popup.appendChild(completeButton);
     popup.appendChild(closeButton);
     popup.appendChild(taskInfoContainer);
+    popup.appendChild(timeSpentDisplay);
 
     return popup;
 }
+
 
 // Create a button for a popup
 function createPopupButton(text, clickHandler) {
@@ -189,12 +225,20 @@ function createTaskInfoContainer(task) {
 
     const taskNameElement = createTaskInfoElement(`Task: ${task.name}`);
     const dueDateElement = createTaskInfoElement(task.dueDate ? `Due Date: ${task.dueDate}` : 'No Due Date');
+    const clockInTimeElement = createTaskInfoElement(task.clockInTime ? `Clock In Time: ${task.clockInTime.toLocaleTimeString()}` : '');
 
     taskInfoContainer.appendChild(taskNameElement);
     taskInfoContainer.appendChild(dueDateElement);
+    taskInfoContainer.appendChild(clockInTimeElement);
 
     return taskInfoContainer;
 }
+
+function updateTaskPopupTimeSpent(task) {
+    const timeSpentDisplay = document.querySelector('.task-popup p:last-child');
+    timeSpentDisplay.textContent = `Time Spent: ${formatTime(task.timeSpent)}`;
+}
+
 
 // Create an element for task information in a popup
 function createTaskInfoElement(text) {
@@ -227,7 +271,7 @@ function addTask() {
     const taskName = document.getElementById('task-name').value;
     const dueDate = document.getElementById('due-date').value;
     const addToDate = document.getElementById('add-to-date').value;
-    const importance = document.getElementById('importance').value;
+    const importance = validateImportanceInput();
 
     if (taskName.trim() !== '') {
         if (addToDate !== "") {
@@ -270,6 +314,7 @@ function validateImportanceInput() {
     } else if (importanceValue > 10) {
         taskImportanceInput.value = 10;
     }
+    return importanceValue;
 }
 
 // Validate importance input
