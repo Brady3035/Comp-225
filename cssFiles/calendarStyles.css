@@ -62,7 +62,12 @@ body {
 }
 
 .week-selector button:hover {
-    background-color: #2b462c;
+    background-color: green;
+    border-style: ridge;
+    border-width: 3px;
+    border-color: cadetblue;
+    font-style: italic;
+    color: black;
 }
 
 .calendar-table {
@@ -119,7 +124,12 @@ body {
 }
 
 .add-task-form button:hover {
-    background-color: #2b462c;
+    background-color: green;
+    border-style: ridge;
+    border-width: 3px;
+    border-color: cadetblue;
+    font-style: italic;
+    color: black;
 }
 
 .mapButton {
@@ -135,35 +145,12 @@ body {
 }
 
 .mapButton:hover {
-    background-color: #2b462c;
-}
-
-.close-button {
-    background-color: #2b462c;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.close-button:hover {
-    background-color: #2b462c;
-}
-
-.complete-button {
-    background-color: #2b462c;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.complete-button:hover {
-    background-color: #2b462c;
+    background-color: green;
+    border-style: ridge;
+    border-width: 3px;
+    border-color: cadetblue;
+    font-style: italic;
+    color: black;
 }
 
 .task-item-button {
@@ -221,7 +208,10 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);  
 }
 .logo:hover{
-    border: 5px solid rgb(0, 0, 255);
+    background-color: green;
+    border-style: ridge;
+    border-width: 5px;
+    border-color: cadetblue;
 }
 
 .logo-header {
@@ -271,9 +261,39 @@ td {
     padding: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 400px;
+    border-radius: 10px;
+    border-style: ridge;
+    border-width: 10px;
+    border-color: cadetblue;
     text-align: center;
 }
 
+.popup-button {
+    background-color: #2b462c;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 3px;
+    margin-right: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.popup-button:hover {
+    background-color: green;
+    border-style: ridge;
+    border-width: 3px;
+    border-color: cadetblue;
+    font-style: italic;
+    color: black;
+}
+
+.popup-gif {
+    max-width: 50px;
+    display: block; 
+    margin-top: 10px; 
+}
 
 .task-box {
     background-color: lightskyblue;

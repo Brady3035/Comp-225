@@ -178,34 +178,43 @@ function createTaskPopup(task) {
     popup.classList.add('task-popup');
 
     const closeButton = createPopupButton('✖', () => popup.remove());
+    closeButton.classList.add('popup-button');
     
     const clockInButton = createPopupButton('Clock In', () => {
         task.clockInTime = new Date();
         startUpdatingTimeSpent(task);
     });
+    clockInButton.classList.add('popup-button');
 
     const clockOutButton = createPopupButton('Clock Out', () => {
         stopUpdatingTimeSpent(task);
     });
+    clockOutButton.classList.add('popup-button');
 
     const completeButton = createPopupButton('Complete', () => {
         popup.remove();
         updatePoints(calculatePoints(30,task.importance,task.date,task.dueDate), task.id);
     });
+    completeButton.classList.add('popup-button');
 
     const taskInfoContainer = createTaskInfoContainer(task);
     const timeSpentDisplay = createTaskInfoElement(`Time Spent: ${formatTime(task.timeSpent)}`);
 
+    const dawgGif = document.createElement('img');
+    dawgGif.src = 'Pictures/DawgGif(edited2).gif'; // Replace with the actual path to your GIF file
+    dawgGif.classList.add('popup-gif'); // Add a class for styling if needed
+
+    // Append the GIF image to the popup
     popup.appendChild(clockInButton);
     popup.appendChild(clockOutButton);
     popup.appendChild(completeButton);
     popup.appendChild(closeButton);
     popup.appendChild(taskInfoContainer);
+    popup.appendChild(dawgGif);
     popup.appendChild(timeSpentDisplay);
 
     return popup;
 }
-
 
 // Create a button for a popup
 function createPopupButton(text, clickHandler) {
