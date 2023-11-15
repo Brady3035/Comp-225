@@ -8,6 +8,10 @@ let tasksWithoutDate = [];
 let taskIdCounter = 0;
 let points = 0;
 
+// Boolean variables
+let clockedIn = 0;
+let clockedOut = 0;
+
 // Functions
 
 // Redirect to another page
@@ -181,13 +185,21 @@ function createTaskPopup(task) {
     closeButton.classList.add('popup-button');
     
     const clockInButton = createPopupButton('Clock In', () => {
-        task.clockInTime = new Date();
-        startUpdatingTimeSpent(task);
+        if (clockedIn == 0) {
+            task.clockInTime = new Date();
+            startUpdatingTimeSpent(task);
+            clockedOut = 0;
+            clockedIn = 1;
+        }
     });
     clockInButton.classList.add('popup-button');
 
     const clockOutButton = createPopupButton('Clock Out', () => {
-        stopUpdatingTimeSpent(task);
+        if (clockedOut == 0) {
+            stopUpdatingTimeSpent(task);
+            clockedOut = 1;
+            clockedIn = 0;
+        }
     });
     clockOutButton.classList.add('popup-button');
 

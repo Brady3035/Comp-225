@@ -91,6 +91,23 @@ body {
     border-radius: 8px;
 }
 
+.header h1 {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+
+.header h2 {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
 .header h3 {
     font-size: 24px;
 }
