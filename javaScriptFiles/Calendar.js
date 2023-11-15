@@ -56,21 +56,29 @@ function calculatePoints(timeSpentInMinutes, importance, currentDate, dueDate) {
 }
 
 
+// Start updating time spent when clocking in
 function startUpdatingTimeSpent(task) {
+    if (task.timeSpent === 0) {
+        task.clockInTime = new Date(); // Set the clock in time only if time spent is zero
+    }
+    
     task.timeSpentInterval = setInterval(() => {
-        task.timeSpent = calculateTimeSpent(task.clockInTime);
+        const currentTime = new Date();
+        const elapsedTime = currentTime - task.clockInTime;
+        task.timeSpent = elapsedTime;
         updateTaskPopupTimeSpent(task);
     }, 1000);
 }
+
 
 function stopUpdatingTimeSpent(task) {
     clearInterval(task.timeSpentInterval);
 }
 
-function calculateTimeSpent(clockInTime) {
+function calculateTimeSpent(clockInTime, totalElapsedTime) {
     const currentTime = new Date();
-    const timeSpent = currentTime - clockInTime;
-    return timeSpent;
+    const elapsedTime = currentTime - clockInTime;
+    return totalElapsedTime + elapsedTime;
 }
 
 function formatTime(milliseconds) {
@@ -297,6 +305,9 @@ function addTask() {
                 id: taskIdCounter++,
                 name: taskName,
                 dueDate: dueDate || null,
+                clockInTime: null,
+                timeSpent: 0,
+                timeSpentInterval: null,
             };
 
             const selectedDate = new Date(addToDate);
@@ -311,6 +322,9 @@ function addTask() {
             const task = {
                 id: taskIdCounter++,
                 name: taskName,
+                clockInTime: null,
+                timeSpent: 0,
+                timeSpentInterval: null,
             };
             tasksWithoutDate.push(task);
         }
