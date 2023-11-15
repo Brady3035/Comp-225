@@ -288,7 +288,7 @@ function addTask() {
             };
 
             const selectedDate = new Date(addToDate);
-            selectedDate.setDate(selectedDate.getDate() + 1); // Add one day
+            selectedDate.setDate(selectedDate.getDate());
             const dateString = selectedDate.toISOString().split('T')[0];
 
             if (!tasksByDate[dateString]) {
