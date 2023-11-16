@@ -70,8 +70,8 @@ body {
     right: 0;
     padding: 10px;
     border-radius: 5px;
-    background-color: darkgray;
-    border: 1px solid black; 
+    background-color: gray;
+    font-family: 'Times New Roman', Times, serif; 
     z-index: 100;
 }
 
