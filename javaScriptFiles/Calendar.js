@@ -63,9 +63,7 @@ function startUpdatingTimeSpent(task) {
     }
     
     task.timeSpentInterval = setInterval(() => {
-        const currentTime = new Date();
-        const elapsedTime = currentTime - task.clockInTime;
-        task.timeSpent = elapsedTime;
+        task.timeSpent = task.timeSpent + 1000;
         updateTaskPopupTimeSpent(task);
     }, 1000);
 }
