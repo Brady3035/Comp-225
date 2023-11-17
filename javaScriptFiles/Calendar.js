@@ -43,6 +43,7 @@ function updateTasksByDate(taskId) {
 
 function calculatePoints(timeSpentInMinutes, importance, currentDate, dueDate) {
     const totalPoints = MAX_POINTS;
+    
     // Calculate the difference between the due date and the current date in milliseconds
     const timeRemaining = Math.max(dueDate - currentDate, 0);
     // Convert time remaining to minutes
@@ -50,7 +51,7 @@ function calculatePoints(timeSpentInMinutes, importance, currentDate, dueDate) {
     // Calculate the percentage of time remaining relative to the total allowed time
     const percentageRemaining = timeRemainingInMinutes / (dueDate - currentDate) / 60;
     // Calculate points based on time spent, importance, and time remaining
-    const pointsEarned = Math.round((timeSpentInMinutes / totalPoints) * importance * percentageRemaining * totalPoints);
+    const pointsEarned = Math.round((timeSpentInMinutes) * importance * percentageRemaining * totalPoints);
 
     return pointsEarned;
 }
@@ -212,7 +213,7 @@ function createTaskPopup(task) {
 
     const completeButton = createPopupButton('Complete', () => {
         popup.remove();
-        updatePoints(calculatePoints(30,task.importance,task.date,task.dueDate), task.id);
+        updatePoints(calculatePoints(task.timeSpent,task.importance,task.date,task.dueDate), task.id);
     });
     completeButton.classList.add('popup-button');
 
@@ -233,7 +234,6 @@ function createTaskPopup(task) {
     popup.appendChild(taskInfoContainer);
     popup.appendChild(dawgGif);
     popup.appendChild(timeSpentDisplay);
-
     return popup;
 }
 
