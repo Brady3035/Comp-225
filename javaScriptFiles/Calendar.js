@@ -207,6 +207,7 @@ function createTaskPopup(task) {
             clockedIn = 0;
         }
     });
+
     clockOutButton.classList.add('popup-button');
 
     const completeButton = createPopupButton('Complete', () => {
@@ -217,6 +218,8 @@ function createTaskPopup(task) {
 
     const taskInfoContainer = createTaskInfoContainer(task);
     const timeSpentDisplay = createTaskInfoElement(`Time Spent: ${formatTime(task.timeSpent)}`);
+    timeSpentDisplay.classList.add('time-spent'); // Add a class to uniquely identify the time spent display
+
 
     const dawgGif = document.createElement('img');
     dawgGif.src = 'Pictures/DawgGif(edited2).gif'; // Replace with the actual path to your GIF file
@@ -259,9 +262,10 @@ function createTaskInfoContainer(task) {
 }
 
 function updateTaskPopupTimeSpent(task) {
-    const timeSpentDisplay = document.querySelector('.task-popup p:last-child');
+    const timeSpentDisplay = document.querySelector('.task-popup .time-spent');
     timeSpentDisplay.textContent = `Time Spent: ${formatTime(task.timeSpent)}`;
 }
+
 
 
 // Create an element for task information in a popup
