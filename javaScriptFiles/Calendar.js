@@ -105,7 +105,7 @@ function updateCalendar() {
         calendarBody.appendChild(cell);
     }
 
-    //clearTasksWithoutDate();
+    clearTasksWithoutDate();
     populateTasksWithoutDate();
 }
 
@@ -163,13 +163,13 @@ function createTaskItem(task) {
 
 // Remove previous tasks without a date
 function clearTasksWithoutDate() {
-    const tasksList = document.getElementById('tasksList');
+    const tasksList = document.getElementById('undated-tasks');
     tasksList.innerHTML = '';
 }
 
 // Populate the list of tasks without a date
 function populateTasksWithoutDate() {
-    const tasksList = document.getElementById('tasksList');
+    const tasksList = document.getElementById('undated-tasks');
     tasksWithoutDate.forEach((task) => {
         const taskItem = document.createElement('li');
         taskItem.innerHTML = task.name;
@@ -295,6 +295,7 @@ document.getElementById('add-task').addEventListener('click', () => {
 });
 
 // Add task function
+//change this so that it takes in the const as arguments - call this into the storage file
 function addTask() {
     const taskName = document.getElementById('task-name').value;
     const dueDate = document.getElementById('due-date').value;
@@ -331,10 +332,10 @@ function addTask() {
             tasksWithoutDate.push(task);
         }
 
-        document.getElementById('task-name').value = '';
-        document.getElementById('due-date').value = '';
-        document.getElementById('add-to-date').value = '';
-        document.getElementById('task-importance').value = '';
+        // document.getElementById('task-name').value = '';
+        // document.getElementById('due-date').value = '';
+        // document.getElementById('add-to-date').value = '';
+        // document.getElementById('task-importance').value = '';
 
         updateCalendar();
     }

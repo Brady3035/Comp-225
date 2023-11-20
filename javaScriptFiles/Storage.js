@@ -6,12 +6,12 @@
  */
 
 // Create constants
-const title = document.getElementById('task-name');
-const dueDate = document.getElementById('due-date');
-const onDate = document.getElementById('add-to-date');
+// const title = document.getElementById('task-name');
+// const dueDate = document.getElementById('due-date');
+// const onDate = document.getElementById('add-to-date');
 // const importance = document.getElementById('importance');
-console.log(title.value, dueDate.value, onDate.value);
-console.log(tasksByDate)
+// console.log(title.value, dueDate.value, onDate.value);
+// console.log(tasksByDate)
 
 
 // Create an instance of a db object to store the open database in
@@ -58,9 +58,12 @@ document.getElementById("add-task").addEventListener("click", addData);
 // Define the addData() function
 function addData(e) {
     e.preventDefault();
-  
+
+    const title = document.getElementById('task-name');
+    const dueDate = document.getElementById('due-date');
+    const onDate = document.getElementById('add-to-date');
     // grab the values and store them in an object to be inserted into the DB
-    const newItem = [ { taskTitle: title.value, dueDate: dueDate.value, onDate: onDate.value} ];
+    const newItem = { taskTitle: title.value, dueDate: dueDate.value, onDate: onDate.value};
     console.log(title.value, dueDate.value, onDate.value);
     console.log(newItem.taskTitle, newItem.dueDate, newItem.onDate);
 
@@ -72,7 +75,7 @@ function addData(e) {
     const objectStore = transaction.objectStore("tasks_db");
   
     // Make request to add newTaskList object to object store
-    const addRequest = objectStore.add(newItem[0]);
+    const addRequest = objectStore.add(newItem);
   
     // Report on the success of the transaction completing
     transaction.addEventListener("complete", () => {
@@ -122,6 +125,8 @@ function addData(e) {
 //     });
 //   }
 
+
+// change this to essentially add the structure of populateTasksWithoutDate function in this
 function displayData() {
   // First clear the content of the task list so that you don't get a huge long list of duplicate stuff each time
   // the display is updated.
@@ -142,14 +147,15 @@ function displayData() {
     }
     
     // Check which suffix the deadline day of the month needs
-    // const { onDate, dueDate, taskTitle } = cursor.value;
+    const { onDate, dueDate, taskTitle } = cursor.value;
+    console.log(onDate, dueDate, taskTitle)
 
     // Build the to-do list entry and put it into the list item.
     // const toDoText = `${title} — ${hours}:${minutes}, ${month} ${ordDay} ${year}.`;
     // const listItem = ;
 
     // Put the item item inside the task list
-    document.body.appendChild(listItem);
+    // document.body.appendChild(listItem);
 
     // continue on to the next item in the cursor
     cursor.continue();
