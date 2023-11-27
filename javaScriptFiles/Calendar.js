@@ -202,7 +202,7 @@ function updateUndatedTasks() {
         taskButton.innerHTML = task.name;
         taskButton.addEventListener('click', () => {
             // Display the task details
-            
+            displayTaskInfo(task);
         });
         undatedTasksBox.appendChild(taskButton);
     });
