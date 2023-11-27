@@ -105,8 +105,7 @@ function updateCalendar() {
         calendarBody.appendChild(cell);
     }
 
-    clearTasksWithoutDate();
-    populateTasksWithoutDate();
+    
 }
 
 // Remove previous calendar content
@@ -142,6 +141,17 @@ function createTaskList(day) {
     return taskList;
 }
 
+function update() {
+    const todoList = document.getElementById('todo-list');
+    todoList.innerHTML = '';
+ 
+    tasksInTodoList.forEach((task) => {
+        const taskItem = document.createElement('li');
+        taskItem.innerHTML = task.name;
+        todoList.appendChild(taskItem);
+    });
+ }
+
 // Create a task item for a given task
 function createTaskItem(task) {
     const taskItem = document.createElement('div');
@@ -153,7 +163,7 @@ function createTaskItem(task) {
         dueDateText.textContent = `(Due: ${task.dueDate})`;
         taskItem.appendChild(dueDateText);
     }
-
+    
     taskItem.addEventListener('click', () => {
         displayTaskInfo(task);
     });
@@ -182,6 +192,21 @@ function displayTaskInfo(task) {
     const popup = createTaskPopup(task);
     document.body.appendChild(popup);
 }
+
+function updateUndatedTasks() {
+    const undatedTasksBox = document.getElementById('undated-tasks');
+    undatedTasksBox.innerHTML = '';
+   
+    tasksWithoutDate.forEach((task) => {
+        const taskButton = document.createElement('button');
+        taskButton.innerHTML = task.name;
+        taskButton.addEventListener('click', () => {
+            // Display the task details
+            
+        });
+        undatedTasksBox.appendChild(taskButton);
+    });
+   }
 
 // Create a popup for a given task
 function createTaskPopup(task) {
@@ -215,6 +240,7 @@ function createTaskPopup(task) {
         popup.remove();
         updatePoints(calculatePoints(task.timeSpent,task.importance,task.date,task.dueDate), task.id);
     });
+
     completeButton.classList.add('popup-button');
 
     const taskInfoContainer = createTaskInfoContainer(task);
@@ -330,6 +356,7 @@ function addTask() {
                 timeSpentInterval: null,
             };
             tasksWithoutDate.push(task);
+            updateUndatedTasks();
         }
 
         // document.getElementById('task-name').value = '';
