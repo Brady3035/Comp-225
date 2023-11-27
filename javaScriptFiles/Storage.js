@@ -31,8 +31,8 @@ openRequest.addEventListener("success", () => {
   db = openRequest.result;
   console.log(openRequest.result);
 
-  // Run the displayData() - display the notes already in the IDB
-  displayData();
+  // Run the updateCalendar() - display the notes already in the IDB
+  updateCalendar();
 });
 
 // Set up the database tables
@@ -81,86 +81,52 @@ function addData(e) {
     transaction.addEventListener("complete", () => {
       console.log("Transaction completed: database modification finished.");
   
-      // update the display, showing new item
-      displayData();
+      // update the calendar, showing new item
+      updateCalendar();
     });
   
     transaction.addEventListener("error", () =>
       console.log("Transaction not opened due to error"),
     );
   }
-  // Define the displayData() function
-// function displayData() {
-//     // clear content of the task list to avoid duplicates
-//     while (tasksByDate.firstChild) {
-//       tasksByDate.removeChild(tasksByDate.lastChild);
-//     }
-
-//     // Open our object store and get a cursor - iterates through different data items in store
-//     const objectStore = db.transaction("tasks_db").objectStore("tasks_db");
-//     objectStore.openCursor().addEventListener("success", (e) => {
-//       const cursor = e.target.result;      // Get a reference to the cursor
-  
-//       // If there is another item to iterate through, keep running
-//       if (cursor) {
-        
-//         const listItem = document.createElement("li");
-//         // Store the ID of the data item inside an attribute on the listItem, so we know
-//         // which item it corresponds to. This will be useful later when we want to delete items
-//         listItem.setAttribute("data-note-id", cursor.value.id);
-  
-  
-//         // Iterate to the next item in the cursor
-//         cursor.continue();
-//       } else {
-//         // Again, if list item is empty, display a 'No notes stored' message
-//         if (!tasksByDate.firstChild) {
-//           const listItem = document.createElement("li");
-//           console.log("No notes stored");
-//           tasksByDate.appendChild(listItem);
-//         }
-//         // if there are no more cursor items to iterate through, say so
-//         console.log("Notes all displayed");
-//       }
-//     });
-//   }
-
 
 // change this to essentially add the structure of populateTasksWithoutDate function in this
-function displayData() {
-  // First clear the content of the task list so that you don't get a huge long list of duplicate stuff each time
-  // the display is updated.
-  // while (document.body.firstChild) {
-  //   document.body.removeChild(document.body.lastChild);
-  // }
+// function displayData() {
+//   //const tasksList = document.getElementById('undated-tasks');
+// //   tasksWithoutDate.forEach((task) => {
+// //     const taskItem = document.createElement('li');
+// //     taskItem.innerHTML = task.name;
+// //     tasksList.appendChild(taskItem);
+// // });
 
-  // Open our object store and then get a cursor list of all the different data items in the IDB to iterate through
-  const objectStore = db.transaction('tasks_db').objectStore('tasks_db');
-  objectStore.openCursor().onsuccess = (event) => {
-    const cursor = event.target.result;
+//   // Open our object store and then get a cursor list of all the different data items in the IDB to iterate through
+//   const objectStore = db.transaction('tasks_db').objectStore('tasks_db');
+//   objectStore.openCursor().onsuccess = (event) => {
+//     const cursor = event.target.result;
 
-    // Check if there are no (more) cursor items to iterate through
-    if (!cursor) {
-      // No more items to iterate through, we quit.
-      console.log("All items displayed")
-      return;
-    }
+//     // Check if there are no (more) cursor items to iterate through
+//     if (!cursor) {
+//       // No more items to iterate through, we quit.
+//       console.log("All items displayed")
+//       return;
+//     }
     
-    // Check which suffix the deadline day of the month needs
-    const { onDate, dueDate, taskTitle } = cursor.value;
-    console.log(onDate, dueDate, taskTitle)
+//     // Check which suffix the deadline day of the month needs
+//     const { onDate, dueDate, taskTitle } = cursor.value;
+//     console.log(onDate, dueDate, taskTitle)
+//     console.log(cursor.value)
 
-    // Build the to-do list entry and put it into the list item.
-    // const toDoText = `${title} — ${hours}:${minutes}, ${month} ${ordDay} ${year}.`;
-    // const listItem = ;
+//     // Build the to-do list entry and put it into the list item.
+//     // const toDoText = `${title} — ${hours}:${minutes}, ${month} ${ordDay} ${year}.`;
+//     // const listItem = ;
 
-    // Put the item item inside the task list
-    // document.body.appendChild(listItem);
+//     // Put the item item inside the task list
+//     // document.body.appendChild(listItem);
 
-    // continue on to the next item in the cursor
-    cursor.continue();
-  };
-};
+//     // continue on to the next item in the cursor
+//     cursor.continue();
+//   };
+// };
   
 // Define the deleteItem() function
 

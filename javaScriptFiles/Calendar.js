@@ -121,6 +121,24 @@ function createCalendarCell(day) {
     cell.style.border = '1px solid #000';
 
     const taskList = createTaskList(day);
+    const objectStore = db.transaction('tasks_db').objectStore('tasks_db');
+
+    objectStore.openCursor().onsuccess = (event) => {
+        const cursor = event.target.result;
+
+        if (!cursor) {
+            console.log("All items displayed")
+            }
+
+        const { onDate, dueDate, taskTitle } = cursor.value;
+        console.log(cursor.value)
+        if(cell.textContent in onDate || onDate == null) {
+            taskList.append(onDate, dueDate, taskTitle);
+        }
+        cursor.continue();
+        
+    }
+
     cell.appendChild(taskList);
 
     return cell;
