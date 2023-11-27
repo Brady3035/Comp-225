@@ -352,4 +352,22 @@ td {
     background-color: lightskyblue;
     border-radius: 10px;
 }
+
+#undated-tasks {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f9f9f9;
+ }
+ .undated-tasks button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
 /* End------------------------------------------------------------------------------------------------------------------------------------------ */
