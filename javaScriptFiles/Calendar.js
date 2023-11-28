@@ -129,11 +129,11 @@ function createCalendarCell(day) {
             console.log("All items displayed")
             }
 
-        const { onDate, dueDate, taskTitle } = cursor.value;
+        const { onDate, dueDate, taskTitle, importance } = cursor.value;
         console.log(cursor.value)
-        if(cell.textContent in onDate || onDate == null) {
-            taskList.append(onDate, dueDate, taskTitle);
-        }
+        // if(cell.textContent in onDate || onDate == null) {
+        taskList.append(onDate, dueDate, taskTitle, importance);
+        // }
         cursor.continue();
         
     }
