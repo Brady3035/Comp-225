@@ -32,53 +32,57 @@ openRequest.addEventListener("upgradeneeded", (e) => {
     console.log("Database grabbed");
 
     // Create an objectStore in database to store notes and auto-incrementing key
-    const objectStore = db.createObjectStore("tasks_db", { keyPath: 'taskTitle' });
+    const objectStore = db.createObjectStore("tasks_db", { keyPath: 'id' });
   
     // Define what data items objectStore will contain
-    objectStore.createIndex('taskTitle', 'taskTitle', { unique: false });
+    objectStore.createIndex('id', 'id', { unique: false });
+    objectStore.createIndex('name', 'name', { unique: false });
+    objectStore.createIndex('addToDate', 'addToDate', { unique: false });
     objectStore.createIndex('dueDate', 'dueDate', { unique: false });
-    objectStore.createIndex('onDate', 'onDate', { unique: false });
     objectStore.createIndex('importance', 'importance', { unique: false });
+    objectStore.createIndex('clockInTime', 'clockInTime', { unique: false });
+    objectStore.createIndex('timeSpent', 'timeSpent', { unique: false });
+    objectStore.createIndex('timeSpentInterval', 'timeSpentInterval', { unique: false });
   
     console.log("Database setup complete");
   });
   
 // Create event handler so that when a task is added the addData() function is run
-document.getElementById("add-task").addEventListener("click", addData);
+// document.getElementById("add-task").addEventListener("click", addData);
 
 // Define the addData() function
-function addData(e) {
-    e.preventDefault();
+// function addData(e) {
+//     e.preventDefault();
 
-    const title = document.getElementById('task-name');
-    const dueDate = document.getElementById('due-date');
-    const onDate = document.getElementById('add-to-date');
-    const importance = document.getElementById('task-importance');
+//     const title = document.getElementById('task-name');
+//     const dueDate = document.getElementById('due-date');
+//     const onDate = document.getElementById('add-to-date');
+//     const importance = document.getElementById('task-importance');
 
-    // Grab values, store them in an object to be inserted into DB
-    const newItem = { taskTitle: title.value, dueDate: dueDate.value, onDate: onDate.value, importance: importance.value};
+//     // Grab values, store them in an object to be inserted into DB
+//     const newItem = { taskTitle: title.value, dueDate: dueDate.value, onDate: onDate.value, importance: importance.value};
 
-    // Open a read/write db transaction
-    const transaction = db.transaction(["tasks_db"], "readwrite");
+//     // Open a read/write db transaction
+//     const transaction = db.transaction(["tasks_db"], "readwrite");
   
-    // Call object store that's already been added
-    const objectStore = transaction.objectStore("tasks_db");
+//     // Call object store that's already been added
+//     const objectStore = transaction.objectStore("tasks_db");
   
-    // Add newTaskList object to object store
-    const addRequest = objectStore.add(newItem);
+//     // Add newTaskList object to object store
+//     const addRequest = objectStore.add(newItem);
   
-    // Success report
-    transaction.addEventListener("complete", () => {
-      console.log("Transaction completed: database modification finished.");
+//     // Success report
+//     transaction.addEventListener("complete", () => {
+//       console.log("Transaction completed: database modification finished.");
   
-      // update the calendar
-      updateCalendar();
-    });
+//       // update the calendar
+//       updateCalendar();
+//     });
   
-    transaction.addEventListener("error", () =>
-      console.log("Transaction not opened due to error"),
-    );
-  }
+//     transaction.addEventListener("error", () =>
+//       console.log("Transaction not opened due to error"),
+//     );
+//   }
 
   
 // Define the deleteItem() function

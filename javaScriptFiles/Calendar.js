@@ -129,10 +129,10 @@ function createCalendarCell(day) {
             console.log("All items displayed")
             }
 
-        const { onDate, dueDate, taskTitle, importance } = cursor.value;
+        const { id, name, addToDate, dueDate, importance, clockInTime, timespent, timeSpentInterval } = cursor.value;
         console.log(cursor.value)
-        // if(cell.textContent in onDate || onDate == null) {
-        taskList.append(onDate, dueDate, taskTitle, importance);
+        // if(cell.textContent in onDate === true || onDate === null) {
+        // taskList.append(onDate, dueDate, taskTitle, importance);
         // }
         cursor.continue();
         
@@ -158,17 +158,6 @@ function createTaskList(day) {
 
     return taskList;
 }
-
-function update() {
-    const todoList = document.getElementById('todo-list');
-    todoList.innerHTML = '';
- 
-    tasksInTodoList.forEach((task) => {
-        const taskItem = document.createElement('li');
-        taskItem.innerHTML = task.name;
-        todoList.appendChild(taskItem);
-    });
- }
 
 // Create a task item for a given task
 function createTaskItem(task) {
@@ -346,17 +335,24 @@ function addTask() {
     const addToDate = document.getElementById('add-to-date').value;
     const importance = validateImportanceInput();
 
+    const transaction = db.transaction(["tasks_db"], "readwrite");
+    const objectStore = transaction.objectStore("tasks_db");
+
+
     if (taskName.trim() !== '') {
         if (addToDate !== "") {
             const task = {
                 id: taskIdCounter++,
                 name: taskName,
+                addToDate: addToDate,
                 dueDate: dueDate || null,
+                importance: importance || null,
                 clockInTime: null,
                 timeSpent: 0,
                 timeSpentInterval: null,
             };
 
+            const addRequest = objectStore.add(task);
             const selectedDate = new Date(addToDate);
             selectedDate.setDate(selectedDate.getDate());
             const dateString = selectedDate.toISOString().split('T')[0];
@@ -369,18 +365,18 @@ function addTask() {
             const task = {
                 id: taskIdCounter++,
                 name: taskName,
+                addToDate: addToDate || null,
+                dueDate: dueDate || null,
+                importance: importance || null,
                 clockInTime: null,
                 timeSpent: 0,
                 timeSpentInterval: null,
             };
             tasksWithoutDate.push(task);
             updateUndatedTasks();
-        }
+            const addRequest = objectStore.add(task);
 
-        // document.getElementById('task-name').value = '';
-        // document.getElementById('due-date').value = '';
-        // document.getElementById('add-to-date').value = '';
-        // document.getElementById('task-importance').value = '';
+        }
 
         updateCalendar();
     }
