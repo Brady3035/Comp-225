@@ -19,6 +19,36 @@
             <a href="index.html" class="scheduleButton">Go to Your Schedule!</a>
             <a href="Map.html" class="mapButton">Go back to the map!</a>
         </div>
+
+    <button class="open-wardrobe-button" onclick="openModal()">View Images</button>
+
+
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <div class="image-grid">
+                <img src="Pictures\BlingItem.gif" alt="test" onclick="openImageModal('Pictures/BlingItem.gif')">
+                <img src="Pictures\BlingItem.gif" alt="test" onclick="openImageModal('Pictures/BlingItem.gif')">
+                <img src="Pictures\BlingItem.gif" alt="test" onclick="openImageModal('Pictures/BlingItem.gif')">
+                <img src="Pictures\BlingItem.gif" alt="test" onclick="openImageModal('Pictures/BlingItem.gif')">
+                <img src="Pictures\BlingItem.gif" alt="test" onclick="openImageModal('Pictures/BlingItem.gif')">
+                <img src="Pictures\BlingItem.gif" alt="test" onclick="openImageModal('Pictures/BlingItem.gif')">
+                <img src="Pictures\BlingItem.gif" alt="test" onclick="openImageModal('Pictures/BlingItem.gif')">
+                <img src="Pictures\BlingItem.gif" alt="test" onclick="openImageModal('Pictures/BlingItem.gif')">
+                <img src="Pictures\BlingItem.gif" alt="test" onclick="openImageModal('Pictures/BlingItem.gif')">
+            </div>
+            <button class="close-wardrobe-button" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Modal for displaying individual images -->
+    <div id="individualImageModal" class="modal">
+        <div class="modal-content">
+            <img id="displayedImage" style="max-width: 100%; max-height: 80vh;" alt="Displayed Image">
+            <button class="close-wardrobe-button" onclick="closeIndividualModal()">Close</button>
+            <button class="close-wardrobe-button" onclick="purhcaseModal()">Purchase</button>
+            <button class="close-wardrobe-button" onclick="equipModal()">Equip</button>
+        </div>
+    </div>
         
         <script src="javaScriptFiles/Shop.js"></script>
         

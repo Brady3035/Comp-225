@@ -21,6 +21,12 @@ function closeIndividualModal() {
     document.getElementById('individualImageModal').style.display = 'none';
 }
 
+function purhcaseModal() {
+}
+
+function equipModal() {
+}
+
 // Close modals on clicking outside the modal content
 window.onclick = function (event) {
     const modal = document.getElementsByClassName('modal');
