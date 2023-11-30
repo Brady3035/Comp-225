@@ -6,6 +6,8 @@ body {
     background-image: url("Pictures/RealEstateBackground.png");
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+
     }
 
 

@@ -6,6 +6,8 @@ body {
     background-image: url("Pictures/carDealerBackground.png");
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+
 }
 
 

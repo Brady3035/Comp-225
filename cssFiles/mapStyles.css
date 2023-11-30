@@ -4,17 +4,25 @@ body {
     padding: 0;
     width: 100%;
     height: 100%;
-    background-color: #f0f0f0
+    min-height: 100vh;
+    min-width: 100vw;
+    /* max-height: 150px;
+    max-width: 150px; */
+
+    background-image: url("Pictures/CityLifeBackground1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     }
 
 
     h1 {
-        color: #333333; /* dark grey text */
+        color: #e8e8e8; /* dark grey text */
         text-align: center;
         font-family: 'Georgia', sans-serif;
         position: absolute;
-        top: 110px;
-        left: 555px;
+        top: 20px;
+        left: 400px;
     }
 
     p {
@@ -29,7 +37,7 @@ body {
     }
 
     .logo {
-        width: 100px;
+        width: 80px;
         height: auto;
         margin: 20px auto;
         border: 5px solid darkblue;
@@ -37,131 +45,133 @@ body {
         border-radius: 10px;
         display: block;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);  
+
+        position: absolute;
+        top: 5px;
+        left: 750px;
     }
     
     .shop {
-        width: 200px;
-        height: 270px;
+        width: 100px;
+        height: 150px;
         margin: 20px auto;
         padding: 0px;
         background-position: right;
         background-size: cover;
 
         position: absolute;
-        top: 290px;
-        left:50px;
+        top: 310px;
+        left: 450px;
     }
     .shopButton {
         font-size: 20px;
-        border: 5px solid #fff;
+        border: 2px solid #fff;
         border-radius: 20px;
-        color: #333333;
+        color: #FFFFFF;
         text-decoration: none;
         margin-top: 20px;
         padding: 10px;
         transition: background-color 0.3s ease;
 
         position: absolute;
-        top: 600px;
-        left: 100px;
+        top: 460px;
+        left: 465px;
     }
     .shopButton:hover {
     background-color: rgba(255, 255, 255, 0.5);
-    color: #555555;
+    color: #fad5ff;
     }
 
     .house {
-        width: 400px;
-        height: 300px;
+        width: 150px;
+        height: 150px;
         padding: 0px;
-        background-position-x: 5000px;
-        background-position-y: 5000px;
         background-size: cover;
 
         position: absolute;
-        top: 320px;
-        left: 170px;
+        top: 280px;
+        left: 140px;
     }
     .houseButton {
         font-size: 20px;
-        border: 5px solid #fff;
+        border: 2px solid #fff;
         border-radius: 20px;
-        color: #333333;
+        color: #FFFFFF;
         text-decoration: none;
         margin-top: 20px;
         padding: 10px;
         transition: background-color 0.3s ease;
 
         position: absolute;
-        top: 600px;
-        left: 330px;
+        top: 230px;
+        left: 160px;
     }
     .houseButton:hover {
     background-color: rgba(255, 255, 255, 0.5);
-    color: #555555;
+    color: #fad5ff;
     }
 
     .realEstate{
-        width: 400px;
-        height: 300px;
+        width: 170px;
+        height: auto;
         padding: 0px;
         background-size: cover;
 
         position: absolute;
-        top: 300px;
-        left: 470px;
+        top: 40px;
+        left: 70px;
     }
     .realEstateButton {
         font-size: 20px;
-        border: 5px solid #fff;
+        border: 2px solid #fff;
         border-radius: 20px;
-        color: #333333;
+        color: #ffffff;
         text-decoration: none;
         margin-top: 20px;
         padding: 10px;
         transition: background-color 0.3s ease;
 
         position: absolute;
-        top: 600px;
-        left: 600px;
+        top: 170px;
+        left: 100px;
     }
     .realEstateButton:hover {
     background-color: rgba(255, 255, 255, 0.5);
-    color: #555555;
+    color: #fad5ff;
     }
 
     .carDealer{
-        width: 500px;
-        height: 400px;
+        width: 200px;
+        height: auto;
         padding: 0px;
         background-size: cover;
 
         position: absolute;
-        top: 275px;
-        left: 850px;
+        top: 330px;
+        left: 250px;
     }
     .carDealerButton {
         font-size: 20px;
-        border: 5px solid #fff;
+        border: 2px solid #fff;
         border-radius: 20px;
-        color: #333333;
+        color: #ffffff;
         text-decoration: none;
         margin-top: 20px;
         padding: 10px;
         transition: background-color 0.3s ease;
 
         position: absolute;
-        top: 600px;
-        left: 1050px;
+        top: 461px;
+        left: 280px;
     }
     .carDealerButton:hover {
     background-color: rgba(255, 255, 255, 0.5);
-    color: #555555;
+    color: #fad5ff;
     }
 
     .scheduleButton {
         cursor: pointer;
-        background-color: #2b462c;
+        background-color: #27938e;
         color: white;
         border-radius: 20px;
         text-decoration: none;
@@ -170,8 +180,8 @@ body {
         transition: background-color 0.3s ease;
 
         position: absolute;
-        top: 155px;
-        left: 640px;
+        top: 550px;
+        left: 700px;
     }
     .scheduleButton:hover {
         font-style: italic;
