@@ -59,7 +59,7 @@ body {
         background-position: right;
         background-size: cover;
 
-        position: absolute;
+        position: fixed;
         top: 310px;
         left: 450px;
     }
@@ -73,7 +73,7 @@ body {
         padding: 10px;
         transition: background-color 0.3s ease;
 
-        position: absolute;
+        position: fixed;
         top: 460px;
         left: 465px;
     }
