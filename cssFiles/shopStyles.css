@@ -70,8 +70,8 @@ body {
         transition: background-color 0.3s ease;
 
         position: absolute;
-        top: 30px;
-        left: 1250px;
+    
+        left: 600px;
     }
     .mapButton:hover {
         font-style: italic;
