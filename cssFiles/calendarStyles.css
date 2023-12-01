@@ -11,9 +11,10 @@ body {
     background-size: cover;
     background-attachment: fixed;
     font-family: Arial, sans-serif;
-    background-color: skyblue;
+    background-color: rgb(43, 134, 170);
     margin: 0;
     padding: 0;
+    text-shadow: 0 0 2px white;
 }
 /* End------------------------------------------------------------------------------------------------------------------------------------------ */
 
@@ -33,6 +34,7 @@ body {
     padding: 10px;
     border-bottom: 1px solid #ccc;
     z-index: 100;
+    text-shadow: 0 0 2px white;
 }
 
 .logo-header {
@@ -65,6 +67,7 @@ body {
 
 .points-label {
     margin-right: 20px;
+    text-shadow: 0 0 4px black;
 }
 
 .points-label-container {
@@ -74,6 +77,7 @@ body {
     padding: 10px;
     border-radius: 5px;
     background-color: gray;
+    color: white;
     font-family: 'Times New Roman', Times, serif; 
     z-index: 100;
 }
@@ -92,6 +96,8 @@ body {
     justify-content: space-between;
     align-items: center;
     border-radius: 8px;
+    color: white;
+    text-shadow: 0 0 4px black;
 }
 
 .header h1 {
@@ -101,6 +107,8 @@ body {
     align-items: center;
     position: relative;
     text-align: center;
+    color: white;
+    text-shadow: 0 0 4px black;
 }
 
 .header h2 {
@@ -109,10 +117,14 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
+    color: white;
+    text-shadow: 0 0 4px black;
 }
 
 .header h3 {
     font-size: 24px;
+    color: white;
+    text-shadow: 0 0 4px black;
 }
 /* End------------------------------------------------------------------------------------------------------------------------------------------ */
 
@@ -230,6 +242,8 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
+    color: white;
+    text-shadow: 0 0 4px black;
 }
 
 .sprite-container {
@@ -309,6 +323,28 @@ body {
 
 
 /* --------------------------------------------------------------------------------------------------------------------------------------------- */
+/* Undated Tasks */
+/* Start---------------------------------------------------------------------------------------------------------------------------------------- */
+#undated-tasks {
+    width: 300px;
+    border: 2px solid #000;
+    padding: 20px;
+    margin: 20px;
+    background-color: skyblue;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#undated-tasks h3 {
+    margin-top: 0;
+    font-size: 20px;
+    text-align: center;
+    color: #2b462c;
+}
+/* End------------------------------------------------------------------------------------------------------------------------------------------ */
+
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------- */
 /* Tasks */
 /* Start---------------------------------------------------------------------------------------------------------------------------------------- */
 .task-list {
@@ -320,6 +356,12 @@ body {
 
 .task-list li {
     margin-bottom: 5px;
+}
+
+.add-task-form {
+    margin-top: 20px;
+    color: white;
+    text-shadow: 0 0 4px black;
 }
 
 .add-task-form label {
