@@ -211,7 +211,7 @@ function populate_database_cal(){
             console.log("All items displayed")
             }
 
-        const {id, name, addToDate, dueDate, importance, clockInTime, timespent, timeSpentInterval } = cursor.value;
+        cursor.value;
         console.log(cursor.value);
         addTask(cursor.value);
         // if(cell.textContent in onDate === true || onDate === null) {
