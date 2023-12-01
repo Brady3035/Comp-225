@@ -11,6 +11,7 @@ let points = 0;
 // Boolean variables
 let clockedIn = 0;
 let clockedOut = 0;
+let loaded = false;
 
 // Functions
 
@@ -104,8 +105,12 @@ function updateCalendar() {
         const cell = createCalendarCell(day);
         calendarBody.appendChild(cell);
     }
-
+    console.log(loaded);
+    if (!loaded){
+        populate_database_cal();
+    }
     
+
 }
 
 // Remove previous calendar content
@@ -120,24 +125,6 @@ function createCalendarCell(day) {
     cell.style.border = '1px solid #000';
 
     const taskList = createTaskList(day);
-    const objectStore = db.transaction('tasks_db').objectStore('tasks_db');
-
-    objectStore.openCursor().onsuccess = (event) => {
-        const cursor = event.target.result;
-
-        if (!cursor) {
-            console.log("All items displayed")
-            }
-
-        const { id, name, addToDate, dueDate, importance, clockInTime, timespent, timeSpentInterval } = cursor.value;
-        console.log(cursor.value)
-        // if(cell.textContent in onDate === true || onDate === null) {
-        // taskList.append(onDate, dueDate, taskTitle, importance);
-        // }
-        cursor.continue();
-        
-    }
-
     cell.appendChild(taskList);
 
     return cell;
@@ -214,7 +201,27 @@ function updateUndatedTasks() {
         undatedTasksBox.appendChild(taskButton);
     });
    }
+function populate_database_cal(){
+    const objectStore = db.transaction('tasks_db').objectStore('tasks_db');
 
+    objectStore.openCursor().onsuccess = (event) => {
+        const cursor = event.target.result;
+
+        if (!cursor) {
+            console.log("All items displayed")
+            }
+
+        const { id, name, addToDate, dueDate, importance, clockInTime, timespent, timeSpentInterval } = cursor.value;
+        console.log(cursor.value);
+        addTask(cursor.value);
+        // if(cell.textContent in onDate === true || onDate === null) {
+        // taskList.append(onDate, dueDate, taskTitle, importance);
+        // }
+        cursor.continue();
+        
+    }
+    loaded = true;
+}
 // Create a popup for a given task
 function createTaskPopup(task) {
     const popup = document.createElement('div');
@@ -329,14 +336,25 @@ document.getElementById('add-task').addEventListener('click', () => {
 
 // Add task function
 //change this so that it takes in the const as arguments - call this into the storage file
-function addTask() {
-    const taskName = document.getElementById('task-name').value;
-    const dueDate = document.getElementById('due-date').value;
-    const addToDate = document.getElementById('add-to-date').value;
-    const importance = validateImportanceInput();
+function addTask(id, name, addToDate1, dueDate1, importance1, clockInTime, timespent, timeSpentInterval) {
+        console.log(name);
+        var taskName = name;
+        var dueDate = dueDate1;
+        var addToDate = addToDate1;
+        var importance = importance1;
+        var transaction = null;
+        var objectStore = null;
+    if (taskName == undefined) {
+        console.log(document.getElementById('task-name').value);
+        taskName = document.getElementById('task-name').value;
+        dueDate = document.getElementById('due-date').value;
+        addToDate = document.getElementById('add-to-date').value;
+        importance = validateImportanceInput();
+        transaction = db.transaction(["tasks_db"], "readwrite");
+        objectStore = transaction.objectStore("tasks_db");
+    }
 
-    const transaction = db.transaction(["tasks_db"], "readwrite");
-    const objectStore = transaction.objectStore("tasks_db");
+    
 
 
     if (taskName.trim() !== '') {
@@ -351,9 +369,12 @@ function addTask() {
                 timeSpent: 0,
                 timeSpentInterval: null,
             };
-
-            const addRequest = objectStore.add(task);
-            const selectedDate = new Date(addToDate);
+            console.log(transaction);
+            if (transaction !== null){
+                objectStore.add(task);
+                
+            }
+            var selectedDate = new Date(addToDate);
             selectedDate.setDate(selectedDate.getDate());
             const dateString = selectedDate.toISOString().split('T')[0];
 
@@ -374,7 +395,10 @@ function addTask() {
             };
             tasksWithoutDate.push(task);
             updateUndatedTasks();
-            const addRequest = objectStore.add(task);
+            if (transaction !== null){
+                const addRequest = objectStore.add(task);
+            }
+            
 
         }
 
