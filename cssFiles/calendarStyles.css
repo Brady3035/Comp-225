@@ -322,10 +322,6 @@ body {
     margin-bottom: 5px;
 }
 
-.add-task-form {
-    margin-top: 20px;
-}
-
 .add-task-form label {
     display: block;
     margin-bottom: 5px;
@@ -356,14 +352,23 @@ td {
     border-radius: 10px;
 }
 
+.container {
+    display: flex;
+}
+
+.add-task-form {
+    flex: 0; /* This allows the form to take up available space */
+    margin-right: 200px; /* Adjust this margin as needed */
+}
+
 #undated-tasks {
-    width: 200px;
-    height: 200px;
+    width: 240px;
+    height: 240px;
     border: 1px solid black;
     padding: 10px;
     margin: 10px;
     background-color: #f9f9f9;
- }
+}
  .undated-tasks button {
     width: 100%;
     padding: 10px;
@@ -373,4 +378,10 @@ td {
     border: none;
     cursor: pointer;
   }
+  #undated-tasks h3 {
+    text-align: left; /* Adjust this value as needed */
+    margin-top: 5px; /* Adjust this value as needed */
+    margin-bottom: 20px; /* Adjust this value as needed */
+    /* Add other styling properties as needed */
+}
 /* End------------------------------------------------------------------------------------------------------------------------------------------ */
