@@ -343,6 +343,35 @@ body {
     text-align: center;
     color: black;
 }
+
+.undated-tasks-content {
+    /* Add styles for the content here */
+    /* For example: */
+    list-style: none;
+    padding: 0;
+}
+
+.undated-tasks-content li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    /* Add additional styles as needed */
+}
+
+.undated-tasks button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #2b462c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.undated-tasks button:hover {
+    background-color: #4caf50;
+}
 /* End------------------------------------------------------------------------------------------------------------------------------------------ */
 
 
