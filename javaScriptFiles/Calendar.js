@@ -206,18 +206,21 @@ function populate_database_cal(){
 
     objectStore.openCursor().onsuccess = (event) => {
         const cursor = event.target.result;
-
+        console.log(cursor);
         if (!cursor) {
             console.log("All items displayed")
+            
             }
 
-        cursor.value;
-        console.log(cursor.value);
-        addTask(cursor.value);
-        // if(cell.textContent in onDate === true || onDate === null) {
-        // taskList.append(onDate, dueDate, taskTitle, importance);
-        // }
-        cursor.continue();
+        
+        else{
+            addTask(cursor.value);
+            // if(cell.textContent in onDate === true || onDate === null) {
+            // taskList.append(onDate, dueDate, taskTitle, importance);
+            // }
+            cursor.continue();
+        }
+        
         
     }
     loaded = true;
