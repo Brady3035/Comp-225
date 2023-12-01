@@ -7,6 +7,9 @@ Project: ProDawgTivity */
 /* Body */
 /* Start --------------------------------------------------------------------------------------------------------------------------------------- */
 body {
+    background-image: url("Pictures/ppbg.png"); 
+    background-size: cover;
+    background-attachment: fixed;
     font-family: Arial, sans-serif;
     background-color: skyblue;
     margin: 0;

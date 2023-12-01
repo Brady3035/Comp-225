@@ -21,7 +21,7 @@ function closeIndividualModal() {
     document.getElementById('individualImageModal').style.display = 'none';
 }
 
-function purhcaseModal() {
+function purchaseModal() {
 }
 
 function equipModal() {
