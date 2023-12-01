@@ -52,8 +52,8 @@ p {
     transition: background-color 0.3s ease;
 
     position: absolute;
-    top: 100px;
-    left: 700px;
+    top: 50px;
+    left: 650px;
 }
 .scheduleButton:hover {
     font-style: italic;
@@ -73,7 +73,7 @@ p {
 
     position: absolute;
     top: 100px;
-    left: 900px;
+    left: 650px;
 }
 .mapButton:hover {
     font-style: italic;
@@ -101,7 +101,7 @@ p {
     transition: background-color 0.3s ease;
     position: fixed;
     bottom: 90px;
-    left: 50%;
+    left: 300px;
     transform: translateX(-50%);
     z-index: 1;
 }
