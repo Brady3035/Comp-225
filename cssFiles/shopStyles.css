@@ -50,8 +50,7 @@ body {
         transition: background-color 0.3s ease;
 
         position: absolute;
-        top: 30px;
-        left: 1050px;
+        left: 530px;
     }
     .scheduleButton:hover {
         font-style: italic;
@@ -70,8 +69,7 @@ body {
         transition: background-color 0.3s ease;
 
         position: absolute;
-    
-        left: 600px;
+        left: 690px;
     }
     .mapButton:hover {
         font-style: italic;
