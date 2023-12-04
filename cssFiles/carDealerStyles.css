@@ -17,7 +17,7 @@ h1 {
     font-family: 'Georgia', sans-serif;
     position: absolute;
     top: 5px;
-    left: 555px;
+    left: 400px;
 }
 
 p {
@@ -53,7 +53,7 @@ p {
 
     position: absolute;
     top: 50px;
-    left: 650px;
+    left: 550px;
 }
 .scheduleButton:hover {
     font-style: italic;
@@ -73,7 +73,7 @@ p {
 
     position: absolute;
     top: 100px;
-    left: 650px;
+    left: 550px;
 }
 .mapButton:hover {
     font-style: italic;
