@@ -12,11 +12,11 @@ body {
 
 
     h1 {
-        color: #333333; /* dark grey text */
+        color: #ffffff; /* dark grey text */
         text-align: center;
         font-family: 'Georgia', sans-serif;
         position: absolute;
-        left: 480px;
+        left: 100px;
     }
 
     p {
@@ -52,7 +52,7 @@ body {
 
         position: absolute;
         top: 50px;
-        left: 550px;
+        left: 200px;
     }
     .scheduleButton:hover {
         font-style: italic;
@@ -72,7 +72,7 @@ body {
 
         position: absolute;
         top: 50px;
-        left: 800px;
+        left: 500px;
     }
     .mapButton:hover {
         font-style: italic;
@@ -87,7 +87,7 @@ body {
 
         position: absolute;
         top: 230px;
-        left: 320px;
+        left: 500px;
    
     }
 
@@ -110,8 +110,8 @@ body {
         cursor: pointer;
         transition: background-color 0.3s ease;
         position: fixed;
-        bottom: 90px;
-        left: 50%;
+        top: 310px;
+        left: 550px;
         transform: translateX(-50%);
         z-index: 1;
     }
