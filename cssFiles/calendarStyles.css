@@ -345,8 +345,6 @@ body {
 }
 
 .undated-tasks-content {
-    /* Add styles for the content here */
-    /* For example: */
     list-style: none;
     padding: 0;
 }
@@ -354,7 +352,6 @@ body {
 .undated-tasks-content li {
     margin-bottom: 10px;
     font-size: 16px;
-    /* Add additional styles as needed */
 }
 
 .undated-tasks button {
@@ -431,8 +428,8 @@ td {
 }
 
 .add-task-form {
-    flex: 0; /* This allows the form to take up available space */
-    margin-right: 200px; /* Adjust this margin as needed */
+    flex: 0;
+    margin-right: 200px; 
 }
 
 #undated-tasks {
@@ -453,9 +450,8 @@ td {
     cursor: pointer;
   }
   #undated-tasks h3 {
-    text-align: left; /* Adjust this value as needed */
-    margin-top: 5px; /* Adjust this value as needed */
-    margin-bottom: 20px; /* Adjust this value as needed */
-    /* Add other styling properties as needed */
+    text-align: left;
+    margin-top: 5px; 
+    margin-bottom: 20px;
 }
 /* End------------------------------------------------------------------------------------------------------------------------------------------ */
