@@ -45,13 +45,6 @@ function updatePointsLabel() {
     pointsLabel.textContent = `Points: ${points}`;
 }
 
-// Filter out completed task and update tasksByDate
-function updateTasksByDate(taskId) {
-    for (const date in tasksByDate) {
-        tasksByDate[date] = tasksByDate[date].filter((t) => t.id !== taskId);
-    }
-}
-
 
 function calculatePoints(timeSpentInMinutes, importance, currentDate, dueDate) {
     const totalPoints = MAX_POINTS;
@@ -212,6 +205,7 @@ function updateUndatedTasks() {
         undatedTasksBox.appendChild(taskButton);
     });
    }
+   
 function populate_database_cal(){
     const objectStore = db.transaction('tasks_db').objectStore('tasks_db');
 
