@@ -278,7 +278,7 @@ function createTaskPopup(task) {
 
 
     const dawgGif = document.createElement('img');
-    dawgGif.src = 'Pictures/DawgGif(edited2).gif'; // Replace with the actual path to your GIF file
+    dawgGif.src = 'Pictures/DancingDawg.gif'; // Replace with the actual path to your GIF file
     dawgGif.classList.add('popup-gif'); // Add a class for styling if needed
 
     // Append the GIF image to the popup
