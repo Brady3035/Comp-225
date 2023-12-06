@@ -24,8 +24,19 @@ function redirectToPage(page) {
 function updatePoints(newPoints, taskId) {
     points += newPoints;
     updatePointsLabel();
-    updateTasksByDate(taskId);
+    updateTasks(taskId);
     updateCalendar();
+    updateUndatedTasks();
+
+    
+}
+// Update tasksByDate and tasksWithoutDate
+function updateTasks(taskId) {
+    for (const date in tasksByDate) {
+        tasksByDate[date] = tasksByDate[date].filter((t) => t.id !== taskId);
+    }
+
+    tasksWithoutDate = tasksWithoutDate.filter((t) => t.id !== taskId);
 }
 
 // Update the displayed points label
@@ -255,6 +266,7 @@ function createTaskPopup(task) {
 
     const completeButton = createPopupButton('Complete', () => {
         popup.remove();
+        deleteItem(task);
         updatePoints(calculatePoints(task.timeSpent,task.importance,task.date,task.dueDate), task.id);
     });
 

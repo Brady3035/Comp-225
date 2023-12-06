@@ -1,9 +1,10 @@
 /*
  *
- * This file contains the script for the client-side database that 
- * will hold the users tasks and point value
+ * This file contains the script for setting up the client-side
+ * database that will hold the users tasks and point value
  * 
- * Code modified from Mozilla's IndexedDB examples and guides
+ * Code modified from Mozilla's IndexedDB examples and guides, as well
+ * as Raymond Camden's blog post: Issues with IndexedDB and Chrome
  * 
  */
 
@@ -26,91 +27,80 @@ openRequest.addEventListener("success", () => {
   updateCalendar();
 });
 
-// Set up the database tables upon creation
+// FireFox database creation
 openRequest.addEventListener("upgradeneeded", (e) => {
     db = e.target.result;     // Grab a reference to the opened database
     console.log("Database grabbed");
+ 
+    // This gets run by FireFox
+    if(!db.objectStoreNames.contains("tasks_db")){
+      console.log("Need to create objectStore");
+      var objectStore = db.createObjectStore("tasks_db", { keyPath: 'id', autoIncrement: true });
+      objectStore.createIndex('id', 'id', { unique: false });
+      objectStore.createIndex('name', 'name', { unique: false });
+      objectStore.createIndex('addToDate', 'addToDate', { unique: false });
+      objectStore.createIndex('dueDate', 'dueDate', { unique: false });
+      objectStore.createIndex('importance', 'importance', { unique: false });
+      objectStore.createIndex('clockInTime', 'clockInTime', { unique: false });
+      objectStore.createIndex('timeSpent', 'timeSpent', { unique: false });
+      objectStore.createIndex('timeSpentInterval', 'timeSpentInterval', { unique: false });
+    }
 
-    // Create an objectStore in database to store notes and auto-incrementing key
-    const objectStore = db.createObjectStore("tasks_db", { keyPath: 'id' });
-  
-    // Define what data items objectStore will contain
-    objectStore.createIndex('id', 'id', { unique: false });
-    objectStore.createIndex('name', 'name', { unique: false });
-    objectStore.createIndex('addToDate', 'addToDate', { unique: false });
-    objectStore.createIndex('dueDate', 'dueDate', { unique: false });
-    objectStore.createIndex('importance', 'importance', { unique: false });
-    objectStore.createIndex('clockInTime', 'clockInTime', { unique: false });
-    objectStore.createIndex('timeSpent', 'timeSpent', { unique: false });
-    objectStore.createIndex('timeSpentInterval', 'timeSpentInterval', { unique: false });
-  
     console.log("Database setup complete");
-  });
-  
-// Create event handler so that when a task is added the addData() function is run
-// document.getElementById("add-task").addEventListener("click", addData);
 
-// Define the addData() function
-// function addData(e) {
-//     e.preventDefault();
+});
 
-//     const title = document.getElementById('task-name');
-//     const dueDate = document.getElementById('due-date');
-//     const onDate = document.getElementById('add-to-date');
-//     const importance = document.getElementById('task-importance');
+// Chrome database creation
+openRequest.addEventListener("success", (e) => {
+  db = e.target.result;
+  console.log("Database grabbed");
 
-//     // Grab values, store them in an object to be inserted into DB
-//     const newItem = { taskTitle: title.value, dueDate: dueDate.value, onDate: onDate.value, importance: importance.value};
+  if(!db.objectStoreNames.contains("tasks_db")) {
+    var versionRequest = db.setVersion("1");
+    versionRequest.addEventListener("success", (e) => {
+      var objectStore = db.createObjectStore("tasks_db", { keyPath: 'id', autoIncrement: true });
+      objectStore.createIndex('id', 'id', { unique: false });
+      objectStore.createIndex('name', 'name', { unique: false });
+      objectStore.createIndex('addToDate', 'addToDate', { unique: false });
+      objectStore.createIndex('dueDate', 'dueDate', { unique: false });
+      objectStore.createIndex('importance', 'importance', { unique: false });
+      objectStore.createIndex('clockInTime', 'clockInTime', { unique: false });
+      objectStore.createIndex('timeSpent', 'timeSpent', { unique: false });
+      objectStore.createIndex('timeSpentInterval', 'timeSpentInterval', { unique: false });
+    });
+  }
 
-//     // Open a read/write db transaction
-//     const transaction = db.transaction(["tasks_db"], "readwrite");
-  
-//     // Call object store that's already been added
-//     const objectStore = transaction.objectStore("tasks_db");
-  
-//     // Add newTaskList object to object store
-//     const addRequest = objectStore.add(newItem);
-  
-//     // Success report
-//     transaction.addEventListener("complete", () => {
-//       console.log("Transaction completed: database modification finished.");
-  
-//       // update the calendar
-//       updateCalendar();
-//     });
-  
-//     transaction.addEventListener("error", () =>
-//       console.log("Transaction not opened due to error"),
-//     );
-//   }
+  console.log("Database setup complete");
 
+});
+  
   
 // Define the deleteItem() function
 
-// function deleteItem(e) {
-//     // retrieve the name of the task we want to delete. We need
-//     // to convert it to a number before trying to use it with IDB; IDB key
-//     // values are type-sensitive.
-//     const noteId = Number(e.target.parentNode.getAttribute("data-note-id"));
+function deleteItem(e) {
+    // retrieve the name of the task we want to delete. We need
+    // to convert it to a number before trying to use it with IDB; IDB key
+    // values are type-sensitive.
+    const taskId = Number(e.target.parentNode.getAttribute("id"));
   
-//     // open a database transaction and delete the task, finding it using the id we retrieved above
-//     const transaction = db.transaction(["tasks_db"], "readwrite");
-//     const objectStore = transaction.objectStore("tasks_db");
-//     const deleteRequest = objectStore.delete(noteId);
+    // open a database transaction and delete the task, finding it using the id we retrieved above
+    const transaction = db.transaction(["tasks_db"], "readwrite");
+    const objectStore = transaction.objectStore("tasks_db");
+    const deleteRequest = objectStore.delete(taskId);
   
-//     // report that the data item has been deleted
-//     transaction.addEventListener("complete", () => {
-//       // delete the parent of the button
-//       // which is the list item, so it is no longer displayed
-//       e.target.parentNode.parentNode.removeChild(e.target.parentNode);
-//       console.log(`Note ${noteId} deleted.`);
+    // report that the data item has been deleted
+    transaction.addEventListener("complete", () => {
+      // delete the parent of the button
+      // which is the list item, so it is no longer displayed
+      e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+      console.log(`Note ${noteId} deleted.`);
   
-//       // Again, if list item is empty, display a 'No notes stored' message
-//       if (!list.firstChild) {
-//         const listItem = document.createElement("li");
-//         listItem.textContent = "No notes stored.";
-//         list.appendChild(listItem);
-//       }
-//     });
-//   }
+      // Again, if list item is empty, display a 'No notes stored' message
+      if (!list.firstChild) {
+        const listItem = document.createElement("li");
+        listItem.textContent = "No notes stored.";
+        list.appendChild(listItem);
+      }
+    });
+  }
   
