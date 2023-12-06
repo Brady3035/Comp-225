@@ -1,0 +1,126 @@
+body {
+    background-image: url("Pictures/ppbg.png"); 
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    background-color: rgb(43, 134, 170);
+    margin: 0;
+    padding: 0;
+    text-shadow: 0 0 2px white;
+}
+
+.header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: gray;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    z-index: 100;
+    text-shadow: 0 0 2px white;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    color: white;
+    text-shadow: 0 0 4px black;
+}
+
+.logo-header {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+    margin: 5px;
+    border: 5px solid darkblue;
+    padding: 0px;
+    border-radius: 10px;
+    display: block;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);  
+}
+
+.logo:hover{
+    background-color: green;
+    border-style: ridge;
+    border-width: 5px;
+    border-color: cadetblue;
+}
+
+.logo-header {
+    background-color: gray;
+    display: flex;
+}
+
+.points-label {
+    margin-right: 20px;
+    text-shadow: 0 0 4px black;
+}
+
+.points-label-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: gray;
+    color: white;
+    font-family: 'Times New Roman', Times, serif; 
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+}
+
+.header-links {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+}
+
+.header-link {
+    text-decoration: none;
+    color: white;
+    text-shadow: 0 0 4px black;
+    margin: 0 7px;
+    transition: all 0.3s ease;
+}
+
+.header-link:hover {
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.rectangle {
+    width: 75%;
+    margin: 20px auto; /* Centers the rectangle horizontally */
+    background-color: skyblue;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.rectangle p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: black;
+    text-shadow: 0 0 4px white;
+}
+
+.content {
+    margin-top: 100px;
+}

@@ -1,6 +1,6 @@
 Project: ProDawgTivity
 Group: Big Dawgs
-Members: Devinn Chi (Junior, CS Major), Sarah Sylvester (Junior, CS Major), Brady Brunswick (Junior, CS Major), Stephanie Geber (Junior, CS Major)
+Members: Devinn Chi (Junior, CS Major), Sarah Sylvester (Junior, CS Major), Brady Brunswig (Junior, CS Major), Stephanie Geber (Junior, CS Major)
 Class: Comp 225
 Professor: Lauren Milne
 
