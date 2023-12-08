@@ -64,12 +64,12 @@ function calculatePoints(timeSpentInMinutes, importance, currentDate, dueDate) {
     const timeRemainingInMinutes = timeRemaining / (1000 * 60);
     
     if (timeRemaining == 0){
-        return Math.round(timeSpentInMinutes * importance);
+        return Math.round(timeSpentInMinutes * importance)/100000;
     }
     // Calculate points based on time spent, importance, and time remaining
     pointsEarned = Math.round((timeSpentInMinutes * timeRemainingInMinutes) * importance  * totalPoints);
-    
-    return pointsEarned;
+
+    return pointsEarned/10000000;
 }
 
 
