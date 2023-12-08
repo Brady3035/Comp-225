@@ -42,23 +42,34 @@ function updateTasks(taskId) {
 // Update the displayed points label
 function updatePointsLabel() {
     const pointsLabel = document.getElementById('points-label');
-    pointsLabel.textContent = `Points: ${points}`;
+    pointsLabel.textContent = `Points: ${Math.round(points)}`;
 }
 
+function dateToUnixTimestamp(dateString) {
+    // Create a new Date object from the date string
+    var dateObject = new Date(dateString);
+
+    // Get the Unix timestamp in seconds
+    var unixTimestamp = Math.floor(dateObject.getTime() / 1000);
+
+    return unixTimestamp;
+}
 
 function calculatePoints(timeSpentInMinutes, importance, currentDate, dueDate) {
+    var pointsEarned = 0;
     const totalPoints = MAX_POINTS;
-    
     // Calculate the difference between the due date and the current date in milliseconds
-    const timeRemaining = Math.max(dueDate - currentDate, 0);
+    const timeRemaining = dateToUnixTimestamp(dueDate) - dateToUnixTimestamp(currentDate);
     // Convert time remaining to minutes
     const timeRemainingInMinutes = timeRemaining / (1000 * 60);
-    // Calculate the percentage of time remaining relative to the total allowed time
-    const percentageRemaining = timeRemainingInMinutes / (dueDate - currentDate) / 60;
+    
+    if (timeRemaining == 0){
+        return Math.round(timeSpentInMinutes * importance)/100000;
+    }
     // Calculate points based on time spent, importance, and time remaining
-    const pointsEarned = Math.round((timeSpentInMinutes) * importance * percentageRemaining * totalPoints);
+    pointsEarned = Math.round((timeSpentInMinutes * timeRemainingInMinutes) * importance  * totalPoints);
 
-    return pointsEarned;
+    return pointsEarned/10000000;
 }
 
 
@@ -260,8 +271,8 @@ function createTaskPopup(task) {
 
     const completeButton = createPopupButton('Complete', () => {
         popup.remove();
-        deleteItem(task);
-        updatePoints(calculatePoints(task.timeSpent,task.importance,task.date,task.dueDate), task.id);
+        //deleteItem(task);
+        updatePoints(calculatePoints(task.timeSpent,task.importance,task.addToDate,task.dueDate), task.id);
     });
 
     completeButton.classList.add('popup-button');

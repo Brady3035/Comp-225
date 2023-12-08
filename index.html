@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weekly Planner</title>
+    <title>ProDawgTivity</title>
     <link rel="stylesheet" href="cssFiles/calendarStyles.css">  <!--Link to our CSS file, calendarStyles.css-->
 </head>
 <body style = "background-image: url(Pictures/ppbg.png);">
@@ -32,7 +32,7 @@
             <!-- Space Filler -->
         </div>
 
-        <div class="dawg-environment">
+        <div class="dawg-environment"> <!--Dawg environment visuals-->
             <h1>Dawg Environment</h1>     
             <img src = "Pictures/Environment1.png" alt="Tree lined walkway leading up to the dog house" class = 'environment'>     
             <div id="sprite-container" class="sprite-container">
@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <div class="header">
+        <div class="header"> <!--Weekly planner header-->
             <h2>Weekly Planner</h2>
             <div class="week-selector">
                 <button id="prev-week">Previous Week</button>
@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        <table class="calendar-table">
+        <table class="calendar-table"> <!--Our calendar table-->
             <thead>
                 <tr>
                     <th>Sunday</th>
@@ -64,11 +64,12 @@
                 </tr>
             </thead>
             <tbody id="calendar-body">
-                <!-- Calendar content will be generated here -->
+                
             </tbody>
             
         </table>
-       <div class = "container">
+
+       <div class = "container"> <!--Our add task form container-->
         <div class="add-task-form">
             <h3>Add Task</h3>
             <label for="task-name">Task Name:</label>
@@ -83,7 +84,7 @@
         </div>
         <ol id="undated-tasks" class="undated-tasks">
             <h3>Undated Tasks</h3>
-            <!-- Undated tasks content will be generated here -->
+            
         </ol>
 
         
@@ -95,7 +96,7 @@
     </div>
 
 
-    <script src="javaScriptFiles/Calendar.js"></script>
-    <script src="javaScriptFiles/Storage.js"></script>
+    <script src="javaScriptFiles/Calendar.js"></script> <!--Link to our jsfile, Calendar.js-->
+    <script src="javaScriptFiles/Storage.js"></script> <!--Link to our local storage database-->
 </body>
 </html>
