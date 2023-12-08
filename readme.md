@@ -25,13 +25,13 @@ Steps to run our project (current 10/11/2023):
 
 About our files:
 
-Calendar.html - This file contains the main structure of our html file that will be our main page for our task management application.
+index.html - This file contains the main structure of our html file that will be our main page for our task management application.
 
 Calendar.js - This file contains the backend structure for our main html page and handles button events and calendar management
 
 calendarStyles.css - This file contains the styling elements to make our main html file appear with a higher level of grace
 
-Dawgs.html, MainPage.html, Map.html, Schedule.html, Score.html - Files we used to explore HTML, css, and JS 
+index.html, About.html, Map.html, Home.html, RealEstate.html Shop.html, CarDealer.html- Files we used to explore HTML, css, and JS
 
 --<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--
 --<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--
