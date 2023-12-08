@@ -119,33 +119,21 @@ body {
     color: #fad5ff;
     }
 
-    .realEstate{
-        width: 12%;
+    .realEstate {
+        width: 50%;
         height: auto;
         padding: 0px;
         background-size: cover;
 
         position: absolute;
         top: 10%;
-        left: 28%;
+        left: 15%;
     }
-    .realEstateButton {
-        font-size: 20px;
-        border: 2px solid #fff;
+    
+    .realEstate:hover {
+        background-color: rgba(255, 255, 255, 0.5);
         border-radius: 20px;
-        color: #ffffff;
-        text-decoration: none;
-        margin-top: 20px;
-        padding: 10px;
-        transition: background-color 0.3s ease;
-
-        position: absolute;
-        top: 30%;
-        left: 30%;
-    }
-    .realEstateButton:hover {
-    background-color: rgba(255, 255, 255, 0.5);
-    color: #fad5ff;
+        color: #fad5ff;
     }
 
     .carDealer{
