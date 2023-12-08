@@ -82,8 +82,8 @@ body {
         transition: background-color 0.3s ease;
 
         position: fixed;
-        top: 77%;
-        left: 54%;
+        top: 80%;
+        left: 55.3%;
     }
     .shopButton:hover {
     background-color: rgba(255, 255, 255, 0.5);
@@ -120,7 +120,7 @@ body {
     }
 
     .realEstate{
-        width: 15%;
+        width: 12%;
         height: auto;
         padding: 0px;
         background-size: cover;
@@ -169,7 +169,7 @@ body {
         transition: background-color 0.3s ease;
 
         position: absolute;
-        top: 76%;
+        top: 82%;
         left: 40%;
     }
     .carDealerButton:hover {
