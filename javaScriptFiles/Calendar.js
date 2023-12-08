@@ -42,7 +42,7 @@ function updateTasks(taskId) {
 // Update the displayed points label
 function updatePointsLabel() {
     const pointsLabel = document.getElementById('points-label');
-    pointsLabel.textContent = `Points: ${points}`;
+    pointsLabel.textContent = `Points: ${Math.round(points)}`;
 }
 
 function dateToUnixTimestamp(dateString) {
