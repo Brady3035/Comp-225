@@ -49,30 +49,6 @@ openRequest.addEventListener("upgradeneeded", (e) => {
     console.log("Database setup complete");
 
 });
-
-// Chrome database creation
-openRequest.addEventListener("success", (e) => {
-  db = e.target.result;
-  console.log("Database grabbed");
-
-  if(!db.objectStoreNames.contains("tasks_db")) {
-    var versionRequest = db.setVersion("1");
-    versionRequest.addEventListener("success", (e) => {
-      var objectStore = db.createObjectStore("tasks_db", { keyPath: 'id', autoIncrement: true });
-      objectStore.createIndex('id', 'id', { unique: false });
-      objectStore.createIndex('name', 'name', { unique: false });
-      objectStore.createIndex('addToDate', 'addToDate', { unique: false });
-      objectStore.createIndex('dueDate', 'dueDate', { unique: false });
-      objectStore.createIndex('importance', 'importance', { unique: false });
-      objectStore.createIndex('clockInTime', 'clockInTime', { unique: false });
-      objectStore.createIndex('timeSpent', 'timeSpent', { unique: false });
-      objectStore.createIndex('timeSpentInterval', 'timeSpentInterval', { unique: false });
-    });
-  }
-
-  console.log("Database setup complete");
-
-});
   
   
 // Define the deleteItem() function
