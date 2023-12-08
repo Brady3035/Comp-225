@@ -91,7 +91,7 @@ body {
     }
 
     .house {
-        width: 10%;
+        width:20%;
         height: auto;
         padding: 0px;
         background-size: cover;
@@ -100,7 +100,7 @@ body {
         top: 50%;
         left: 32%;
     }
-    .houseButton {
+    /* .houseButton {
         font-size: 20px;
         border: 2px solid #fff;
         border-radius: 20px;
@@ -113,9 +113,10 @@ body {
         position: absolute;
         top: 43%;
         left: 33.5%;
-    }
-    .houseButton:hover {
+    } */
+    .house:hover {
     background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
     color: #fad5ff;
     }
 
