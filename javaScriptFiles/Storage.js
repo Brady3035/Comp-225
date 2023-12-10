@@ -67,7 +67,7 @@ openRequestPoints.addEventListener("upgradeneeded", (ev) => {
   db_Points = ev.target.result;
   console.log("Points db grabbed");
 
-  const objectStorePoints = db_Points.createObjectStore("points_db", { keyPath: 'label' });
+  const objectStorePoints = db_Points.createObjectStore("points_db");
 
   objectStorePoints.createIndex('points', 'points', {unique: false});
   

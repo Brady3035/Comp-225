@@ -22,18 +22,8 @@ function redirectToPage(page) {
 
 // Update points and refresh UI
 function updatePoints(newPoints, taskId) {
-    // if (getPointsFromDB() !== undefined) {
-    //     console.log("points got from db")
-    //     points = getPointsFromDB();
-        points += newPoints;
-        console.log(points);
-    //     updatePointsInDB(points);
-    // }
-    // else {
-    //     console.log("points start from 0")
-    //     points += newPoints;
-    //     updatePointsInDB(points);
-    // }
+    points += newPoints;
+    updatePointsInDB(points);
     updatePointsLabel();
     updateTasks(taskId);
     updateCalendar();
@@ -350,16 +340,14 @@ function getPointsFromDB() {
 }
 
 // Set points in db to be current points
-function updatePointsInDB(points) {
+function updatePointsInDB(pts) {
     const transaction = db_Points.transaction(['points_db'], 'readwrite');
     const objectStore = transaction.objectStore("points_db");
     const request = objectStore.get("points");
 
     request.addEventListener("success", () => {
-        data = request.result;
-        console.log(data);
-        const updatePointsRequest = objectStore.put(data, points);
-        console.log(`Points updated, points: ${getPointsFromDB()}`);
+        const updatePointsRequest = objectStore.put(pts, "points");
+        console.log(`Points updated, points: ${pts}`);
       });
 }
 
