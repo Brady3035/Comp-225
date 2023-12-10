@@ -271,7 +271,7 @@ function createTaskPopup(task) {
 
     const completeButton = createPopupButton('Complete', () => {
         popup.remove();
-        //deleteItem(task);
+        deleteTask(task.id);
         updatePoints(calculatePoints(task.timeSpent,task.importance,task.addToDate,task.dueDate), task.id);
     });
 
