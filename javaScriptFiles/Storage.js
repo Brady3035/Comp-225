@@ -10,11 +10,13 @@
 
 // Create db instance
 let db;
+let db_Points;
 
-// Open/create our database
+// Open/create databases
 const openRequest = window.indexedDB.open("tasks_db", 1);
+const openRequestPoints = window.indexedDB.open("points_db", 1);
 
-// Error/success handlers
+// Error/success handlers db
 openRequest.addEventListener("error", () => console.error("Database failed to open"), );
 openRequest.addEventListener("success", () => {
   console.log("Database opened successfully");
@@ -27,7 +29,21 @@ openRequest.addEventListener("success", () => {
   updateCalendar();
 });
 
-// Database creation
+// Error/success handlers db_Points
+openRequestPoints.addEventListener("error", () => console.error("Points database failed to open"), );
+openRequestPoints.addEventListener("success", () => {
+  console.log("Points database opened successfully");
+
+  // Store open database object in db
+  db_Points = openRequestPoints.result;
+  console.log(openRequestPoints.result);
+  console.log(getPointsFromDB());
+
+  updatePointsLabel();
+
+});
+
+// Database (db) creation
 openRequest.addEventListener("upgradeneeded", (e) => {
   db = e.target.result;
   console.log("Database grabbed");
@@ -45,8 +61,20 @@ openRequest.addEventListener("upgradeneeded", (e) => {
 
   console.log("Database setup complete");
 });
+
+// Database (points) creation
+openRequestPoints.addEventListener("upgradeneeded", (ev) => {
+  db_Points = ev.target.result;
+  console.log("Points db grabbed");
+
+  const objectStorePoints = db_Points.createObjectStore("points_db", { keyPath: 'label' });
+
+  objectStorePoints.createIndex('points', 'points', {unique: false});
   
-  
+  console.log("Points database setup complete");
+
+});
+
 // Define deleteItem() function
 
 function deleteTask(identification) {
@@ -54,10 +82,10 @@ function deleteTask(identification) {
     // open db transaction, delete task using given id
     const transaction = db.transaction(["tasks_db"], "readwrite");
     const request = transaction.objectStore("tasks_db").delete(identification);
-  
+    
     // confirm task has been deleted
     transaction.addEventListener("complete", () => {
-      console.log(`Task deleted, task: ${request.result}`);
+      console.log(`Task deleted`);
 
     });
   }

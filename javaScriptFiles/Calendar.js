@@ -22,13 +22,23 @@ function redirectToPage(page) {
 
 // Update points and refresh UI
 function updatePoints(newPoints, taskId) {
-    points += newPoints;
+    // if (getPointsFromDB() !== undefined) {
+    //     console.log("points got from db")
+    //     points = getPointsFromDB();
+        points += newPoints;
+        console.log(points);
+    //     updatePointsInDB(points);
+    // }
+    // else {
+    //     console.log("points start from 0")
+    //     points += newPoints;
+    //     updatePointsInDB(points);
+    // }
     updatePointsLabel();
     updateTasks(taskId);
     updateCalendar();
     updateUndatedTasks();
 
-    
 }
 // Update tasksByDate and tasksWithoutDate
 function updateTasks(taskId) {
@@ -228,16 +238,11 @@ function populate_database_cal(){
             
             }
 
-        
         else{
             addTask(cursor.value);
-            // if(cell.textContent in onDate === true || onDate === null) {
-            // taskList.append(onDate, dueDate, taskTitle, importance);
-            // }
             cursor.continue();
         }
-        
-        
+           
     }
     loaded = true;
 }
@@ -327,12 +332,35 @@ function updateTaskPopupTimeSpent(task) {
 }
 
 
-
 // Create an element for task information in a popup
 function createTaskInfoElement(text) {
     const element = document.createElement('p');
     element.textContent = text;
     return element;
+}
+
+// Get points from points db
+function getPointsFromDB() {
+    const request = db_Points.transaction('points_db').objectStore('points_db').get('points');
+
+    request.onsuccess = ()=> {
+        const pts = request.result;
+        return pts;
+    }
+}
+
+// Set points in db to be current points
+function updatePointsInDB(points) {
+    const transaction = db_Points.transaction(['points_db'], 'readwrite');
+    const objectStore = transaction.objectStore("points_db");
+    const request = objectStore.get("points");
+
+    request.addEventListener("success", () => {
+        data = request.result;
+        console.log(data);
+        const updatePointsRequest = objectStore.put(data, points);
+        console.log(`Points updated, points: ${getPointsFromDB()}`);
+      });
 }
 
 // Event listeners
