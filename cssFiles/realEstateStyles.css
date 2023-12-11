@@ -10,219 +10,227 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 
-    }
+}
 
 
-    h1 {
-        color: #ffffff; /* dark grey text */
-        text-align: center;
-        font-family: 'Georgia', sans-serif;
-        position: absolute;
-        left: 100px;
-    }
+h1 {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Georgia', sans-serif;
+    position: absolute;
+    left: 100px;
+}
 
-    p {
-        font-size: 14px;
-        color: #555555; /* slightly lighter gray */
-        text-align: center;
-        font-family: 'Georgia', sans-serif;
-        position: absolute;
-        top: 300px;
-        left: 750px;
+p {
+    font-size: 14px;
+    color: #555555; /* slightly lighter gray */
+    text-align: center;
+    font-family: 'Georgia', sans-serif;
+    position: absolute;
+    top: 300px;
+    left: 750px;
 
-    }
+}
 
-    .picture {
-        width: 70px;
-        padding: 0px;
-        display: block;
+.picture {
+    width: 70px;
+    padding: 0px;
+    display: block;
 
-        position: absolute;
-        top: 230px;
-        left: 500px;
-   
-    }
+    position: absolute;
+    top: 230px;
+    left: 500px;
 
-    .wardrobe-prototype {
-        width: 12vw;
-        height: auto;
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1;
-    }
-    
-    .open-wardrobe-button {
-        background-color: #2b462c;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        position: fixed;
-        top: 310px;
-        left: 550px;
-        transform: translateX(-50%);
-        z-index: 1;
-    }
-    
-    .open-wardrobe-button:hover {
-        background-color: green;
-        border-style: ridge;
-        border-width: 3px;
-        border-color: cadetblue;
-        font-style: italic;
-        color: black;
-    }
-    
-    .close-wardrobe-button {
-        background-color: #2b462c;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-    
-    .close-wardrobe-button:hover {
-        background-color: green;
-        border-style: ridge;
-        border-width: 3px;
-        border-color: cadetblue;
-        font-style: italic;
-        color: black;
-    }
-    
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 999;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.7);
-    }
-    
-    .modal-content {
-        margin: 10% auto;
-        width: 80%;
-        max-width: 800px;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-    }
-    
-    .image-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        grid-gap: 10px;
-    }
-    
-    .image-grid img {
-        width: 100%;
-        height: auto;
-        cursor: pointer;
-        border-radius: 5px;
-    }
+}
+
+.wardrobe-prototype {
+    width: 12vw;
+    height: auto;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.open-wardrobe-button {
+    background-color: #2b462c;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: fixed;
+    top: 310px;
+    left: 550px;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.open-wardrobe-button:hover {
+    background-color: green;
+    border-style: ridge;
+    border-width: 3px;
+    border-color: cadetblue;
+    font-style: italic;
+    color: black;
+}
+
+.close-wardrobe-button {
+    background-color: #2b462c;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.close-wardrobe-button:hover {
+    background-color: green;
+    border-style: ridge;
+    border-width: 3px;
+    border-color: cadetblue;
+    font-style: italic;
+    color: black;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    margin: 10% auto;
+    width: 80%;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 10px;
+}
+
+.image-grid img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    border-radius: 5px;
+}
 
 
-    .header-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: gray;
-        padding: 10px;
-        border-bottom: 1px solid #ccc;
-        z-index: 100;
-        text-shadow: 0 0 2px white;
-    }
-    
-    .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-radius: 8px;
-        color: white;
-        text-shadow: 0 0 4px black;
-    }
-    
-    .logo-header {
-        display: flex;
-        align-items: center;
-    }
-    
-    .logo {
-        width: 50px;
-        height: auto;
-        margin: 5px;
-        border: 5px solid darkblue;
-        padding: 0px;
-        border-radius: 10px;
-        display: block;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);  
-    }
-    
-    .logo:hover{
-        background-color: green;
-        border-style: ridge;
-        border-width: 5px;
-        border-color: cadetblue;
-    }
-    
-    .logo-header {
-        background-color: gray;
-        display: flex;
-    }
-    
-    .points-label {
-        margin-right: 20px;
-        text-shadow: 0 0 4px black;
-    }
-    
-    .points-label-container {
-        position: fixed;
-        top: 0;
-        right: 0;
-        padding: 10px;
-        border-radius: 5px;
-        background-color: gray;
-        color: white;
-        font-family: 'Times New Roman', Times, serif; 
-        z-index: 100;
-    }
-    
-    .header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-left: auto;
-    }
-    
-    .header-links {
-        flex-grow: 1;
-        display: flex;
-        justify-content: center;
-        margin-left: auto;
-    }
-    
-    .header-link {
-        text-decoration: none;
-        color: white;
-        text-shadow: 0 0 4px black;
-        margin: 0 7px;
-        transition: all 0.3s ease;
-    }
-    
-    .header-link:hover {
-        text-decoration: underline;
-        font-style: italic;
-    }
+.header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: gray;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    z-index: 100;
+    text-shadow: 0 0 2px white;
+}
+
+h1 {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Georgia', sans-serif;
+    position: absolute;
+    left: 100px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    color: white;
+    text-shadow: 0 0 4px black;
+}
+
+.logo-header {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+    margin: 5px;
+    border: 5px solid darkblue;
+    padding: 0px;
+    border-radius: 10px;
+    display: block;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);  
+}
+
+.logo:hover{
+    background-color: green;
+    border-style: ridge;
+    border-width: 5px;
+    border-color: cadetblue;
+}
+
+.logo-header {
+    background-color: gray;
+    display: flex;
+}
+
+.points-label {
+    margin-right: 20px;
+    text-shadow: 0 0 4px black;
+}
+
+.points-label-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: gray;
+    color: white;
+    font-family: 'Times New Roman', Times, serif; 
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+}
+
+.header-links {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+}
+
+.header-link {
+    text-decoration: none;
+    color: white;
+    text-shadow: 0 0 4px black;
+    margin: 0 7px;
+    transition: all 0.3s ease;
+}
+
+.header-link:hover {
+    text-decoration: underline;
+    font-style: italic;
+}
