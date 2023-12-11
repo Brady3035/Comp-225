@@ -32,16 +32,6 @@ body {
 
     }
 
-    .logo {
-        width: 50px;
-        border: 5px solid darkblue;
-        padding: 0px;
-        border-radius: 10px;
-        display: block;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
-        position: absolute;
-    }
-
     .picture {
         width: 70px;
         padding: 0px;

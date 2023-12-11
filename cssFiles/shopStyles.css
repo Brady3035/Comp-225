@@ -4,9 +4,11 @@ body {
     padding: 0;
 
     background-image: url("Pictures/ShopBackground.png");
-    background-size: cover;
+    background-size: 80% 80%;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-position: center;
+    background-color: #b08ec6;
 
     }
 
