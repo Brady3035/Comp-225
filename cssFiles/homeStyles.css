@@ -11,16 +11,6 @@ body {
     background-color: rgb(164, 140, 113);
 }
 
-
-h1 {
-    color: #ffffff; /* dark grey text */
-    text-align: center;
-    font-family: 'Georgia', sans-serif;
-    position: absolute;
-    top: 330px;
-    left: 60px;
-}
-
 p {
     font-size: 14px;
     color: #555555; /* slightly lighter gray */
@@ -132,6 +122,14 @@ p {
     border-bottom: 1px solid #ccc;
     z-index: 100;
     text-shadow: 0 0 2px white;
+}
+
+h1 {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Georgia', sans-serif;
+    position: absolute;
+    left: 100px;
 }
 
 .header {

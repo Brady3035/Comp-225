@@ -5,135 +5,145 @@ body {
     min-height: 100vh;
     min-width: 100vw;
 
+}
+
+
+#map {
     background-image: url("../Pictures/CityLifeBackground1.png");
     background-repeat: no-repeat;
-    background-size: 90% 90%;
+    background-size: 100% 100%;
     background-attachment: fixed;
-    background-position: center;
-    background-color: #0e270c;
-    }
+    min-height: 100vh;
+    min-width: 100vw;
+}
 
-    h1 {
-        color: #e8e8e8; 
-        font-size: 160%;
-        font-family: 'Georgia', sans-serif;
-        position: absolute;
-        top: 5%;
-        left: 55%;
-    }
+h1 {
+    color: #e8e8e8; 
+    font-size: 160%;
+    font-family: 'Georgia', sans-serif;
+    position: absolute;
+    top: 5%;
+    left: 55%;
+}
 
-    p {
-        font-size: 80%;
-        color: #d6d6d6; /* slightly lighter gray */
-        text-align: center;
-        font-family: 'Georgia', sans-serif;
-        position: absolute;
-        top: 13%;
-        left: 60%;
+p {
+    font-size: 80%;
+    color: #d6d6d6; /* slightly lighter gray */
+    text-align: center;
+    font-family: 'Georgia', sans-serif;
+    position: absolute;
+    top: 13%;
+    left: 60%;
 
-    }
+}
 
-    .logo {
-        width: 5%;
-        height: auto;
-        margin: 20px auto;
-        border: 5px solid darkblue;
-        padding: 0px;
-        border-radius: 10px;
-        display: block;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);  
+.logo {
+    width: 5%;
+    height: auto;
+    margin: 20px auto;
+    border: 5px solid darkblue;
+    padding: 0px;
+    border-radius: 10px;
+    display: block;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);  
 
-        position: absolute;
-        top: 2%;
-        left: 75%;
-    }
-    
-    .shop {
-        width: 15%;
-        height: auto;
-        margin: 20px auto;
-        padding: 0px;
-        background-position: right;
-        background-size: cover;
-        position: fixed;
-        top: 62%;
-        left: 53%;
-    }
+    position: absolute;
+    top: 2%;
+    left: 75%;
+}
 
-    .shop:hover {
+.shop {
+    width: 15%;
+    height: auto;
+    margin: 20px auto;
+    padding: 0px;
+    background-position: right;
+    background-size: cover;
+    position: fixed;
+    top: 60%;
+    left: 53%;
+}
+
+.shop:hover {
+background-color: rgba(255, 255, 255, 0.5);
+border-radius: 20px;
+color: #fad5ff;
+}
+
+.house {
+    width: 15%;
+    height: auto;
+    padding: 0px;
+    background-size: cover;
+    position: fixed;
+    top: 43%;
+    left: 30%;
+}
+
+.house:hover {
+background-color: rgba(255, 255, 255, 0.5);
+border-radius: 20px;
+color: #fad5ff;
+}
+
+.realEstate {
+    width: 50%;
+    height: auto;
+    padding: 0px;
+    background-size: cover;
+
+    position: absolute;
+    top: 10%;
+    left: 15%;
+}
+
+.realEstate:hover {
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     color: #fad5ff;
-    }
+}
 
-    .house {
-        width: 50%;
-        height: auto;
-        padding: 0px;
-        background-size: cover;
-        
-        position: absolute;
-        top: 44%;
-        left: 18.5%;
-    }
+.carDealer{
+    width: 50%;
+    height: auto;
+    padding: 0px;
+    background-size: cover;
 
-    .house:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    top: 65%;
+    left: 25%;
+}
+
+.carDealer:hover {
+background-color: rgba(255, 255, 255, 0.5);
+border-radius: 20px;
+color: #fad5ff;
+}
+
+.scheduleButton {
+    cursor: pointer;
+    background-color: #27938e;
+    color: white;
     border-radius: 20px;
-    color: #fad5ff;
-    }
+    text-decoration: none;
+    margin-top: 20px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
 
-    .realEstate {
-        width: 50%;
-        height: auto;
-        padding: 0px;
-        background-size: cover;
-
-        position: absolute;
-        top: 15.5%;
-        left: 15%;
-    }
-    
-    .realEstate:hover {
-        background-color: rgba(255, 255, 255, 0.5);
-        border-radius: 20px;
-        color: #fad5ff;
-    }
-
-    .carDealer{
-        width: 50%;
-        height: auto;
-        padding: 0px;
-        background-size: cover;
-
-        position: absolute;
-        top: 67%;
-        left: 25%;
-    }
-
-    .carDealer:hover {
+    position: absolute;
+    top: 10%;
+    left: 84%;
+}
+.scheduleButton:hover {
+    font-style: italic;
     background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    color: #fad5ff;
-    }
+    color: #555555;
+}
 
-    .scheduleButton {
-        cursor: pointer;
-        background-color: #27938e;
-        color: white;
-        border-radius: 20px;
-        text-decoration: none;
-        margin-top: 20px;
-        padding: 10px;
-        transition: background-color 0.3s ease;
-
-        position: absolute;
-        top: 10%;
-        left: 84%;
-    }
-    .scheduleButton:hover {
-        font-style: italic;
-        background-color: rgba(255, 255, 255, 0.5);
-        color: #555555;
-    }
+.logo:hover{
+    background-color: green;
+    border-style: ridge;
+    border-width: 5px;
+    border-color: cadetblue;
+}
 

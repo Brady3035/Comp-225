@@ -13,16 +13,6 @@ body {
 
 }
 
-
-h1 {
-    color: #333333; /* dark grey text */
-    text-align: center;
-    font-family: 'Georgia', sans-serif;
-    position: absolute;
-    top: 5px;
-    left: 400px;
-}
-
 p {
     font-size: 14px;
     color: #555555; /* slightly lighter gray */
@@ -134,6 +124,14 @@ p {
     border-bottom: 1px solid #ccc;
     z-index: 100;
     text-shadow: 0 0 2px white;
+}
+
+h1 {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Georgia', sans-serif;
+    position: absolute;
+    left: 100px;
 }
 
 .header {
