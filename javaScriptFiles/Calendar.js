@@ -90,11 +90,6 @@ function stopUpdatingTimeSpent(task) {
     clearInterval(task.timeSpentInterval);
 }
 
-function calculateTimeSpent(clockInTime, totalElapsedTime) {
-    const currentTime = new Date();
-    const elapsedTime = currentTime - clockInTime;
-    return totalElapsedTime + elapsedTime;
-}
 
 function formatTime(milliseconds) {
     const seconds = Math.floor(milliseconds / 1000);
@@ -266,6 +261,11 @@ function createTaskPopup(task) {
     clockOutButton.classList.add('popup-button');
 
     const completeButton = createPopupButton('Complete', () => {
+        if (clockedOut == 0) {
+            stopUpdatingTimeSpent(task);
+            clockedOut = 1;
+            clockedIn = 0;
+        }
         popup.remove();
         deleteTask(task.id);
         updatePoints(calculatePoints(task.timeSpent,task.importance,task.addToDate,task.dueDate), task.id);
@@ -374,15 +374,17 @@ document.getElementById('add-task').addEventListener('click', () => {
 // Add task function
 //change this so that it takes in the const as arguments - call this into the storage file
 function addTask(task) {
-        console.log(task.name);
-        var taskName = task.name;
-        var dueDate = task.dueDate;
-        var addToDate = task.addToDate;
-        var importance = task.importance;
-        var transaction = null;
-        var objectStore = null;
-        var timespent = task.timeSpent
-    if (taskName == undefined) {
+    var transaction = null;
+    var objectStore = null;
+        if (task){
+            var taskName = task.name;
+            var dueDate = task.dueDate;
+            var addToDate = task.addToDate;
+            var importance = task.importance;
+            var timespent = task.timeSpent
+        }
+        
+    else {
         console.log(document.getElementById('task-name').value);
         taskName = document.getElementById('task-name').value;
         dueDate = document.getElementById('due-date').value;
