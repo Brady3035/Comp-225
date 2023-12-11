@@ -4,7 +4,9 @@ body {
     padding: 0;
 
     background-image: url("Pictures/RealEstateBackground.png");
-    background-size: cover;
+    background-size: 80% 80%;
+    background-color: #555555;
+    background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
 
