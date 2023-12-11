@@ -120,8 +120,9 @@ function updateCalendar() {
         const cell = createCalendarCell(day);
         calendarBody.appendChild(cell);
     }
-    console.log(loaded);
+
     if (!loaded){
+        console.log("loading from database");
         populate_database_cal();
     }
     
@@ -222,7 +223,7 @@ function populate_database_cal(){
 
     objectStore.openCursor().onsuccess = (event) => {
         const cursor = event.target.result;
-        console.log(cursor);
+        
         if (!cursor) {
             console.log("All items displayed")
             
@@ -372,14 +373,15 @@ document.getElementById('add-task').addEventListener('click', () => {
 
 // Add task function
 //change this so that it takes in the const as arguments - call this into the storage file
-function addTask(id, name, addToDate1, dueDate1, importance1, clockInTime, timespent, timeSpentInterval) {
-        console.log(name);
-        var taskName = name;
-        var dueDate = dueDate1;
-        var addToDate = addToDate1;
-        var importance = importance1;
+function addTask(task) {
+        console.log(task.name);
+        var taskName = task.name;
+        var dueDate = task.dueDate;
+        var addToDate = task.addToDate;
+        var importance = task.importance;
         var transaction = null;
         var objectStore = null;
+        var timespent = task.timeSpent
     if (taskName == undefined) {
         console.log(document.getElementById('task-name').value);
         taskName = document.getElementById('task-name').value;
@@ -388,6 +390,7 @@ function addTask(id, name, addToDate1, dueDate1, importance1, clockInTime, times
         importance = validateImportanceInput();
         transaction = db.transaction(["tasks_db"], "readwrite");
         objectStore = transaction.objectStore("tasks_db");
+        timespent = 0;
     }
 
     
@@ -426,7 +429,7 @@ function addTask(id, name, addToDate1, dueDate1, importance1, clockInTime, times
                 dueDate: dueDate || null,
                 importance: importance || null,
                 clockInTime: null,
-                timeSpent: 0,
+                timeSpent: timespent,
                 timeSpentInterval: null,
             };
             tasksWithoutDate.push(task);
