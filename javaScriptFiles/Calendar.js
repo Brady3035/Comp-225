@@ -90,11 +90,6 @@ function stopUpdatingTimeSpent(task) {
     clearInterval(task.timeSpentInterval);
 }
 
-function calculateTimeSpent(clockInTime, totalElapsedTime) {
-    const currentTime = new Date();
-    const elapsedTime = currentTime - clockInTime;
-    return totalElapsedTime + elapsedTime;
-}
 
 function formatTime(milliseconds) {
     const seconds = Math.floor(milliseconds / 1000);
@@ -266,6 +261,11 @@ function createTaskPopup(task) {
     clockOutButton.classList.add('popup-button');
 
     const completeButton = createPopupButton('Complete', () => {
+        if (clockedOut == 0) {
+            stopUpdatingTimeSpent(task);
+            clockedOut = 1;
+            clockedIn = 0;
+        }
         popup.remove();
         deleteTask(task.id);
         updatePoints(calculatePoints(task.timeSpent,task.importance,task.addToDate,task.dueDate), task.id);
