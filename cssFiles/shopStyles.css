@@ -211,3 +211,28 @@ h1 {
     text-decoration: underline;
     font-style: italic;
 }
+
+.mascot {
+    width: 10%;
+    height: auto;
+    margin: 5px;
+    padding: 0px;
+    position: fixed;
+    top: 60%;
+    left: 75%;
+}
+.mascot:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    color: #fad5ff;
+}
+
+.shopMessage {
+    width: 20%;
+    height: auto;
+    margin: 5px;
+    padding: 0px;
+    position: fixed;
+    top: 47%;
+    left: 60%;
+}
