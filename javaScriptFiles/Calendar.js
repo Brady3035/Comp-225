@@ -5,7 +5,7 @@ const MAX_POINTS = 100;
 let currentDate = new Date();
 let tasksByDate = {};
 let tasksWithoutDate = [];
-let taskIdCounter = 0;
+let taskIdCounter = calculateIDCounter();
 let points = 0;
 
 // Boolean variables
@@ -14,7 +14,17 @@ let clockedOut = 0;
 let loaded = false;
 
 // Functions
+function calculateIDCounter(){
+const myIndex = objectStore.index("id");
+const getAllKeysRequest = myIndex.getAllKeys();
+var constArray = [];
+getAllKeysRequest.onsuccess = () => {
+    constArray = getAllKeysRequest.result;
 
+}
+console.log(constArray[-1]);
+return constArray[-1];
+}
 // Redirect to another page
 function redirectToPage(page) {
     window.location.href = page;
@@ -399,19 +409,18 @@ document.getElementById('add-task').addEventListener('click', () => {
 });
 
 // Add task function
-function addTask(task) {
+function addTask(task1) {
     var transaction = null;
     var objectStore = null;
-        if (task){
-            var taskName = task.name;
-            var dueDate = task.dueDate;
-            var addToDate = task.addToDate;
-            var importance = task.importance;
-            var timespent = task.timeSpent
+        if (task1){
+            var taskName = task1.name;
+            var dueDate = task1.dueDate;
+            var addToDate = task1.addToDate;
+            var importance = task1.importance;
+            var timespent = task1.timeSpent
         }
         
     else {
-        console.log(document.getElementById('task-name').value);
         taskName = document.getElementById('task-name').value;
         dueDate = document.getElementById('due-date').value;
         addToDate = document.getElementById('add-to-date').value;
@@ -425,9 +434,8 @@ function addTask(task) {
 
 
     if (taskName.trim() !== '') {
-        if (addToDate !== "" && addToDate !== null) {
+        if (addToDate !== "" && addToDate !== null) {  
             const task = {
-                id: taskIdCounter++,
                 name: taskName,
                 addToDate: addToDate,
                 dueDate: dueDate || null,
@@ -436,6 +444,11 @@ function addTask(task) {
                 timeSpent: 0,
                 timeSpentInterval: null,
             };
+            if (task.id == null){
+                task.id = taskIdCounter++;
+            }
+        
+            
             console.log(transaction);
             if (transaction !== null){
                 objectStore.add(task);
@@ -449,9 +462,11 @@ function addTask(task) {
                 tasksByDate[dateString] = [];
             }
             tasksByDate[dateString].push(task);
-        } else {
+        } 
+        else {
+            console.log("shouldbehere");
+            //console.log(task1.id);
             const task = {
-                id: taskIdCounter++,
                 name: taskName,
                 addToDate: addToDate || null,
                 dueDate: dueDate || null,
@@ -460,6 +475,13 @@ function addTask(task) {
                 timeSpent: timespent,
                 timeSpentInterval: null,
             };
+            
+            if (task1 == undefined){
+                task.id = taskIdCounter++;
+            }
+            else{
+                task.id = task1.id;
+            }
             tasksWithoutDate.push(task);
             updateUndatedTasks();
             if (transaction !== null){
