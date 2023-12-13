@@ -142,5 +142,7 @@ color: #fad5ff;
     border-style: ridge;
     border-width: 5px;
     border-color: cadetblue;
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    background-color: #1a936f;
 }
 
