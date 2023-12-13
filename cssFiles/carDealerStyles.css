@@ -23,30 +23,6 @@ body {
     z-index: 1;
 }
 
-.open-wardrobe-button {
-    background-color: #2b462c;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    position: fixed;
-    bottom: 90px;
-    left: 300px;
-    transform: translateX(-50%);
-    z-index: 1;
-}
-
-.open-wardrobe-button:hover {
-    background-color: green;
-    border-style: ridge;
-    border-width: 3px;
-    border-color: cadetblue;
-    font-style: italic;
-    color: black;
-}
-
 .close-wardrobe-button {
     background-color: #2b462c;
     color: #fff;
@@ -84,7 +60,7 @@ body {
     max-width: 800px;
     background-color: #fff;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 5px; 
 }
 
 .image-grid {
@@ -202,4 +178,29 @@ h1 {
 .header-link:hover {
     text-decoration: underline;
     font-style: italic;
+}
+
+.mascot {
+    width: 10%;
+    height: auto;
+    margin: 5px;
+    padding: 0px;
+    position: fixed;
+    top: 50%;
+    left: 30%;
+}
+.mascot:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    color: #fad5ff;
+}
+
+.carMessage {
+    width: 20%;
+    height: auto;
+    margin: 5px;
+    padding: 0px;
+    position: fixed;
+    top: 39%;
+    left: 15%;
 }
