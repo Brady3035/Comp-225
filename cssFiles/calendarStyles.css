@@ -350,57 +350,6 @@ body {
 
 
 /* --------------------------------------------------------------------------------------------------------------------------------------------- */
-/* Undated Tasks */
-/* Start---------------------------------------------------------------------------------------------------------------------------------------- */
-#undated-tasks {
-    width: 300px;
-    border: 2px solid #000;
-    padding: 20px;
-    margin: 20px;
-    background-color: #cfe9ff !important;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: center;
-}
-
-#undated-tasks h3 {
-    margin-top: 0;
-    font-size: 18px;
-    text-align: center;
-    color: black;
-}
-
-.undated-tasks-content {
-    list-style: none;
-    padding: 0;
-}
-
-.undated-tasks-content li {
-    margin-bottom: 10px;
-    font-size: 16px;
-}
-
-.undated-tasks button {
-    width: 100%;
-    height: 20px;
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #2b462c;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.undated-tasks button:hover {
-    background-color: #4caf50;
-}
-/* End------------------------------------------------------------------------------------------------------------------------------------------ */
-
-
-/* --------------------------------------------------------------------------------------------------------------------------------------------- */
 /* Tasks */
 /* Start---------------------------------------------------------------------------------------------------------------------------------------- */
 .task-list {
@@ -459,26 +408,59 @@ td {
     margin-right: 200px; 
 }
 
+/* Undated Tasks */
+/* Start---------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Update the CSS for undated tasks */
 #undated-tasks {
-    width: 240px;
-    height: 240px;
-    border: 1px solid black;
-    padding: 10px;
-    margin: 10px;
-    background-color: #f9f9f9;
+    width: 300px;
+    border: 2px solid #000;
+    padding: 20px;
+    margin: 20px;
+    background-color: #cfe9ff !important;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Center text horizontally */
+    height: auto; /* Set height to auto to adjust based on content */
 }
- .undated-tasks button {
+
+#undated-tasks h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: black;
+}
+
+.undated-tasks-content {
+    list-style: none;
+    padding: 0;
+}
+
+.undated-tasks-content ul {
+    margin: 0; /* Remove default margin for the unordered list */
+}
+
+.undated-tasks-content li {
+    margin: 5px;
+    font-size: 16px;
+}
+
+.undated-tasks button {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
-    background-color: #007BFF;
+    margin: 5px; /* Add margin for spacing between buttons */
+    background-color: #2b462c;
     color: white;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
-  }
-  #undated-tasks h3 {
-    text-align: left;
-    margin-top: 5px; 
-    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
 }
+
+.undated-tasks button:hover {
+    background-color: #4caf50;
+}
+
+
+/* End------------------------------------------------------------------------------------------------------------------------------------------ */
+
 /* End------------------------------------------------------------------------------------------------------------------------------------------ */

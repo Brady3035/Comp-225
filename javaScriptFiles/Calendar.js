@@ -63,7 +63,7 @@ function calculatePoints(timeSpentInMinutes, importance, currentDate, dueDate) {
     // Convert time remaining to minutes
     const timeRemainingInMinutes = timeRemaining / (1000 * 60);
     
-    if (timeRemaining == 0){
+    if (timeRemaining == 0 || timeRemaining == null){
         return Math.round(timeSpentInMinutes * importance)/100000;
     }
     // Calculate points based on time spent, importance, and time remaining
@@ -243,7 +243,6 @@ function updateUndatedTasks() {
    
 function populate_database_cal(){
     const objectStore = db.transaction('tasks_db').objectStore('tasks_db');
-
     objectStore.openCursor().onsuccess = (event) => {
         const cursor = event.target.result;
         
@@ -426,7 +425,7 @@ function addTask(task) {
 
 
     if (taskName.trim() !== '') {
-        if (addToDate !== "") {
+        if (addToDate !== "" && addToDate !== null) {
             const task = {
                 id: taskIdCounter++,
                 name: taskName,
