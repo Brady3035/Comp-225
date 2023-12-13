@@ -33,30 +33,6 @@ body {
     z-index: 1;
 }
 
-.open-wardrobe-button {
-    background-color: #2b462c;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    position: fixed;
-    top: 310px;
-    left: 550px;
-    transform: translateX(-50%);
-    z-index: 1;
-}
-
-.open-wardrobe-button:hover {
-    background-color: green;
-    border-style: ridge;
-    border-width: 3px;
-    border-color: cadetblue;
-    font-style: italic;
-    color: black;
-}
-
 .close-wardrobe-button {
     background-color: #2b462c;
     color: #fff;
