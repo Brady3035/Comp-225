@@ -72,7 +72,6 @@ function calculatePoints(timeSpentInMinutes, importance, currentDate, dueDate) {
     return pointsEarned/10000000;
 }
 
-
 // Start updating time spent when clocking in
 function startUpdatingTimeSpent(task) {
     if (task.timeSpent === 0) {
@@ -85,9 +84,41 @@ function startUpdatingTimeSpent(task) {
     }, 1000);
 }
 
-
 function stopUpdatingTimeSpent(task) {
+
+    const transaction = db.transaction(['tasks_db'], 'readwrite');
+    const objectStore = transaction.objectStore("tasks_db");
+
+    const key = task.id;
+    console.log(task.id);
+    const getRequest = objectStore.get(key);
+
+    getRequest.addEventListener("success", () => {
+        const existingTask = getRequest.result;
+
+        if(existingTask) {
+            existingTask.timeSpent = task.timeSpent;
+            const putRequest = objectStore.put(existingTask);
+
+            putRequest.addEventListener("success", () => {
+                console.log(`Time spent updated for task with ID ${key}, new time spent: ${task.timeSpent}`);
+            });
+
+            putRequest.addEventListener("error", (event) => {
+                console.error("Error updating time spent:", event.target.error);
+            });
+
+        } else {
+            console.error(`Task with ID ${key} not found.`);
+        }
+    });
+
+    getRequest.addEventListener("error", (event) => {
+        console.error("Error retrieving task:", event.target.error);
+});
+
     clearInterval(task.timeSpentInterval);
+
 }
 
 
@@ -97,9 +128,6 @@ function formatTime(milliseconds) {
     const remainingSeconds = seconds % 60;
     return `${minutes}m ${remainingSeconds}s`;
 }
-
-
-
 
 // Update the calendar UI
 function updateCalendar() {
@@ -372,7 +400,6 @@ document.getElementById('add-task').addEventListener('click', () => {
 });
 
 // Add task function
-//change this so that it takes in the const as arguments - call this into the storage file
 function addTask(task) {
     var transaction = null;
     var objectStore = null;

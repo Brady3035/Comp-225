@@ -76,7 +76,6 @@ openRequestPoints.addEventListener("upgradeneeded", (ev) => {
 });
 
 // Define deleteItem() function
-
 function deleteTask(identification) {
 
     // open db transaction, delete task using given id
