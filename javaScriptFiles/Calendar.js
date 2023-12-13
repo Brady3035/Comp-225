@@ -74,16 +74,32 @@ function calculatePoints(timeSpentInMinutes, importance, currentDate, dueDate) {
 
 // Start updating time spent when clocking in
 function startUpdatingTimeSpent(task) {
-    if (task.timeSpent === 0) {
-        task.clockInTime = new Date(); // Set the clock in time only if time spent is zero
-    }
+    const transaction = db.transaction(['tasks_db'], 'readwrite');
+    const objectStore = transaction.objectStore("tasks_db");
+    const request = objectStore.get(task.id);
     
-    task.timeSpentInterval = setInterval(() => {
-        task.timeSpent = task.timeSpent + 1000;
-        updateTaskPopupTimeSpent(task);
-    }, 1000);
+    request.addEventListener("success", () => {
+        const curTask = request.result;
+        task.timeSpent = curTask.timeSpent;
+
+        if (curTask.timeSpent === 0) {
+            task.clockInTime = new Date(); // Set the clock in time only if time spent is zero
+        }
+    
+        task.timeSpentInterval = setInterval(() => {
+            task.timeSpent = task.timeSpent + 1000;
+            updateTaskPopupTimeSpent(task);
+        }, 1000);
+
+        console.log(curTask.timeSpent);
+        curTask.timeSpent = task.timeSpent;
+        console.log(curTask.timeSpent);
+        console.log(task.timeSpent);
+        objectStore.put(curTask);
+    });
 }
 
+// Stop updating time spent on clock out and update time spent in db
 function stopUpdatingTimeSpent(task) {
 
     const transaction = db.transaction(['tasks_db'], 'readwrite');
@@ -239,7 +255,7 @@ function updateUndatedTasks() {
         });
         undatedTasksBox.appendChild(taskButton);
     });
-   }
+}
    
 function populate_database_cal(){
     const objectStore = db.transaction('tasks_db').objectStore('tasks_db');
@@ -259,6 +275,7 @@ function populate_database_cal(){
     }
     loaded = true;
 }
+
 // Create a popup for a given task
 function createTaskPopup(task) {
     const popup = document.createElement('div');
@@ -344,11 +361,12 @@ function createTaskInfoContainer(task) {
     return taskInfoContainer;
 }
 
+// Displays the timer while clocked in
 function updateTaskPopupTimeSpent(task) {
     const timeSpentDisplay = document.querySelector('.task-popup .time-spent');
     timeSpentDisplay.textContent = `Time Spent: ${formatTime(task.timeSpent)}`;
-}
 
+}
 
 // Create an element for task information in a popup
 function createTaskInfoElement(text) {
