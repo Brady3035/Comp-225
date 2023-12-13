@@ -191,7 +191,6 @@ h1 {
 .header-link:hover {
     text-decoration: underline;
     font-style: italic;
-<<<<<<< Updated upstream
 }
 
 .mascot {
@@ -217,7 +216,4 @@ h1 {
     position: fixed;
     top: 50%;
     left: 60%;
-=======
-    color: #f0f0f0;
->>>>>>> Stashed changes
 }
