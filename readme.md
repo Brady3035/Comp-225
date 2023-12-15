@@ -9,17 +9,22 @@ Professor: Lauren Milne
 
 About our project (mission and goals):
 
-We will be building a task-management website that rewards users for each completed task using a point-based system. We are targeting the issues of procrastination and accountability primarily among students. Users will enter task data and, upon completion, receive points based on an algorithm that tracks task difficulty, the time of the task, etc., and will then be able to apply those points to the user’s dawg or unlock various areas (DawgMart, dawg park, dawg house shopping, dawg car dealer, etc) or bail out dawg from pound.
+We will be building a task-management website that rewards users for each completed task using a point-based system. We are targeting the issues of procrastination and accountability primarily among students. Users will enter task data and, upon completion, receive points based on an algorithm that tracks task difficulty, the time of the task, etc., and will then be able to apply those points to the user’s dawg or unlock various areas (DawgMart, dawg park, dawg house shopping, dawg car dealer, etc).
 
 --<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--
 
-Steps to run our project (current 10/11/2023):
+Steps to run our project (current 12/15/2023): 
 
-1. Open the "Calendar.html" file in the browser of your choice
-2. At the top of the main page you will see our logo and project name (which we need to adjust placement for)
-3. Below the logo and title you will see an empty (at the moment) "dawg environment" which is where we intend to place the user's dawg
-4. Below the "dawg environment" you will see a partially functional calendar table/scheduling area where you can create tasks and assign start and due dates for each one. Upon entering the task name, start date, and due date, you can click on the green "add task" button to add your task to the calendar table
-5. You can change weeks and view different weeks by clicking on the green buttons above the calendar table
+1. We have hosted our file on github pages at the following url: https://brady3035.github.io/Comp-225/
+2. Upon opening our project on the browser of your choice you will see proDawgTivity's main page
+3. At the top of the main page you will see our logo, project name, two links which navigate to either your map or an about page, and your points counter
+4. Below the top header you will see a "dawg environment" which is where you will see your starter dawg and its environment
+5. Below the "dawg environment" you will see a calendar table/scheduling area where you can create tasks and assign start and due dates for each one. Upon entering the task name, start date, and due date, and task importance you can click on the green "add task" button to add your task to the calendar table
+6. You can change weeks and view different weeks by clicking on the green buttons above the calendar table
+7. If you click on a task you will see a popup which allows you to clock in/out for that task or to complete a task
+8. Upon completing a task, you will recive points based on the importance and the length of time spent on the task
+9. Upon entering the map, you can browse our various shopping locations and view your inventory
+10. Given more time, we would have loved to implement the usage of user points in the various shopping locations and the equipping/unequipping of items for the user
 
 --<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--
 
@@ -31,7 +36,7 @@ Calendar.js - This file contains the backend structure for our main html page an
 
 calendarStyles.css - This file contains the styling elements to make our main html file appear with a higher level of grace
 
-index.html, About.html, Map.html, Home.html, RealEstate.html Shop.html, CarDealer.html- Files we used to explore HTML, css, and JS
+index.html + calendarStyles.css + Calendar.js, About.html + aboutStyles.css, Map.html + mapStyles.css + Map.js, Home.html + homeStyles.css + Home.js, RealEstate.html + realEstateStyles.css + RealEstate.js, Shop.html + shopStyles.css + Shop.js, CarDealer.html + carStyles.css + Car.js - Files we used to explore HTML, css, and JS
 
 --<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--
 --<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--<-->--
