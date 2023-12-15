@@ -39,7 +39,7 @@ openRequestPoints.addEventListener("success", () => {
   console.log(openRequestPoints.result);
   console.log(getPointsFromDB());
 
-  updatePointsLabel();
+  // updatePointsLabel();
 
 });
 

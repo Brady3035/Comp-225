@@ -1,30 +1,37 @@
 // Constants
 const MAX_POINTS = 100;
 
-// State variables
-let currentDate = new Date();
-let tasksByDate = {};
-let tasksWithoutDate = [];
-let taskIdCounter = calculateIDCounter();
-let points = 0;
-
 // Boolean variables
 let clockedIn = 0;
 let clockedOut = 0;
 let loaded = false;
 
-// Functions
-function calculateIDCounter(){
-const myIndex = objectStore.index("id");
-const getAllKeysRequest = myIndex.getAllKeys();
-var constArray = [];
-getAllKeysRequest.onsuccess = () => {
-    constArray = getAllKeysRequest.result;
+// State variables
+let currentDate = new Date();
+let tasksByDate = {};
+let tasksWithoutDate = [];
+let points = 0;
+let taskIdCounter = calculateIDCounter();
 
+
+
+// Functions
+
+function calculateIDCounter(){
+    const transaction = db.transaction(['tasks_db'], 'readonly');
+    const objectStore = transaction.objectStore("tasks_db");
+    const index = objectStore.index("id");
+    const getAllKeysRequest = index.getAllKeys();
+    var constArray = [];
+
+    getAllKeysRequest.onsuccess = () => {
+        constArray = getAllKeysRequest.result;
+
+    }
+    console.log(constArray[-1]);
+    return constArray[-1];
 }
-console.log(constArray[-1]);
-return constArray[-1];
-}
+
 // Redirect to another page
 function redirectToPage(page) {
     window.location.href = page;
@@ -274,14 +281,12 @@ function populate_database_cal(){
         
         if (!cursor) {
             console.log("All items displayed")
-            
             }
 
         else{
             addTask(cursor.value);
             cursor.continue();
-        }
-           
+        }       
     }
     loaded = true;
 }
@@ -430,13 +435,13 @@ document.getElementById('add-task').addEventListener('click', () => {
 function addTask(task1) {
     var transaction = null;
     var objectStore = null;
-        if (task1){
-            var taskName = task1.name;
-            var dueDate = task1.dueDate;
-            var addToDate = task1.addToDate;
-            var importance = task1.importance;
-            var timespent = task1.timeSpent
-        }
+    if (task1){
+        var taskName = task1.name;
+        var dueDate = task1.dueDate;
+        var addToDate = task1.addToDate;
+        var importance = task1.importance;
+        var timespent = task1.timeSpent
+    }
         
     else {
         taskName = document.getElementById('task-name').value;
@@ -448,12 +453,10 @@ function addTask(task1) {
         timespent = 0;
     }
 
-    
-
-
     if (taskName.trim() !== '') {
         if (addToDate !== "" && addToDate !== null) {  
             const task = {
+                // id: taskIdCounter++,
                 name: taskName,
                 addToDate: addToDate,
                 dueDate: dueDate || null,
@@ -483,7 +486,7 @@ function addTask(task1) {
         } 
         else {
             console.log("shouldbehere");
-            //console.log(task1.id);
+            console.log(task1.id);
             const task = {
                 name: taskName,
                 addToDate: addToDate || null,
@@ -505,7 +508,6 @@ function addTask(task1) {
             if (transaction !== null){
                 const addRequest = objectStore.add(task);
             }
-            
 
         }
 
