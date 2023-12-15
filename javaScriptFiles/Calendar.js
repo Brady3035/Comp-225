@@ -11,26 +11,10 @@ let currentDate = new Date();
 let tasksByDate = {};
 let tasksWithoutDate = [];
 let points = 0;
-let taskIdCounter = calculateIDCounter();
 
 
 
 // Functions
-
-function calculateIDCounter(){
-    const transaction = db.transaction(['tasks_db'], 'readonly');
-    const objectStore = transaction.objectStore("tasks_db");
-    const index = objectStore.index("id");
-    const getAllKeysRequest = index.getAllKeys();
-    var constArray = [];
-
-    getAllKeysRequest.onsuccess = () => {
-        constArray = getAllKeysRequest.result;
-
-    }
-    console.log(constArray[-1]);
-    return constArray[-1];
-}
 
 // Redirect to another page
 function redirectToPage(page) {
@@ -68,7 +52,6 @@ function dateToUnixTimestamp(dateString) {
 
     // Get the Unix timestamp in seconds
     var unixTimestamp = Math.floor(dateObject.getTime() / 1000);
-
     return unixTimestamp;
 }
 
@@ -326,6 +309,7 @@ function createTaskPopup(task) {
             clockedIn = 0;
         }
         popup.remove();
+        console.log(task.id);
         deleteTask(task.id);
         updatePoints(calculatePoints(task.timeSpent,task.importance,task.addToDate,task.dueDate), task.id);
     });
@@ -440,7 +424,8 @@ function addTask(task1) {
         var dueDate = task1.dueDate;
         var addToDate = task1.addToDate;
         var importance = task1.importance;
-        var timespent = task1.timeSpent
+        var timespent = task1.timeSpent;
+        var taskid = task1.id;
     }
         
     else {
@@ -456,7 +441,7 @@ function addTask(task1) {
     if (taskName.trim() !== '') {
         if (addToDate !== "" && addToDate !== null) {  
             const task = {
-                // id: taskIdCounter++,
+                id: taskid,
                 name: taskName,
                 addToDate: addToDate,
                 dueDate: dueDate || null,
@@ -466,8 +451,9 @@ function addTask(task1) {
                 timeSpentInterval: null,
             };
             if (task.id == null){
-                task.id = taskIdCounter++;
+                task.id = Math.floor(Math.random() * 10000);
             }
+            
         
             
             console.log(transaction);
@@ -486,7 +472,7 @@ function addTask(task1) {
         } 
         else {
             console.log("shouldbehere");
-            console.log(task1.id);
+            //console.log(task1.id);
             const task = {
                 name: taskName,
                 addToDate: addToDate || null,
@@ -498,7 +484,9 @@ function addTask(task1) {
             };
             
             if (task1 == undefined){
-                task.id = taskIdCounter++;
+            
+                task.id = Math.floor(Math.random() * 10000);
+                console.log(task.id);
             }
             else{
                 task.id = task1.id;
