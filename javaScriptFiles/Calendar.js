@@ -25,12 +25,13 @@ function redirectToPage(page) {
 function updatePoints(newPoints, taskId) {
     points += newPoints;
     updatePointsInDB(points);
+    getPointsFromDB();
     updatePointsLabel();
     updateTasks(taskId);
     updateCalendar();
     updateUndatedTasks();
-
 }
+
 // Update tasksByDate and tasksWithoutDate
 function updateTasks(taskId) {
     for (const date in tasksByDate) {
@@ -43,7 +44,7 @@ function updateTasks(taskId) {
 // Update the displayed points label
 function updatePointsLabel() {
     const pointsLabel = document.getElementById('points-label');
-    pointsLabel.textContent = `Points: ${Math.round(points)}`;
+    pointsLabel.textContent = `Points: ${Math.round(labelPoints)}`;
 }
 
 function dateToUnixTimestamp(dateString) {
@@ -58,14 +59,17 @@ function dateToUnixTimestamp(dateString) {
 function calculatePoints(timeSpentInMinutes, importance, currentDate, dueDate) {
     var pointsEarned = 0;
     const totalPoints = MAX_POINTS;
+
     // Calculate the difference between the due date and the current date in milliseconds
     const timeRemaining = dateToUnixTimestamp(dueDate) - dateToUnixTimestamp(currentDate);
+
     // Convert time remaining to minutes
     const timeRemainingInMinutes = timeRemaining / (1000 * 60);
     
     if (timeRemaining == 0 || timeRemaining == null){
         return Math.round(timeSpentInMinutes * importance)/100000;
     }
+
     // Calculate points based on time spent, importance, and time remaining
     pointsEarned = Math.round((timeSpentInMinutes * timeRemainingInMinutes) * importance  * totalPoints);
 
@@ -91,22 +95,16 @@ function startUpdatingTimeSpent(task) {
             updateTaskPopupTimeSpent(task);
         }, 1000);
 
-        console.log(curTask.timeSpent);
         curTask.timeSpent = task.timeSpent;
-        console.log(curTask.timeSpent);
-        console.log(task.timeSpent);
         objectStore.put(curTask);
     });
 }
 
 // Stop updating time spent on clock out and update time spent in db
 function stopUpdatingTimeSpent(task) {
-
     const transaction = db.transaction(['tasks_db'], 'readwrite');
     const objectStore = transaction.objectStore("tasks_db");
-
     const key = task.id;
-    console.log(task.id);
     const getRequest = objectStore.get(key);
 
     getRequest.addEventListener("success", () => {
@@ -131,13 +129,12 @@ function stopUpdatingTimeSpent(task) {
 
     getRequest.addEventListener("error", (event) => {
         console.error("Error retrieving task:", event.target.error);
-});
+    });
 
     clearInterval(task.timeSpentInterval);
-
 }
 
-
+// Makes the time clearer to the user
 function formatTime(milliseconds) {
     const seconds = Math.floor(milliseconds / 1000);
     const minutes = Math.floor(seconds / 60);
@@ -164,7 +161,6 @@ function updateCalendar() {
         console.log("loading from database");
         populate_database_cal();
     }
-    
 
 }
 
@@ -242,6 +238,7 @@ function displayTaskInfo(task) {
     document.body.appendChild(popup);
 }
 
+// Updates the undated tasks box
 function updateUndatedTasks() {
     const undatedTasksBox = document.getElementById('undated-tasks');
     undatedTasksBox.innerHTML = '';
@@ -256,7 +253,8 @@ function updateUndatedTasks() {
         undatedTasksBox.appendChild(taskButton);
     });
 }
-   
+ 
+// Pulls tasks from the database
 function populate_database_cal(){
     const objectStore = db.transaction('tasks_db').objectStore('tasks_db');
     objectStore.openCursor().onsuccess = (event) => {
@@ -264,10 +262,11 @@ function populate_database_cal(){
         
         if (!cursor) {
             console.log("All items displayed")
-            }
+        }
 
         else{
             addTask(cursor.value);
+            indexNum = cursor.value.id;
             cursor.continue();
         }       
     }
@@ -290,6 +289,7 @@ function createTaskPopup(task) {
             clockedIn = 1;
         }
     });
+
     clockInButton.classList.add('popup-button');
 
     const clockOutButton = createPopupButton('Clock Out', () => {
@@ -308,6 +308,7 @@ function createTaskPopup(task) {
             clockedOut = 1;
             clockedIn = 0;
         }
+
         popup.remove();
         console.log(task.id);
         deleteTask(task.id);
@@ -319,7 +320,6 @@ function createTaskPopup(task) {
     const taskInfoContainer = createTaskInfoContainer(task);
     const timeSpentDisplay = createTaskInfoElement(`Time Spent: ${formatTime(task.timeSpent)}`);
     timeSpentDisplay.classList.add('time-spent'); // Add a class to uniquely identify the time spent display
-
 
     const dawgGif = document.createElement('img');
     dawgGif.src = 'Pictures/DancingDawg.gif'; // Replace with the actual path to your GIF file
@@ -364,7 +364,6 @@ function createTaskInfoContainer(task) {
 function updateTaskPopupTimeSpent(task) {
     const timeSpentDisplay = document.querySelector('.task-popup .time-spent');
     timeSpentDisplay.textContent = `Time Spent: ${formatTime(task.timeSpent)}`;
-
 }
 
 // Create an element for task information in a popup
@@ -380,7 +379,7 @@ function getPointsFromDB() {
 
     request.onsuccess = ()=> {
         const pts = request.result;
-        return pts;
+        labelPoints = pts;
     }
 }
 
@@ -450,17 +449,17 @@ function addTask(task1) {
                 timeSpent: 0,
                 timeSpentInterval: null,
             };
+
             if (task.id == null){
                 task.id = Math.floor(Math.random() * 10000);
             }
-            
-        
             
             console.log(transaction);
             if (transaction !== null){
                 objectStore.add(task);
                 
             }
+
             var selectedDate = new Date(addToDate);
             selectedDate.setDate(selectedDate.getDate());
             const dateString = selectedDate.toISOString().split('T')[0];
@@ -468,11 +467,12 @@ function addTask(task1) {
             if (!tasksByDate[dateString]) {
                 tasksByDate[dateString] = [];
             }
+
             tasksByDate[dateString].push(task);
-        } 
+        }
+
         else {
             console.log("shouldbehere");
-            //console.log(task1.id);
             const task = {
                 name: taskName,
                 addToDate: addToDate || null,
@@ -488,15 +488,17 @@ function addTask(task1) {
                 task.id = Math.floor(Math.random() * 10000);
                 console.log(task.id);
             }
+
             else{
                 task.id = task1.id;
             }
+
             tasksWithoutDate.push(task);
             updateUndatedTasks();
+
             if (transaction !== null){
                 const addRequest = objectStore.add(task);
             }
-
         }
 
         updateCalendar();
@@ -506,11 +508,15 @@ function addTask(task1) {
 function validateImportanceInput() {
     var taskImportanceInput = document.getElementById('task-importance');
     var importanceValue = taskImportanceInput.value;
+    
     if (isNaN(importanceValue) || importanceValue < 1) {
         taskImportanceInput.value = 1;
-    } else if (importanceValue > 10) {
+    }
+
+    else if (importanceValue > 10) {
         taskImportanceInput.value = 10;
     }
+
     return importanceValue;
 }
 
