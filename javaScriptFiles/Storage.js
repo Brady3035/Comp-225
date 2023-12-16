@@ -36,10 +36,8 @@ openRequestPoints.addEventListener("success", () => {
 
   // Store open database object in db
   db_Points = openRequestPoints.result;
-  console.log(openRequestPoints.result);
-  console.log(getPointsFromDB());
 
-  // updatePointsLabel();
+  updatePointsLabel();
 
 });
 

@@ -10,9 +10,8 @@ let loaded = false;
 let currentDate = new Date();
 let tasksByDate = {};
 let tasksWithoutDate = [];
-let points = 0;
-
-
+let points = 0;  // this is causing the issue. Because this goes back to 0 every time we reset, its causing the db to be overwritten
+let labelPoints = 0;
 
 // Functions
 
@@ -23,9 +22,11 @@ function redirectToPage(page) {
 
 // Update points and refresh UI
 function updatePoints(newPoints, taskId) {
+    console.log(points);
+    console.log(newPoints);
     points += newPoints;
+    console.log(points);
     updatePointsInDB(points);
-    getPointsFromDB();
     updatePointsLabel();
     updateTasks(taskId);
     updateCalendar();
@@ -43,9 +44,16 @@ function updateTasks(taskId) {
 
 // Update the displayed points label
 function updatePointsLabel() {
-    const pointsLabel = document.getElementById('points-label');
-    pointsLabel.textContent = `Points: ${Math.round(labelPoints)}`;
+    const request = db_Points.transaction('points_db').objectStore('points_db').get('points');
+
+    request.onsuccess = ()=> {
+        labelPoints = request.result;
+        console.log(labelPoints);
+        const pointsLabel = document.getElementById('points-label');
+        pointsLabel.textContent = `Points: ${Math.round(labelPoints)}`;
+    }
 }
+    
 
 function dateToUnixTimestamp(dateString) {
     // Create a new Date object from the date string
@@ -373,16 +381,6 @@ function createTaskInfoElement(text) {
     return element;
 }
 
-// Get points from points db
-function getPointsFromDB() {
-    const request = db_Points.transaction('points_db').objectStore('points_db').get('points');
-
-    request.onsuccess = ()=> {
-        const pts = request.result;
-        labelPoints = pts;
-    }
-}
-
 // Set points in db to be current points
 function updatePointsInDB(pts) {
     const transaction = db_Points.transaction(['points_db'], 'readwrite');
@@ -392,7 +390,7 @@ function updatePointsInDB(pts) {
     request.addEventListener("success", () => {
         const updatePointsRequest = objectStore.put(pts, "points");
         console.log(`Points updated, points: ${pts}`);
-      });
+    });
 }
 
 // Event listeners
