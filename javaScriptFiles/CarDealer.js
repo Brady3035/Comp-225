@@ -34,6 +34,23 @@ function closeIndividualModal() {
 }
 
 function purhcaseModal() {
+    var dispImg = document.getElementById('displayedImage');
+    console.log(dispImg.src);
+    const item = {shop: "CarDealer", imageName: dispImg.src}
+
+    const transaction = db_Stuff.transaction(['stuff_db'], 'readwrite');
+    const objectStore = transaction.objectStore("stuff_db");
+    var request = objectStore.add(item);
+
+    request.addEventListener("success", () => { 
+        console.log("db updated");
+    });
+
+    request.onerror = function(event) {
+        console.log("db not updated: error");
+        console.log(request.result);
+    }
+
 }
 
 function equipModal() {

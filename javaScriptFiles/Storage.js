@@ -88,9 +88,11 @@ openRequestStuff.addEventListener("upgradeneeded", (event) => {
   db_Stuff = event.target.result;
   console.log("Stuff db grabbed");
 
-  const objectStoreStuff = db_Stuff.createObjectStore("stuff_db");
+  const objectStoreStuff = db_Stuff.createObjectStore("stuff_db", { keyPath: 'imageName' });
 
+  objectStoreStuff.createIndex('shop', 'shop', { unique: false });
   objectStoreStuff.createIndex("imageName", "imageName", {unique: false});
+
   console.log("Stuff database setup complete");
 
 });
