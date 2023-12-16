@@ -22,10 +22,7 @@ function redirectToPage(page) {
 
 // Update points and refresh UI
 function updatePoints(newPoints, taskId) {
-    // console.log(points);
     console.log(newPoints);
-    // points += newPoints;
-    // console.log(points);
     updatePointsInDB(newPoints);
     updatePointsLabel();
     updateTasks(taskId);

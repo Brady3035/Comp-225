@@ -25,8 +25,6 @@ openRequest.addEventListener("success", () => {
   db = openRequest.result;
   console.log(openRequest.result);
 
-  // Run updateCalendar()
-  updateCalendar();
 });
 
 // Error/success handlers db_Points

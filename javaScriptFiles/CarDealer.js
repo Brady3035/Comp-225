@@ -2,6 +2,18 @@ function redirectToPage(page) {
     window.location.href = page;
 }
 
+// Update the displayed points label
+function updatePointsLabel() {
+    const request = db_Points.transaction('points_db').objectStore('points_db').get('points');
+
+    request.onsuccess = ()=> {
+        labelPoints = request.result;
+        console.log(labelPoints);
+        const pointsLabel = document.getElementById('points-label');
+        pointsLabel.textContent = `Points: ${Math.round(labelPoints)}`;
+    }
+}
+
 // Functions to handle modals
 function openModal() {
     document.getElementById('imageModal').style.display = 'block';
