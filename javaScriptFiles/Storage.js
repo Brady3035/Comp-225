@@ -85,12 +85,12 @@ openRequestPoints.addEventListener("upgradeneeded", (ev) => {
 
 // Database (stuff) creation
 openRequestStuff.addEventListener("upgradeneeded", (event) => {
-  db_Stuff.event.target.result;
+  db_Stuff = event.target.result;
   console.log("Stuff db grabbed");
 
   const objectStoreStuff = db_Stuff.createObjectStore("stuff_db");
 
-  objectStoreStuff.createIndex("thing", "thing", {unique: false});
+  objectStoreStuff.createIndex("imageName", "imageName", {unique: false});
   console.log("Stuff database setup complete");
 
 });
