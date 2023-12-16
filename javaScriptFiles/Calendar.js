@@ -22,11 +22,11 @@ function redirectToPage(page) {
 
 // Update points and refresh UI
 function updatePoints(newPoints, taskId) {
-    console.log(points);
+    // console.log(points);
     console.log(newPoints);
-    points += newPoints;
-    console.log(points);
-    updatePointsInDB(points);
+    // points += newPoints;
+    // console.log(points);
+    updatePointsInDB(newPoints);
     updatePointsLabel();
     updateTasks(taskId);
     updateCalendar();
@@ -53,7 +53,6 @@ function updatePointsLabel() {
         pointsLabel.textContent = `Points: ${Math.round(labelPoints)}`;
     }
 }
-    
 
 function dateToUnixTimestamp(dateString) {
     // Create a new Date object from the date string
@@ -388,6 +387,7 @@ function updatePointsInDB(pts) {
     const request = objectStore.get("points");
 
     request.addEventListener("success", () => {
+        pts += request.result;
         const updatePointsRequest = objectStore.put(pts, "points");
         console.log(`Points updated, points: ${pts}`);
     });
