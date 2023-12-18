@@ -46,8 +46,15 @@ function updatePointsLabel() {
     request.onsuccess = ()=> {
         labelPoints = request.result;
         console.log(labelPoints);
+        console.log(typeof labelPoints);
         const pointsLabel = document.getElementById('points-label');
-        pointsLabel.textContent = `Points: ${Math.round(labelPoints)}`;
+        if (labelPoints === null || labelPoints === undefined) {
+            console.log(labelPoints);
+            pointsLabel.textContent = `Points: ${Math.round(0)}`;
+        }
+        else {
+            pointsLabel.textContent = `Points: ${Math.round(labelPoints)}`;
+        }
     }
 }
 
