@@ -56,7 +56,7 @@ function purhcaseModal() {
 function equipModal() {
 }
 
-// Close modals on clicking outside the modal content
+// Close modals by clicking outside of the modal content
 window.onclick = function (event) {
     const modal = document.getElementsByClassName('modal');
     for (let i = 0; i < modal.length; i++) {

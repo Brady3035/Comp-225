@@ -137,7 +137,7 @@ h1 {
     border-style: ridge;
     border-width: 5px;
     border-color: cadetblue;
-    transform: scale(1.1); /* Slightly enlarge on hover */
+    transform: scale(1.1);
     background-color: #1a936f;
 }
 
@@ -200,6 +200,7 @@ h1 {
     top: 60%;
     left: 75%;
 }
+
 .mascot:hover {
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 20px;
